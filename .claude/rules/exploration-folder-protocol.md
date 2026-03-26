@@ -1,6 +1,6 @@
 ---
 paths:
-  - "explorations/**"
+  - "workflow/explorations/**"
 ---
 
 # Exploration Folder Protocol
@@ -25,13 +25,13 @@ explorations/
 
 ## Lifecycle
 
-1. **Create** -- `mkdir -p explorations/[name]/{R,scripts,output}` + README from `templates/exploration-readme.md`
+1. **Create** -- `mkdir -p workflow/explorations/[name]/{R,scripts,output}` + README from `workflow/templates/exploration-readme.md`
 2. **Develop** -- work entirely within the exploration folder
 3. **Decide:**
 
    - **Graduate to production** -- copy to `R/`, `scripts/`; requires quality >= 80, tests pass, code clear. Move to `ARCHIVE/completed_[project]/`
    - **Keep exploring** -- document next steps in README
-   - **Abandon** -- move to `ARCHIVE/abandoned_[project]/` with explanation (use `templates/archive-readme.md`)
+   - **Abandon** -- move to `ARCHIVE/abandoned_[project]/` with explanation (use `workflow/templates/archive-readme.md`)
 
 ## Graduate Checklist
 

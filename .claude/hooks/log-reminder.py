@@ -72,7 +72,7 @@ def save_state(state_path: Path, state: dict):
 
 def find_latest_log(project_dir: str) -> tuple[Path | None, float]:
     """Find the most recently modified .md file in session_logs/."""
-    log_dir = Path(project_dir) / "quality_reports" / "session_logs"
+    log_dir = Path(project_dir) / "workflow" / "quality_reports" / "session_logs"
     if not log_dir.is_dir():
         return None, 0.0
 
@@ -104,7 +104,7 @@ def main():
                 "decision": "block",
                 "reason": (
                     f"No session log exists yet. Create one at "
-                    f"quality_reports/session_logs/{today}_description.md "
+                    f"workflow/quality_reports/session_logs/{today}_description.md "
                     f"before continuing. Include the current goal and key context."
                 ),
             }

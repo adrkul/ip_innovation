@@ -1,6 +1,6 @@
 # Data Management
 
-**Applies to:** `Empirics/**`, `Simulation/**`, `scripts/**/*.R`
+**Applies to:** `Empirics/**`, `Simulation/**`, `workflow/scripts/**/*.R`
 
 This project uses large proprietary datasets. These rules govern what is committed, what is gitignored, and how data pipelines are structured for reproducibility.
 
@@ -36,7 +36,7 @@ Raw data is **never committed** to the repository. It is proprietary or too larg
 - All R scripts (`Empirics/Code/*.R`)
 - All Julia scripts (`Simulation/Code/*.jl`, `Theory/Code/*.jl`)
 - `Project.toml` for Julia environments
-- `scripts/run_pipeline.R` (master pipeline, see below)
+- `workflow/scripts/run_pipeline.R` (master pipeline, see below)
 - Bibliography and LyX source files
 
 ---
@@ -91,7 +91,7 @@ Raw data (Empirics/Data/) — external, not in repo
               └─ data_analysis_GMM_Figures.R — GMM results figures
 ```
 
-A master pipeline script at `scripts/run_pipeline.R` documents this order (created when pipeline is stable enough to run end-to-end).
+A master pipeline script at `workflow/scripts/run_pipeline.R` documents this order (created when pipeline is stable enough to run end-to-end).
 
 ---
 
@@ -136,4 +136,4 @@ If collaborators need access to data not in the repo:
 - Intermediate processed data: Share via Dropbox at `~/Dropbox/Repos/Research/outsourcing_innovation/Empirics/Data/`
 - Model output: Share via Dropbox at `~/Dropbox/Repos/Research/outsourcing_innovation/Simulation/Output/`
 
-Document data locations in `quality_reports/data-locations.md` (create when needed).
+Document data locations in `workflow/quality_reports/data-locations.md` (create when needed).

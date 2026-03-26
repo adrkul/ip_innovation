@@ -44,7 +44,7 @@ def get_session_dir() -> Path:
 
 def find_active_plan(project_dir: str) -> dict | None:
     """Find the most recent non-completed plan."""
-    plans_dir = Path(project_dir) / "quality_reports" / "plans"
+    plans_dir = Path(project_dir) / "workflow" / "quality_reports" / "plans"
     if not plans_dir.exists():
         return None
 
@@ -83,7 +83,7 @@ def find_active_plan(project_dir: str) -> dict | None:
 
 def extract_recent_decisions(project_dir: str, limit: int = 3) -> list[str]:
     """Extract recent decisions from the session log."""
-    logs_dir = Path(project_dir) / "quality_reports" / "session_logs"
+    logs_dir = Path(project_dir) / "workflow" / "quality_reports" / "session_logs"
     if not logs_dir.exists():
         return []
 
@@ -127,7 +127,7 @@ def save_state(state: dict) -> None:
 
 def append_to_session_log(project_dir: str, trigger: str) -> None:
     """Append compaction note to session log."""
-    logs_dir = Path(project_dir) / "quality_reports" / "session_logs"
+    logs_dir = Path(project_dir) / "workflow" / "quality_reports" / "session_logs"
     if not logs_dir.exists():
         return
 
@@ -139,7 +139,7 @@ def append_to_session_log(project_dir: str, trigger: str) -> None:
         with open(log_files[0], "a") as f:
             f.write(f"\n\n---\n")
             f.write(f"**Context compaction ({trigger}) at {datetime.now().strftime('%H:%M')}**\n")
-            f.write(f"Check git log and quality_reports/plans/ for current state.\n")
+            f.write(f"Check git log and workflow/quality_reports/plans/ for current state.\n")
     except IOError:
         pass
 
