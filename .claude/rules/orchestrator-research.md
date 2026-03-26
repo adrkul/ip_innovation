@@ -2,12 +2,14 @@
 paths:
   - "scripts/**/*.R"
   - "explorations/**"
-  - "Figures/**/*.R"
+  - "Empirics/Code/**"
+  - "Simulation/Code/**"
+  - "Theory/Code/**"
 ---
 
 # Research Project Orchestrator (Simplified)
 
-**For R scripts, simulations, and data analysis** -- use this simplified loop instead of the full multi-agent orchestrator.
+**For R scripts, Julia scripts, simulations, and data analysis** — use this simplified loop instead of the full multi-agent orchestrator.
 
 ## The Simple Loop
 
@@ -18,8 +20,9 @@ Plan approved → orchestrator activates
   │
   Step 2: VERIFY — Run code, check outputs
   │         R scripts: Rscript runs without error
-  │         Simulations: set.seed reproducibility
-  │         Plots: PDF/PNG created, correct format
+  │         Julia scripts: julia runs without error, converged = true
+  │         Simulations: set.seed / Random.seed! reproducibility
+  │         Plots: PDF/PNG created, correct dimensions
   │         If verification fails → fix → re-verify
   │
   Step 3: SCORE — Apply quality-gates rubric
@@ -33,10 +36,18 @@ Plan approved → orchestrator activates
 
 ## Verification Checklist
 
-- [ ] Script runs without errors
-- [ ] All packages loaded at top
+### R Scripts
+- [ ] Script runs without errors: `Rscript Empirics/Code/filename.R`
+- [ ] All packages loaded at top via `library()`
 - [ ] No hardcoded absolute paths
 - [ ] `set.seed()` once at top if stochastic
-- [ ] Output files created at expected paths
-- [ ] Tolerance checks pass (if applicable)
+- [ ] Output files created at expected paths in `Empirics/Figures/` or as `.rds`
+- [ ] Quality score >= 80
+
+### Julia Scripts
+- [ ] Script runs without errors: `julia --project=Simulation/Code script.jl`
+- [ ] `Random.seed!` present if random operations used
+- [ ] No hardcoded absolute paths
+- [ ] Convergence flag checked: `converged = true`
+- [ ] Output saved to timestamped directory in `Simulation/Output/`
 - [ ] Quality score >= 80

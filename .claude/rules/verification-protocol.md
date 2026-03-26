@@ -1,53 +1,61 @@
 ---
 paths:
-  - "Slides/**/*.tex"
-  - "Quarto/**/*.qmd"
-  - "docs/**"
+  - "Paper/**"
+  - "Slides/**"
+  - "Empirics/Code/**"
+  - "Simulation/Code/**"
+  - "Theory/Code/**"
 ---
 
 # Task Completion Verification Protocol
 
 **At the end of EVERY task, Claude MUST verify the output works correctly.** This is non-negotiable.
 
-## For Quarto/HTML Slides:
-1. Run `./scripts/sync_to_docs.sh` (or `./scripts/sync_to_docs.sh LectureN`) to render and deploy
-2. Open the HTML in browser: `open docs/slides/LectureX.html` (macOS) or `xdg-open` (Linux)
-3. Verify images display by reading 2-3 image files to confirm valid content
-4. Check HTML source for correct image paths
-5. Check for overflow by scanning dense slides
-6. Verify environment parity: every Beamer box environment has a CSS equivalent in the QMD
-7. Report verification results
+## For LyX / LaTeX Paper:
 
-## For LaTeX/Beamer Slides:
-1. Compile with xelatex and check for errors
-2. Open the PDF to verify figures render (`open` on macOS, `xdg-open` on Linux)
+1. Compile the master document: `lyx --export pdf2 Paper/innovation_draft.lyx`
+2. Check for compilation errors in the log output
+3. Open the PDF to verify figures render: `open Paper/innovation_draft.pdf` (macOS)
+4. Check for overfull hbox warnings in the log
+5. Verify bibliography resolves (no `??` in place of citations)
+6. For section files compiled standalone: expect unresolved cross-references — this is normal
+
+## For Conference Slides (Beamer, LyX):
+
+1. Compile: `lyx --export pdf2 Slides/SlideDeck.lyx`
+2. Open the PDF: `open Slides/SlideDeck.pdf`
 3. Check for overfull hbox warnings
-
-## For TikZ Diagrams in HTML/Quarto:
-1. Browsers **cannot** display PDF images inline — ALWAYS convert to SVG
-2. Use SVG (vector format) for crisp rendering: `pdf2svg input.pdf output.svg`
-3. **NEVER use PNG for diagrams** — PNG is raster and looks blurry
-4. Verify SVG files contain valid XML/SVG markup
-5. Copy SVGs to `docs/Figures/LectureX/` via `sync_to_docs.sh`
-6. **Freshness check:** Before using any TikZ SVG, verify extract_tikz.tex matches current Beamer source
+4. Verify figures display (spot-check 2-3 figure slides)
 
 ## For R Scripts:
-1. Run `Rscript scripts/R/filename.R`
+
+1. Run from project root: `Rscript Empirics/Code/filename.R`
 2. Verify output files (PDF, RDS) were created with non-zero size
 3. Spot-check estimates for reasonable magnitude
+4. Check that no hardcoded absolute paths triggered errors
+
+## For Julia Scripts:
+
+1. Run from project root: `julia --project=Simulation/Code Simulation/Code/script.jl`
+2. Verify output directory created in `Simulation/Output/`
+3. Check convergence flag in output: `converged = true`
+4. Spot-check parameter estimates for reasonable magnitude and sign
+5. Verify output file created via JLD2 (`.jld2` file exists and is non-zero)
 
 ## Common Pitfalls:
-- **PDF images in HTML**: Browsers don't render PDFs inline → convert to SVG
-- **Relative paths**: `../Figures/` works from `Quarto/` but not from `docs/slides/` → use `sync_to_docs.sh`
-- **Assuming success**: Always verify output files exist AND contain correct content
-- **Stale TikZ SVGs**: extract_tikz.tex diverges from Beamer source → always diff-check
+
+- **LyX path issues:** If `lyx` command not found, check that LyX is on PATH (`which lyx`)
+- **Missing figures:** If figures missing from PDF, check relative paths in `\includegraphics`
+- **Stale bibliography:** If `??` in citations, recompile (bibtex pass needed)
+- **Julia project not found:** Use `julia --project=Simulation/Code` not `julia` alone
 
 ## Verification Checklist:
+
 ```
-[ ] Output file created successfully
-[ ] No compilation/render errors
-[ ] Images/figures display correctly
-[ ] Paths resolve in deployment location (docs/)
-[ ] Opened in browser/viewer to confirm visual appearance
+[ ] Output file created successfully (PDF, RDS, or JLD2)
+[ ] No compilation/runtime errors
+[ ] Figures/tables display correctly
+[ ] No undefined citations or cross-references in final paper
+[ ] Opened in viewer to confirm content
 [ ] Reported results to user
 ```

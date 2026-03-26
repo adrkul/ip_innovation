@@ -70,3 +70,15 @@ When a mistake is corrected, append a `[LEARN:category]` entry below.
 [LEARN:meta] Dogfooding principles must be enforced: plan-first, spec-then-plan, quality gates, session logs → we follow our own guide.
 
 [LEARN:meta] Template development work (building infrastructure, docs) doesn't create session logs in quality_reports/ → those are for user work (slides, analysis), not meta-work. Keeps template clean for users who fork.
+
+## Project Context (IP Innovation)
+
+[LEARN:project] Main paper = `Paper/innovation_draft.lyx` (master, ~79 pages, March 2026). Includes section files: Section_Theory_Model, Section_Empirical_Model, Section_Simulation, plus appendices.
+
+[LEARN:project] Tool stack: LyX/LaTeX for writing (lyx --export pdf2), R for empirics (Empirics/Code/), Julia for structural GMM estimation (Simulation/Code/). Bibliography at Bibliography/Bibliography_base.bib.
+
+[LEARN:project] Large raw data (IHS supply chain, PATSTAT patents, trade data) lives at Empirics/Data/ and is gitignored. Never commit raw data. Simulation/Output/ is also gitignored.
+
+[LEARN:project] Julia estimation: GMM objective in Simulation/Code/GMM_OEM_assembly.jl; multi-start in multistart.jl; evaluation in GMM_eval.jl. Automotive supply chain case study. Always check converged flag before reporting estimates.
+
+[LEARN:project] This repo is a fork/reboot of ~/Dropbox/Repos/Research/outsourcing_innovation. Port content section-by-section as active work begins. Do not bulk-copy — vet each file first.

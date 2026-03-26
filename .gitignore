@@ -1,5 +1,5 @@
 # ==============================================================================
-# .gitignore for Academic Claude Code Projects
+# .gitignore for IP Innovation Research Project
 # ==============================================================================
 
 # LaTeX build artifacts
@@ -18,7 +18,12 @@
 *.run.xml
 *-blx.bib
 
-# Compiled PDFs (uncomment to track specific PDFs)
+# LyX backup and autosave files
+*.lyx~
+*.lyx#
+#*.lyx#
+
+# Compiled PDFs (tracked selectively — keep final paper and slide PDFs)
 # *.pdf
 
 # Python
@@ -48,9 +53,42 @@ CLAUDE.local.md
 *.swo
 *~
 
-# Quarto rendering artifacts
-.quarto/
+# ==============================================================================
+# Large Data Files (NEVER commit — proprietary or too large)
+# ==============================================================================
 
-# Output artifacts — uncomment lines below based on your preference
+# All raw and intermediate data in Empirics/Data/
+Empirics/Data/**
+!Empirics/Data/.gitkeep
+
+# Large simulation inputs
+Simulation/Data/*.csv
+Simulation/Data/*.jld2
+
+# All model output in Simulation/Output/
+Simulation/Output/**
+!Simulation/Output/.gitkeep
+
+# ==============================================================================
+# Julia Artifacts
+# ==============================================================================
+
+# Julia compiled artifacts (regenerated automatically)
+*.ji
+
+# Julia package manifests (pin with Project.toml instead)
+# Uncomment below if you want to track exact dependency versions:
+# !Manifest.toml
+
+# Local Julia depot artifacts
+.julia/
+
+# ==============================================================================
+# R Data Artifacts (selective — see data-management.md rule)
+# ==============================================================================
+
+# Diagnostic/scratch figures (not for paper)
+Empirics/Figures/Scratch/
+
+# Uncomment to ignore all RDS files (except small tracked ones):
 # *.rds
-# output/**/*.rds
