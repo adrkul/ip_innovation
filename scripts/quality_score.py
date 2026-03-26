@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Quality Scoring System for Academic Course Materials
+Quality Scoring System for Research Project Materials
 
 Calculates objective quality scores (0-100) based on defined rubrics.
-Enforces quality gates: 80 (commit), 90 (PR), 95 (excellence).
+Enforces quality gates: 80 (commit), 90 (share), 95 (excellence).
 
 Usage:
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
-    python scripts/quality_score.py Quarto/Lecture6_Topic.qmd --summary
-    python scripts/quality_score.py Quarto/*.qmd
-    python scripts/quality_score.py Slides/Lecture01_Topic.tex
-    python scripts/quality_score.py scripts/R/Lecture06_simulations.R
+    python3 scripts/quality_score.py Empirics/Code/analysis_main.R
+    python3 scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
+    python3 scripts/quality_score.py Paper/Sections/Section_Theory_Model.lyx
+    python3 scripts/quality_score.py Slides/SlideDeck.tex
+    python3 scripts/quality_score.py Empirics/Code/analysis_main.R --summary
 """
 
 import sys
@@ -25,25 +25,35 @@ import json
 # SCORING RUBRIC (from .claude/rules/quality-gates.md)
 # ==============================================================================
 
-QUARTO_RUBRIC = {
+JULIA_RUBRIC = {
     'critical': {
-        'compilation_failure': {'points': 100, 'auto_fail': True},
-        'equation_overflow': {'points': 20},
-        'broken_citation': {'points': 15},
-        'typo_in_equation': {'points': 10},
-        'missing_plotly_chart': {'points': 10},
+        'syntax_error': {'points': 100, 'auto_fail': True},
+        'convergence_not_checked': {'points': 30},
+        'hardcoded_path': {'points': 20},
     },
     'major': {
-        'text_overflow': {'points': 5},
-        'tikz_label_overlap': {'points': 5},
-        'notation_inconsistency': {'points': 3},
-        'missing_box_separation': {'points': 2},
-        'color_contrast_low': {'points': 3},
+        'missing_random_seed': {'points': 10},
+        'missing_output': {'points': 10},
+        'missing_project_toml': {'points': 5},
     },
     'minor': {
-        'font_size_reduction': {'points': 1},
-        'missing_forward_ref': {'points': 1},
-        'missing_framing_sentence': {'points': 1},
+        'type_instability': {'points': 3},
+    }
+}
+
+LATEX_PAPER_RUBRIC = {
+    'critical': {
+        'compilation_failure': {'points': 100, 'auto_fail': True},
+        'undefined_citation': {'points': 15},
+        'overfull_hbox': {'points': 10},
+        'equation_numbering_error': {'points': 10},
+    },
+    'major': {
+        'hardcoded_path_includegraphics': {'points': 20},
+        'missing_cross_reference_label': {'points': 5},
+    },
+    'minor': {
+        'orphaned_label': {'points': 2},
     }
 }
 
@@ -93,23 +103,22 @@ class IssueDetector:
     """Detect common issues for quality scoring."""
 
     @staticmethod
-    def check_quarto_compilation(filepath: Path) -> Tuple[bool, str]:
-        """Check if Quarto file compiles successfully."""
+    def check_julia_syntax(filepath: Path) -> Tuple[bool, str]:
+        """Check Julia script for syntax errors using Meta.parse."""
         try:
             result = subprocess.run(
-                ['quarto', 'render', str(filepath), '--to', 'html'],
+                ['julia', '-e', f'Meta.parse(read("{filepath}", String))'],
                 capture_output=True,
                 text=True,
-                timeout=120,
-                cwd=filepath.parent
+                timeout=15
             )
             if result.returncode != 0:
                 return False, result.stderr
             return True, ""
         except subprocess.TimeoutExpired:
-            return False, "Compilation timeout (>2min)"
+            return False, "Syntax check timeout"
         except FileNotFoundError:
-            return False, "Quarto not installed"
+            return False, "julia not installed or not on PATH"
 
     @staticmethod
     def check_equation_overflow(content: str) -> List[int]:
@@ -198,20 +207,6 @@ class IssueDetector:
 
         broken = cited_keys - bib_keys
         return list(broken)
-
-    @staticmethod
-    def check_plotly_widgets(html_file: Path, expected: int = None) -> Tuple[int, bool]:
-        """Check if plotly charts rendered in HTML."""
-        if not html_file.exists():
-            return 0, False
-
-        html_content = html_file.read_text(encoding='utf-8')
-        actual_count = html_content.count('htmlwidget')
-
-        if expected is None:
-            return actual_count, True
-
-        return actual_count, (actual_count >= expected)
 
     @staticmethod
     def check_r_syntax(filepath: Path) -> Tuple[bool, str]:
@@ -326,51 +321,12 @@ class IssueDetector:
 
         return issues
 
-    @staticmethod
-    def check_quarto_citations(content: str, bib_file: Path) -> List[str]:
-        """Check Quarto-style citation keys against bibliography.
-
-        Supports patterns: @key, [@key], [@key1; @key2]
-        """
-        cited_keys = set()
-
-        # Pattern 1: [@key] or [@key1; @key2; ...]
-        bracket_pattern = r'\[([^\]]*@[^\]]+)\]'
-        for match in re.finditer(bracket_pattern, content):
-            inner = match.group(1)
-            # Extract individual @key references from within brackets
-            for key_match in re.finditer(r'@([\w:.#$%&\-+?<>~/]+)', inner):
-                cited_keys.add(key_match.group(1))
-
-        # Pattern 2: standalone @key (not inside brackets, not email addresses)
-        # Match @key that is preceded by start-of-line or whitespace or punctuation
-        # but NOT preceded by characters that indicate an email address
-        standalone_pattern = r'(?<![.\w])@([\w:.#$%&\-+?<>~/]+)'
-        for match in re.finditer(standalone_pattern, content):
-            key = match.group(1)
-            # Skip if it looks like a Quarto directive or special syntax
-            if key.startswith('{') or key in ('fig', 'tbl', 'sec', 'eq', 'lst'):
-                continue
-            cited_keys.add(key)
-
-        if not cited_keys:
-            return []
-
-        if not bib_file.exists():
-            return list(cited_keys)
-
-        bib_content = bib_file.read_text(encoding='utf-8')
-        bib_keys = set(re.findall(r'@\w+\{([^,]+),', bib_content))
-
-        broken = cited_keys - bib_keys
-        return list(broken)
-
 # ==============================================================================
 # QUALITY SCORER
 # ==============================================================================
 
 class QualityScorer:
-    """Calculate quality scores for course materials."""
+    """Calculate quality scores for research project materials."""
 
     def __init__(self, filepath: Path, verbose: bool = False):
         self.filepath = filepath
@@ -383,68 +339,146 @@ class QualityScorer:
         }
         self.auto_fail = False
 
-    def score_quarto(self) -> Dict:
-        """Score Quarto lecture slides."""
+    def score_julia(self) -> Dict:
+        """Score Julia script quality."""
         content = self.filepath.read_text(encoding='utf-8')
 
-        # Check compilation
-        compiles, error = IssueDetector.check_quarto_compilation(self.filepath)
-        if not compiles:
+        # Check syntax
+        is_valid, error = IssueDetector.check_julia_syntax(self.filepath)
+        if not is_valid:
             self.auto_fail = True
             self.issues['critical'].append({
-                'type': 'compilation_failure',
-                'description': 'Quarto compilation failed',
+                'type': 'syntax_error',
+                'description': 'Julia syntax error',
                 'details': error[:200],
                 'points': 100
             })
             self.score = 0
             return self._generate_report()
 
-        # Check equation overflow (heuristic)
-        equation_overflows = IssueDetector.check_equation_overflow(content)
-        for line in equation_overflows:
+        # Check hardcoded paths
+        path_issues = IssueDetector.check_hardcoded_paths(content)
+        for line in path_issues:
             self.issues['critical'].append({
-                'type': 'equation_overflow',
-                'description': f'Potential equation overflow at line {line}',
-                'details': 'Single equation line >120 chars may overflow slide',
+                'type': 'hardcoded_path',
+                'description': f'Hardcoded absolute path at line {line}',
+                'details': 'Use relative paths or joinpath(@__DIR__, ...)',
                 'points': 20
             })
             self.score -= 20
 
-        # Check broken citations (LaTeX-style \cite patterns)
-        bib_file = self.filepath.parent.parent / 'Bibliography_base.bib'
-        broken_citations = IssueDetector.check_broken_citations(content, bib_file)
-
-        # Also check Quarto-style @key citations
-        quarto_broken = IssueDetector.check_quarto_citations(content, bib_file)
-        # Merge both sets, avoiding duplicates
-        all_broken = set(broken_citations) | set(quarto_broken)
-        for key in all_broken:
-            self.issues['critical'].append({
-                'type': 'broken_citation',
-                'description': f'Citation key not in bibliography: {key}',
-                'details': 'Add to Bibliography_base.bib or fix key',
-                'points': 15
+        # Check for Random.seed! if randomness detected
+        has_random = any(fn in content for fn in ['rand(', 'randn(', 'randperm(', 'shuffle('])
+        has_seed = 'Random.seed!' in content
+        if has_random and not has_seed:
+            self.issues['major'].append({
+                'type': 'missing_random_seed',
+                'description': 'Missing Random.seed!() for reproducibility',
+                'details': 'Add Random.seed!(YYYYMMDD) at top of script',
+                'points': 10
             })
-            self.score -= 15
+            self.score -= 10
 
-        # Check plotly widgets (if HTML exists)
-        html_file = self.filepath.parent.parent / 'docs' / 'slides' / self.filepath.with_suffix('.html').name
-        if html_file.exists():
-            widget_count, _ = IssueDetector.check_plotly_widgets(html_file)
-            expected_plotly = content.count('plotly::plot_ly')
-            if expected_plotly > 0 and widget_count < expected_plotly:
-                missing = expected_plotly - widget_count
-                self.issues['critical'].append({
-                    'type': 'missing_plotly_chart',
-                    'description': f'{missing} plotly chart(s) failed to render',
-                    'details': f'Expected {expected_plotly}, found {widget_count}',
-                    'points': 10 * missing
-                })
-                self.score -= 10 * missing
+        # Check convergence flag is referenced
+        runs_optimization = any(fn in content for fn in ['optimize(', 'Optim.', 'NLopt.', 'BlackBoxOptim.'])
+        checks_convergence = 'converged' in content
+        if runs_optimization and not checks_convergence:
+            self.issues['critical'].append({
+                'type': 'convergence_not_checked',
+                'description': 'Optimization detected but convergence not checked',
+                'details': 'Store and check converged flag before reporting estimates',
+                'points': 30
+            })
+            self.score -= 30
+
+        # Check for Project.toml in script directory
+        project_toml = self.filepath.parent / 'Project.toml'
+        if not project_toml.exists():
+            self.issues['major'].append({
+                'type': 'missing_project_toml',
+                'description': 'No Project.toml in script directory',
+                'details': f'Add Project.toml to {self.filepath.parent}/ for reproducible environments',
+                'points': 5
+            })
+            self.score -= 5
 
         self.score = max(0, self.score)
         return self._generate_report()
+
+    def score_lyx_paper(self) -> Dict:
+        """Score LyX paper quality (checks exported .tex if available, else .lyx directly)."""
+        content = self.filepath.read_text(encoding='utf-8')
+
+        # Check for hardcoded absolute paths in includegraphics commands
+        # LyX files store graphics paths in a specific format
+        path_pattern = r'filename\s+(/[^\n]+|[A-Za-z]:[/\\][^\n]+)'
+        path_issues = []
+        for i, line in enumerate(content.split('\n'), 1):
+            if re.search(path_pattern, line):
+                path_issues.append(i)
+
+        for line in path_issues:
+            self.issues['major'].append({
+                'type': 'hardcoded_path_includegraphics',
+                'description': f'Absolute figure path at line {line}',
+                'details': 'Use relative paths for all includegraphics/figure files',
+                'points': 20
+            })
+            self.score -= 20
+
+        # Check for broken citations in LyX format (\begin_inset CommandInset citation)
+        # LyX stores citations as: key "Smith2023"
+        lyx_cite_pattern = r'key\s+"([^"]+)"'
+        cited_keys = set()
+        for match in re.finditer(lyx_cite_pattern, content):
+            keys = match.group(1).split(',')
+            cited_keys.update(k.strip() for k in keys)
+
+        if cited_keys:
+            # Find bibliography
+            bib_file = self._find_bib_file()
+            if bib_file and bib_file.exists():
+                bib_content = bib_file.read_text(encoding='utf-8')
+                bib_keys = set(re.findall(r'@\w+\{([^,]+),', bib_content))
+                broken = cited_keys - bib_keys
+                for key in broken:
+                    self.issues['critical'].append({
+                        'type': 'undefined_citation',
+                        'description': f'Citation key not in bibliography: {key}',
+                        'details': 'Add to Bibliography/Bibliography_base.bib or fix key',
+                        'points': 15
+                    })
+                    self.score -= 15
+
+        # Check if compiled PDF exists (indicates it compiled successfully)
+        pdf_file = self.filepath.with_suffix('.pdf')
+        if not pdf_file.exists():
+            self.issues['major'].append({
+                'type': 'no_compiled_pdf',
+                'description': 'No compiled PDF found',
+                'details': f'Run: lyx --export pdf2 {self.filepath}',
+                'points': 5
+            })
+            self.score -= 5
+
+        self.score = max(0, self.score)
+        return self._generate_report()
+
+    def _find_bib_file(self) -> Path:
+        """Find bibliography file by searching up from filepath."""
+        # Search in Bibliography/ directory relative to repo root
+        # Walk up until we find the repo root (has CLAUDE.md or .git)
+        current = self.filepath.parent
+        for _ in range(6):  # max 6 levels up
+            bib = current / 'Bibliography' / 'Bibliography_base.bib'
+            if bib.exists():
+                return bib
+            if (current / 'CLAUDE.md').exists() or (current / '.git').exists():
+                break
+            current = current.parent
+        # Fallback: check same directory
+        fallback = self.filepath.parent / 'Bibliography_base.bib'
+        return fallback if fallback.exists() else Path('Bibliography/Bibliography_base.bib')
 
     def score_r_script(self) -> Dict:
         """Score R script quality."""
@@ -509,16 +543,13 @@ class QualityScorer:
             return self._generate_report()
 
         # Check for undefined/broken citations (\cite, \citep, \citet patterns)
-        bib_file = self.filepath.parent.parent / 'Bibliography_base.bib'
-        if not bib_file.exists():
-            # Also check same directory
-            bib_file = self.filepath.parent / 'Bibliography_base.bib'
+        bib_file = self._find_bib_file()
         broken_citations = IssueDetector.check_broken_citations(content, bib_file)
         for key in broken_citations:
             self.issues['critical'].append({
                 'type': 'undefined_citation',
                 'description': f'Citation key not in bibliography: {key}',
-                'details': 'Add to Bibliography_base.bib or fix key',
+                'details': 'Add to Bibliography/Bibliography_base.bib or fix key',
                 'points': 15
             })
             self.score -= 15
@@ -672,32 +703,34 @@ class QualityScorer:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Calculate quality scores for course materials',
+        description='Calculate quality scores for research project materials',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Score a single Quarto file
-  python scripts/quality_score.py Quarto/Lecture6_Topic.qmd
+  # Score an R empirical script
+  python3 scripts/quality_score.py Empirics/Code/analysis_main.R
 
-  # Score multiple files
-  python scripts/quality_score.py Quarto/*.qmd
+  # Score a Julia estimation script
+  python3 scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
 
-  # Score a Beamer/LaTeX file
-  python scripts/quality_score.py Slides/Lecture01_Topic.tex
+  # Score a LyX paper section
+  python3 scripts/quality_score.py Paper/Sections/Section_Theory_Model.lyx
 
-  # Score an R script
-  python scripts/quality_score.py scripts/R/Lecture06_simulations.R
+  # Score a Beamer/LaTeX slide file
+  python3 scripts/quality_score.py Slides/SlideDeck.tex
 
   # Summary only (no detailed issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --summary
+  python3 scripts/quality_score.py Empirics/Code/analysis_main.R --summary
 
   # Verbose output (include minor issues)
-  python scripts/quality_score.py Quarto/Lecture6.qmd --verbose
+  python3 scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl --verbose
+
+Supported file types: .R, .jl, .lyx, .tex
 
 Quality Thresholds:
   80/100 = Commit threshold (blocks if below)
-  90/100 = PR threshold (warning if below)
-  95/100 = Excellence (aspirational)
+  90/100 = Share threshold (warning if below)
+  95/100 = Excellence (submission-ready)
 
 Exit Codes:
   0 = Score >= 80 (commit allowed)
@@ -725,14 +758,17 @@ Exit Codes:
         try:
             scorer = QualityScorer(filepath, verbose=args.verbose)
 
-            if filepath.suffix == '.qmd':
-                report = scorer.score_quarto()
-            elif filepath.suffix == '.R':
+            if filepath.suffix == '.R':
                 report = scorer.score_r_script()
+            elif filepath.suffix == '.jl':
+                report = scorer.score_julia()
+            elif filepath.suffix == '.lyx':
+                report = scorer.score_lyx_paper()
             elif filepath.suffix == '.tex':
                 report = scorer.score_beamer()
             else:
                 print(f"Error: Unsupported file type: {filepath.suffix}")
+                print(f"Supported types: .R, .jl, .lyx, .tex")
                 continue
 
             results.append(report)

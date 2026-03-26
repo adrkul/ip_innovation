@@ -1,52 +1,64 @@
 ---
 paths:
+  - "Empirics/Code/**"
+  - "Simulation/Code/**"
   - "scripts/**/*.R"
-  - "Figures/**/*.R"
 ---
 
 # Replication-First Protocol
 
-**Core principle:** Replicate original results to the dot BEFORE extending.
+**Core principle:** Verify results match expected targets BEFORE extending or modifying.
+
+This applies to both (1) replicating existing external papers' results with our data and (2) verifying our own results are stable across code changes.
 
 ---
 
 ## Phase 1: Inventory & Baseline
 
-Before writing any R code:
+Before writing any code:
 
-- [ ] Read the paper's replication README
-- [ ] Inventory replication package: language, data files, scripts, outputs
-- [ ] Record gold standard numbers from the paper:
+- [ ] Read the relevant paper section or existing analysis
+- [ ] Inventory inputs: data files, scripts, estimated parameters, key outputs
+- [ ] Record gold standard numbers (from existing paper draft or previous run):
 
 ```markdown
-## Replication Targets: [Paper Author (Year)]
+## Replication Targets: [Analysis Name]
 
 | Target | Table/Figure | Value | SE/CI | Notes |
 |--------|-------------|-------|-------|-------|
-| Main ATT | Table 2, Col 3 | -1.632 | (0.584) | Primary specification |
+| Main coefficient | Table 2, Col 3 | -1.632 | (0.584) | Primary specification |
+| GMM parameter σ | Table 4 | 2.14 | (0.31) | Baseline estimation |
 ```
 
-- [ ] Store targets in `quality_reports/LectureNN_replication_targets.md` or as RDS
+- [ ] Store targets in `quality_reports/replication_targets/YYYY-MM-DD_analysis-name.md`
 
 ---
 
 ## Phase 2: Translate & Execute
 
-- [ ] Follow `r-code-conventions.md` for all R coding standards
-- [ ] Translate line-by-line initially -- don't "improve" during replication
+- [ ] Follow `r-code-conventions.md` or `julia-code-conventions.md` for all coding standards
 - [ ] Match original specification exactly (covariates, sample, clustering, SE computation)
-- [ ] Save all intermediate results as RDS
+- [ ] Save all intermediate results as RDS (R) or JLD2 (Julia)
+- [ ] Document data source and vintage used
 
-### Stata to R Translation Pitfalls
+### Common Pitfalls (Empirics)
 
-<!-- Customize: Add pitfalls specific to your field -->
+| Situation | Trap | Prevention |
+|-----------|------|------------|
+| IHS data encoding | Non-ASCII firm names cause join failures | Use `encoding = "UTF-8"` in `read_csv()` |
+| PATSTAT matching | Patent-firm concordance has many-to-many issues | Always verify match counts before aggregating |
+| HHI computation | Weighted vs. unweighted HHI gives different results | Document weighting scheme explicitly |
+| Clustering | SE computation differs by package/method | Pin package version; document SE method |
+| Japan IV | IHS Japan data has different coverage years | Check sample overlap explicitly |
 
-| Stata | R | Trap |
-|-------|---|------|
-| `reg y x, cluster(id)` | `feols(y ~ x, cluster = ~id)` | Stata clusters df-adjust differently from some R packages |
-| `areg y x, absorb(id)` | `feols(y ~ x \| id)` | Check demeaning method matches |
-| `probit` for PS | `glm(family=binomial(link="probit"))` | R default logit != Stata default in some commands |
-| `bootstrap, reps(999)` | Depends on method | Match seed, reps, and bootstrap type exactly |
+### Common Pitfalls (GMM Estimation)
+
+| Situation | Trap | Prevention |
+|-----------|------|------------|
+| Local optima | Multi-start finds different solutions | Always run multi-start; report best objective |
+| Inner loop divergence | Fixed point fails to converge | Check `inner_tol`, log iteration counts |
+| Weighting matrix | First-step vs. two-step weights differ | Document which step is being estimated |
+| Parallel seeds | Workers have different random states | Set per-worker seed explicitly |
 
 ---
 
@@ -56,25 +68,31 @@ Before writing any R code:
 
 | Type | Tolerance | Rationale |
 |------|-----------|-----------|
-| Integers (N, counts) | Exact match | No reason for any difference |
-| Point estimates | < 0.01 | Rounding in paper display |
-| Standard errors | < 0.05 | Bootstrap/clustering variation |
+| Observation counts (N) | Exact match | No reason for any difference |
+| Point estimates (empirics) | < 0.01 in absolute value | Rounding in paper display |
+| Standard errors | < 0.05 in absolute value | Bootstrap/clustering variation |
+| GMM parameter estimates | < 1e-4 | Numerical optimization tolerance |
 | P-values | Same significance level | Exact p may differ slightly |
-| Percentages | < 0.1pp | Display rounding |
+| Convergence | Must be `true` | Never report estimates from non-converged runs |
 
 ### If Mismatch
 
-**Do NOT proceed to extensions.** Isolate which step introduces the difference, check common causes (sample size, SE computation, default options, variable definitions), and document the investigation even if unresolved.
+**Do NOT proceed to extensions.** Isolate which step introduces the difference. Check:
+1. Sample selection (N mismatch)
+2. Variable construction (definition differences)
+3. SE computation method
+4. Numerical tolerance settings
+
+Document investigation even if unresolved.
 
 ### Replication Report
 
-Save to `quality_reports/LectureNN_replication_report.md`:
+Save to `quality_reports/replication_targets/YYYY-MM-DD_analysis-name_report.md`:
 
 ```markdown
-# Replication Report: [Paper Author (Year)]
+# Replication Report: [Analysis Name]
 **Date:** [YYYY-MM-DD]
-**Original language:** [Stata/R/etc.]
-**R translation:** [script path]
+**Script:** [path/to/script.R or .jl]
 
 ## Summary
 - **Targets checked / Passed / Failed:** N / M / K
@@ -82,22 +100,22 @@ Save to `quality_reports/LectureNN_replication_report.md`:
 
 ## Results Comparison
 
-| Target | Paper | Ours | Diff | Status |
-|--------|-------|------|------|--------|
+| Target | Expected | Ours | Diff | Status |
+|--------|----------|------|------|--------|
 
 ## Discrepancies (if any)
 - **Target:** X | **Investigation:** ... | **Resolution:** ...
 
 ## Environment
-- R version, key packages (with versions), data source
+- R version / Julia version, key packages with versions, data vintage
 ```
 
 ---
 
 ## Phase 4: Only Then Extend
 
-After replication is verified (all targets PASS):
+After replication is verified (all targets PASS or discrepancies documented):
 
-- [ ] Commit replication script: "Replicate [Paper] Table X -- all targets match"
-- [ ] Now extend with course-specific modifications (different estimators, new figures, etc.)
+- [ ] Commit baseline: "Verify [analysis] — all targets match"
+- [ ] Now extend with new specifications, robustness checks, or model variants
 - [ ] Each extension builds on the verified baseline

@@ -27,52 +27,67 @@ paths:
 
 ## 3. Domain Correctness
 
-<!-- Customize for your field's known pitfalls -->
-- Verify estimator implementations match slide formulas
+- Verify estimator formulas match paper specifications exactly
+- Check that HHI and market structure measures use the correct weighting scheme (document in comments)
+- Verify SE computation method (clustering level, package) matches what is reported in the paper
+- Check IHS/PATSTAT data joins for many-to-many issues (always verify N before and after merge)
 - Check known package bugs (document below in Common Pitfalls)
 
 ## 4. Visual Identity
 
 ```r
-# --- Your institutional palette ---
-primary_blue  <- "#012169"
-primary_gold  <- "#f2a900"
-accent_gray   <- "#525252"
+# --- Publication palette (neutral, journal-compatible) ---
+primary_blue   <- "#2c5f8a"
+accent_gray    <- "#525252"
 positive_green <- "#15803d"
-negative_red  <- "#b91c1c"
+negative_red   <- "#b91c1c"
+highlight_gold <- "#c9a84c"
 ```
 
 ### Custom Theme
 ```r
-theme_custom <- function(base_size = 14) {
+theme_paper <- function(base_size = 11) {
   theme_minimal(base_size = base_size) +
     theme(
-      plot.title = element_text(face = "bold", color = primary_blue),
-      legend.position = "bottom"
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold", size = base_size),
+      legend.position = "bottom",
+      strip.text = element_text(face = "bold")
     )
 }
 ```
 
-### Figure Dimensions for Beamer
+### Figure Dimensions for Paper
+
+Single-column figure (half-page width):
 ```r
-ggsave(filepath, width = 12, height = 5, bg = "transparent")
+ggsave(filepath, width = 3.5, height = 3.5, units = "in", device = cairo_pdf)
 ```
+
+Full-width figure:
+```r
+ggsave(filepath, width = 6.5, height = 4.0, units = "in", device = cairo_pdf)
+```
+
+Use `cairo_pdf` for proper Unicode and font embedding. No `bg = "transparent"` needed for paper figures.
 
 ## 5. RDS Data Pattern
 
-**Heavy computations saved as RDS; slide rendering loads pre-computed data.**
+**Heavy computations saved as RDS; downstream analysis scripts load pre-computed data.**
 
 ```r
-saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
+saveRDS(result, file.path(OUT_DIR, "descriptive_name.rds"))
 ```
 
 ## 6. Common Pitfalls
 
-<!-- Add your field-specific pitfalls here -->
 | Pitfall | Impact | Prevention |
 |---------|--------|------------|
-| Missing `bg = "transparent"` | White boxes on slides | Always include in ggsave() |
-| Hardcoded paths | Breaks on other machines | Use relative paths |
+| Hardcoded paths | Breaks on other machines | Use relative paths from project root |
+| IHS non-ASCII firm names | Join failures | `read_csv(..., locale = locale(encoding = "UTF-8"))` |
+| Many-to-many patent-firm joins | Inflated counts | Check `nrow()` before and after; use `left_join` with explicit key |
+| Unweighted vs. weighted HHI | Different results | Specify weighting scheme in comment; match paper definition |
+| `feols` vs `lm_robust` SE differences | Different SEs | Pin package version; document SE method used |
 
 ## 7. Line Length & Mathematical Exceptions
 
