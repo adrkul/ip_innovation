@@ -110,6 +110,11 @@ python3 workflow/scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
 | `/deep-audit` | Repository-wide consistency audit |
 | `/learn [skill-name]` | Extract discovery into persistent skill |
 | `/context-status` | Show session health and context usage |
+| `/clarify-writing <sec:label> [draft.tex]` | Critical reader feedback on argument and logic |
+| `/refactor-writing <sec:label> [draft.tex]` | Paragraph-level structure and flow review |
+| `/finalize-writing <sec:label> [draft.tex]` | Sentence-level copy-edit against writing style |
+| `/verify-section <sec:label> <code_path> [draft.tex]` | Cross-check draft claims against code |
+| `/review-theory <sec:label> [code_path] [draft.tex]` | Verify theory soundness and identify extensions |
 
 ---
 
