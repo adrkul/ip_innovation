@@ -127,5 +127,5 @@
       }
     ]
   },
-  "plansDirectory": "quality_reports/plans"
+  "plansDirectory": "workflow/quality_reports/plans"
 }

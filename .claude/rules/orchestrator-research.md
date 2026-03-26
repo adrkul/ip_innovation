@@ -1,7 +1,7 @@
 ---
 paths:
-  - "scripts/**/*.R"
-  - "explorations/**"
+  - "workflow/scripts/**/*.R"
+  - "workflow/explorations/**"
   - "Empirics/Code/**"
   - "Simulation/Code/**"
   - "Theory/Code/**"

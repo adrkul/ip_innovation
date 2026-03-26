@@ -2,7 +2,7 @@
 paths:
   - "**/*.R"
   - "Figures/**/*.R"
-  - "scripts/**/*.R"
+  - "workflow/scripts/**/*.R"
 ---
 
 # R Code Standards

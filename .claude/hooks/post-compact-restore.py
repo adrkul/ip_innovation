@@ -57,7 +57,7 @@ def read_pre_compact_state() -> dict | None:
 
 def find_active_plan(project_dir: str) -> dict | None:
     """Find the most recent plan file and extract its status."""
-    plans_dir = Path(project_dir) / "quality_reports" / "plans"
+    plans_dir = Path(project_dir) / "workflow" / "quality_reports" / "plans"
     if not plans_dir.exists():
         return None
 
@@ -95,7 +95,7 @@ def find_active_plan(project_dir: str) -> dict | None:
 
 def find_recent_session_log(project_dir: str) -> dict | None:
     """Find the most recent session log."""
-    logs_dir = Path(project_dir) / "quality_reports" / "session_logs"
+    logs_dir = Path(project_dir) / "workflow" / "quality_reports" / "session_logs"
     if not logs_dir.exists():
         return None
 

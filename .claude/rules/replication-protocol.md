@@ -2,7 +2,7 @@
 paths:
   - "Empirics/Code/**"
   - "Simulation/Code/**"
-  - "scripts/**/*.R"
+  - "workflow/scripts/**/*.R"
 ---
 
 # Replication-First Protocol
@@ -30,7 +30,7 @@ Before writing any code:
 | GMM parameter σ | Table 4 | 2.14 | (0.31) | Baseline estimation |
 ```
 
-- [ ] Store targets in `quality_reports/replication_targets/YYYY-MM-DD_analysis-name.md`
+- [ ] Store targets in `workflow/quality_reports/replication_targets/YYYY-MM-DD_analysis-name.md`
 
 ---
 
@@ -87,7 +87,7 @@ Document investigation even if unresolved.
 
 ### Replication Report
 
-Save to `quality_reports/replication_targets/YYYY-MM-DD_analysis-name_report.md`:
+Save to `workflow/quality_reports/replication_targets/YYYY-MM-DD_analysis-name_report.md`:
 
 ```markdown
 # Replication Report: [Analysis Name]

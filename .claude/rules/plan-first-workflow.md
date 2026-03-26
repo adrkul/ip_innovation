@@ -8,7 +8,7 @@
 2. **Check MEMORY.md** — read any `[LEARN]` entries relevant to this task
 3. **Requirements Specification (for complex/ambiguous tasks)** — see below
 4. **Draft the plan** — what changes, which files, in what order
-5. **Save to disk** — write to `quality_reports/plans/YYYY-MM-DD_short-description.md`
+5. **Save to disk** — write to `workflow/quality_reports/plans/YYYY-MM-DD_short-description.md`
 6. **Present to user** — wait for approval
 7. **Exit plan mode** — only after approval
 8. **Save initial session log** — capture goal and key context while fresh
@@ -28,7 +28,7 @@
 
 **Protocol:**
 1. Use AskUserQuestion to clarify ambiguities (max 3-5 questions)
-2. Create `quality_reports/specs/YYYY-MM-DD_description.md` using `templates/requirements-spec.md`
+2. Create `workflow/quality_reports/specs/YYYY-MM-DD_description.md` using `workflow/templates/requirements-spec.md`
 3. Mark each requirement:
    - **MUST** (non-negotiable)
    - **SHOULD** (preferred)
@@ -40,7 +40,7 @@
 5. Get user approval on spec
 6. THEN proceed to Step 4 (draft the plan) with spec as input
 
-**Template:** `templates/requirements-spec.md`
+**Template:** `workflow/templates/requirements-spec.md`
 
 **Why this helps:** Catches ambiguity BEFORE planning. Reduces mid-plan pivots by 30-50%.
 
@@ -49,7 +49,7 @@
 Plans survive context compression. Save every plan to:
 
 ```
-quality_reports/plans/YYYY-MM-DD_short-description.md
+workflow/quality_reports/plans/YYYY-MM-DD_short-description.md
 ```
 
 Format: Status (DRAFT/APPROVED/COMPLETED), approach, files to modify, verification steps.
@@ -78,6 +78,6 @@ First message should be: "Resuming after compression. Last task: [read most rece
 ## Session Recovery
 
 After compression or new session:
-1. Read `CLAUDE.md` + most recent plan in `quality_reports/plans/`
+1. Read `CLAUDE.md` + most recent plan in `workflow/quality_reports/plans/`
 2. Check `git log --oneline -10` and `git diff`
 3. State what you understand the current task to be

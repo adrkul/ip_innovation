@@ -42,11 +42,12 @@ ip_innovation/
 │   └── Output/                  # Model output (GITIGNORED)
 ├── Figures/                     # Shared paper figures
 ├── Preambles/                   # LaTeX header files
-├── explorations/                # Research sandbox (60/100 quality threshold)
-├── quality_reports/             # Plans, specs, logs, replication targets
-├── scripts/R/                   # Utility R scripts
-├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Reference papers
+└── workflow/                    # Claude workflow infrastructure
+    ├── explorations/            # Research sandbox (60/100 quality threshold)
+    ├── quality_reports/         # Plans, specs, logs, replication targets
+    ├── scripts/R/               # Utility R scripts
+    ├── templates/               # Session log, quality report templates
+    └── master_supporting_docs/  # Reference papers
 ```
 
 ---
@@ -76,8 +77,8 @@ Rscript Empirics/Code/analysis_main.R
 julia --project=Simulation/Code Simulation/Code/GMM_OEM_assembly.jl
 
 # Quality score
-python3 scripts/quality_score.py Empirics/Code/analysis_main.R
-python3 scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
+python3 workflow/scripts/quality_score.py Empirics/Code/analysis_main.R
+python3 workflow/scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
 ```
 
 ---

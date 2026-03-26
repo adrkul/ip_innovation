@@ -51,3 +51,23 @@ Adapt the forked `pedrohcgs/claude-code-my-workflow` repository (designed for le
 - Bibliography file needs to be created/copied from outsourcing_innovation to Bibliography/Bibliography_base.bib before running /validate-bib
 - Paper LyX files and R/Julia scripts need to be ported section-by-section as active work begins
 - Julia Project.toml files for Theory/Code/ and Simulation/Code/ need to be created when those are populated
+
+
+---
+**Context compaction (auto) at 15:44**
+Check git log and workflow/quality_reports/plans/ for current state.
+
+
+---
+**Context compaction (auto) at 15:45**
+Check git log and workflow/quality_reports/plans/ for current state.
+
+
+---
+**Context compaction (manual) at 15:47**
+Check git log and workflow/quality_reports/plans/ for current state.
+
+
+---
+**Context compaction (manual) at 15:48**
+Check git log and workflow/quality_reports/plans/ for current state.
