@@ -115,6 +115,7 @@ python3 workflow/scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
 | `/finalize-writing <sec:label> [draft.tex]` | Sentence-level copy-edit against writing style |
 | `/verify-section <sec:label> <code_path> [draft.tex]` | Cross-check draft claims against code |
 | `/review-theory <sec:label> [code_path] [draft.tex]` | Verify theory soundness and identify extensions |
+| `/visualize-theory <sec:label> [draft.tex]` | Identify graphical opportunities for theory results |
 
 ---
 
