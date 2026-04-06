@@ -116,6 +116,7 @@ python3 workflow/scripts/quality_score.py Simulation/Code/GMM_OEM_assembly.jl
 | `/verify-section <sec:label> <code_path> [draft.tex]` | Cross-check draft claims against code |
 | `/review-theory <sec:label> [code_path] [draft.tex]` | Verify theory soundness and identify extensions |
 | `/visualize-theory <sec:label> [draft.tex]` | Identify graphical opportunities for theory results |
+| `/slide-excellence [file.lyx]` | Multi-agent review (visual, pedagogy, proofreading, substance) before presenting |
 
 ---
 
