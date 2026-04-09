@@ -1,0 +1,784 @@
+%% LyX 2.3.6.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,english]{article}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=0.75in,bmargin=0.75in,lmargin=0.75in,rmargin=0.75in}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage[authoryear]{natbib}
+\onehalfspacing
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{prop}{\protect\propositionname}
+\theoremstyle{plain}
+\newtheorem{lem}{\protect\lemmaname}
+\theoremstyle{plain}
+\newtheorem*{cor*}{\protect\corollaryname}
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{lscape}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{bookmark}
+\usepackage{array}
+\usepackage{refstyle}
+\usepackage{float}
+\usepackage{dcolumn}
+\usepackage{capt-of}
+\usepackage{multirow}
+\usepackage{titling}
+\usepackage{pdfpages}
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
+
+\hypersetup{colorlinks=true,citecolor=black, linkcolor=darkred}
+\hypersetup{urlcolor=darkred}
+
+\newref{fig}{refcmd={\hyperref[#1]{Figure \ref{#1}}}}
+\newref{tab}{refcmd={\hyperref[#1]{Table \ref{#1}}}}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.10\textwidth}}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setlength{\droptitle}{-50pt}
+%%\setlength{\footskip}{20pt}
+
+\makeatother
+
+\providecommand{\corollaryname}{Corollary}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\propositionname}{Proposition}
+
+\begin{document}
+\pagebreak{}
+
+\subsection{Theoretical Model\label{subsec:Theoretic-Model}}
+
+Consider an environment with a two-tiered production network. Downstream
+firms, indexed by $j$, sell differentiated varieties to consumers.
+Upstream firms, indexed by $f$, sell inputs used in production by
+the downstream firms. Firms, both upstream and downstream, will be
+able to alter their productivity through their choice of R\&D, represented
+by $I$, or production structure, represented by $\omega$. Aggregate
+R\&D, $\boldsymbol{\mathcal{I}}$, and aggregate network structure,
+$\boldsymbol{\Omega}$, will depend on firm-level choices and additionally
+influence production technology. Factor prices are determined by a
+freely-traded outside good.\footnote{I interpret the model results as characterizing optimal policy for
+one sector, sufficiently small that outcome on this sector do not
+affect economy-wide aggregates like factor prices or preferences.} 
+
+\paragraph{Technology. }
+
+I specify technology in terms of a upstream and downstream firm's
+ cost of production:
+\[
+\begin{alignedat}{2}\text{\ensuremath{c_{f,j}\Bigl(\boldsymbol{I}_{f}},\ensuremath{\boldsymbol{\omega}_{f}},\ensuremath{\boldsymbol{\mathcal{I}}},\ensuremath{\boldsymbol{\Omega}\Bigr)}} & \text{ and } & c_{j}\Bigl(\{\bar{p}_{f,j}\}_{f},\boldsymbol{I}_{j},\boldsymbol{\omega}_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\Bigr)\end{alignedat}
+.
+\]
+Each firm can affect productivity through R\&D expenditures $\{\boldsymbol{I}_{j},\boldsymbol{I}_{f}\}$
+- potentially along a number of input-specific, buyer-specific, or
+country-specific dimensions. Each firm chooses a production structure
+that alters costs, $\{\boldsymbol{\omega}_{j},\boldsymbol{\omega}_{f}\}$.
+As an example, this may represent locations decisions - both the choice
+of where to produce and where to do R\&D - or firm-to-firm linkages
+made between suppliers and buyers. Downstream costs additionally depend
+on a vector of input prices, $\bar{p}_{f,j}$, provided by upstream
+firms.\footnote{The dependence of costs on factor prices is suppressed into the choice
+of production structure $\omega_{j},\omega_{f}$. For instance, $\omega$
+may denote the location of production. If locations vary only in the
+cost of labor, differences in cost under various values of $\omega$
+simply reflects difference in wages.} 
+
+The aggregates states include total R\&D expenditure, $\boldsymbol{\mathcal{I}}$,
+and industry structure, $\boldsymbol{\Omega}$, additionally affect
+costs. The state variable $\boldsymbol{\mathcal{I}}$ represents a
+standard form of Marshallian externalities from collective knowledge
+production, while aggregate industry structure capture other forms
+of spillovers like geographic agglomeration forces. These aggregates
+can be multi-dimensional and depend differently on the components
+of R\&D and production structure.\footnote{For example, there may be country-specific aggregate R\&D levels that
+depend only on R\&D spending done in those countries.}
+
+\paragraph{Policy. }
+
+A planner will have the opportunity to affect the prices and costs
+enter the firms' problems. In particular, I write final prices $\{\bar{p}_{j}\}$,
+input prices $\{\bar{p}_{f,j}\}$, and R\&D costs $\{\bar{r}_{j,k},\bar{r}_{f,l}\}$
+as a function of the underlying variables and policy wedges: 
+\[
+\begin{alignedat}{1}\bar{p}_{j}= & \left(1-t_{j}\right)p_{j},\\
+\bar{p}_{f,j}= & \left(1-t_{f}\right)\left(1-t_{f,j}\right)p_{f,j},\\
+\bar{r}_{j,k}= & \left(1-s_{j,k}\right)r,\\
+\bar{r}_{f,l}= & \left(1-s_{f,l}\right)r.
+\end{alignedat}
+\]
+The indices $k$ and $\ell$ are for each separate dimension of $\boldsymbol{I}_{j}$
+and $\boldsymbol{I}_{f}$.\footnote{For example, $\boldsymbol{I}_{j}$ and $\boldsymbol{I}_{f}$ may consist
+of location-specific R\&D components that differentially affect cost
+according to xxx.} In addition, I assume that the cost of a particular production structure
+takes the following form 
+\[
+\bar{f}\left(\omega_{f}\right)=f\left(\omega_{f}\right)+\phi\left(\omega_{f}\right)\text{ and }\bar{f}\left(\omega_{j}\right)=f\left(\omega_{j}\right)+\phi\left(\omega_{j}\right)
+\]
+where $\{\phi^{U}(\omega_{j}),\phi^{D}(\omega_{j})\}$is a tax/subsidy
+associated with production structure $\omega_{j}$. 
+
+\paragraph{Profit Maximization. }
+
+Downstream firms determine final prices, R\&D expenditures, and firm
+structure to maximize profits:
+\begin{equation}
+\pi_{j}=\max_{\bar{p}_{j},\boldsymbol{I}_{j},\omega_{j}}q_{j}\left(p_{j}\right)\left(\bar{p}_{j}-c_{j}\left(\left\{ p_{f,j}\right\} _{f},\boldsymbol{I_{j}},\omega_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\boldsymbol{\bar{r}}_{j}\boldsymbol{I}_{j}-\bar{f}\left(\omega_{j}\right).\label{eq: Downstream Profits}
+\end{equation}
+Downstream firms each face a residual demand curve and wield some
+monopoly power. I assume that R\&D resources are in perfectly elastic
+supply at a cost $\boldsymbol{\bar{r}}_{j}$ to the firm. Finally,
+each production structure is associated with fixed cost payment. 
+
+Likewise, upstream firms face a similar profit maximization problem:
+\begin{equation}
+\pi_{f}=\max_{\left\{ \bar{p}_{f,j}\right\} _{j},\boldsymbol{I}_{f},\omega_{f}}\sum_{j}q_{f,j}\left(p_{f,j}\right)\left[\bar{p}_{f,j}-c_{f,j}\Bigl(\boldsymbol{I}_{f},\omega_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\Bigr)\right]-\boldsymbol{\bar{r}}_{f}\boldsymbol{I}_{f}-\bar{f}\left(\omega_{f}\right)\label{eq: Upstream Profits}
+\end{equation}
+where the substantive difference of note is that profits come from
+the sum of sales across all buyers. 
+
+\paragraph{Aggregate State. }
+
+The firm-level choices of R\&D expenditure $\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\}$
+and structure $\{\omega_{f},\omega_{j}\}$ determine the aggregate
+R\&D levels and industry structure. And these aggregate can be multi-dimensional
+functions of the firms' choices:
+
+\begin{equation}
+\boldsymbol{\mathcal{I}}=\boldsymbol{\mathcal{I}}\left(\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\}\right)\text{ and }\boldsymbol{\Omega}=\boldsymbol{\Omega}\left(\{\omega_{f},\omega_{j}\}\right).\label{eq: Aggregation}
+\end{equation}
+
+
+\paragraph{Utility Maximization. }
+
+A representative agent chooses an optimal consumption profile over
+the varieties produces by downstream firms and an outside good $C$
+\begin{equation}
+U=\max_{C,\left\{ c_{j}\right\} _{j}}u\left(C,\left\{ c_{j}\right\} _{j}\right)\label{eq: Utility}
+\end{equation}
+subject to $C+\sum p_{j}c_{j}\leq\boldsymbol{w}\boldsymbol{L}^{\prime}+\sum_{f}\pi_{f}+\sum_{j}\pi_{j}+T.$
+I set as numeraire the price of the outside good $C$, use $\boldsymbol{w}\boldsymbol{L}^{\prime}$
+to denote the total payments received by factors (including payments
+for R\&D and entry), and $T$ to denote the net government revenue
+from taxes and subsidies. 
+
+\paragraph{Equilibrium.}
+
+An equilibrium is defined by a set of prices, R\&D investments, and
+production structures that solve \ref{eq: Downstream Profits}, \ref{eq: Upstream Profits},
+and \ref{eq: Utility} - subject to \ref{eq: Aggregation} as well
+as standard market clearing and budget constraints. Note, this model
+may admits the possibility of multiple equilibria depending on the
+extent of complementarities in R\&D and network spillovers. Policy
+has the opportunity to improve outcomes either by fixing allocations
+within a given equilibrium, or by directing firms towards selecting
+an equilibrium with higher aggregate welfare. 
+
+\subsubsection{Optimal Policy}
+
+A planner's objective is to choose a set of policy instruments, $\{t_{j},t_{f},t_{f,j},s_{j,k},s_{f,l},\phi(\omega_{f}),\phi(\omega_{j})\}$,
+that maximize welfare according to \ref{eq: Utility}. I characterize
+some features of the optimal industry policy
+\begin{prop}
+\label{prop:Optimal-Tax-1}Assume the choice of production structure
+is fixed. A planner chooses a standard set of taxes on final production
+and supplier production that corrects the monopoly distortion. They
+choose a set of taxes on the purchase of inputs that satisfies
+\[
+1-t_{f,j}=\frac{q_{j}}{q_{f,j}}\frac{\partial c_{j}}{\partial p_{f,j}}
+\]
+and they choose an R\&D subsidy that satisfies 
+\[
+s_{f}=\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{f,j}.
+\]
+\end{prop}
+The first tax corrects the extent to which upstream firms do not fully
+internalizes the benefits of price-reductions to downstream firms.
+If Shephard's lemma held for the cost function implied by \ref{eq: Downstream Profits},
+then the first tax would not be necessary.\footnote{Solving \ref{eq: Downstream Profits} for the optimal allocation of
+R\&D implies a cost-function that can be written as a function of
+factor prices and quantities. See Appendix Section x for an example.
+If Shephard's lemma held, then $q_{j}\frac{\partial c_{j}}{\partial p_{f,j}}=q_{f,j}$
+and the implied tax is $0$. } However, in the presence of an endogenous R\&D allocation and thus
+potential non-constant returns to scale, a reduction in the price
+of inputs can lead downstream firms to change their R\&D expenditure
+and affect their unit cost - an effect no internalized by suppliers.
+The second tax corrects for the extent to which all firms do not fully
+internalize how R\&D investment spills over into the aggregate R\&D
+state $\boldsymbol{\mathcal{I}}$. 
+
+The next set of policies regards correcting the choice of $\omega_{j}$.
+I can not characterize a fully generic policy here, so I specialize
+the model to a simplified case with only two types of upstream and
+downstream firms. As an intuitive example, one can think of these
+choices are representing the choice of suppliers or downstream firms
+to offshore production.
+
+To make sense of what policy may look like for production structures,
+consider the following case. There is a unit mass of homogenous upstream
+and downstream firms. Firms can choose one of two structures $\omega_{f}\in\left\{ 0,1\right\} $
+and $\omega_{j}\in\left\{ 0,1\right\} $ such that the mass of type
+1 upstream and downstream firms can be represented by $M$ and $N$.
+Suppose that the cost function is monotonic in all arguments. One
+can heuristically think about these as extensive margin choices to
+offshore production. 
+\begin{prop}
+\label{prop:Optimal-Tax-2}Consider the case described in the previous
+paragraph. Suppose an equilibrium allocation is interior, so that
+$M,N\in\left(0,1\right)$, and marginal changes in M and N are well
+defined. Then, the optimal tax on type $1$ firms is
+\[
+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\Omega}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\Omega}}q_{f,j}\right)\times\frac{d\Omega}{dM}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}q_{f,j}\right)\times\left(\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}\right)=\phi_{f}.
+\]
+ 
+\end{prop}
+A tax is required to correct two externalities through the aggregate
+states. First, firms do not internalize how their choice to offshore
+affects the aggregate industry structure which alters the unit cost
+of other firms. For instance, if there are geographic agglomeration
+affects from the proximity of manufacturing. Second, firms do no internalize
+that the different R\&D levels that come with offshoring will affect
+other firms through the Marshallian externalities. For example, if
+offshoring is a substitute for R\&D or causes firms to relocate R\&D
+abroad.\footnote{I model R\&D as a productivity-improving endeavor. As a result, the
+marginal returns to R\&D are high when costs are high. However, high
+costs also tend to lower quantities sold, and the marginal returns
+to R\&D rise with quantities. In order for offshoring to be a substitute
+for R\&D, the cost reduction has to offset the quantity gains. }
+
+{[}X{]} Second-Best Policy Instruments, {[}X{]} Clean Proofs, {[}X{]}
+Strategic Considerations: prop4\_offshoring\_pd.lyx
+
+\pagebreak{}
+
+\subsection{Parametric Model\label{subsec:Parametric-Model}}
+
+In order to take the model to the data, formalize additional theoretical
+results, and make precise quantitative statements, I need to parametrize
+the model. This involves taking stances on the functional forms for
+costs and preferences. This section implements a simplified model
+for applied work, but in the later sections I enrich the model further
+for an empirical implementation. 
+
+\paragraph{Technology. }
+
+I start by specifying the cost of production for downstream firms:
+
+\begin{equation}
+c_{j}=\frac{\bar{c}_{j,A}}{I_{j,A}^{\eta}}+\frac{p_{j,I}}{I_{j,I}^{\eta}}\label{eq:Downstream-Costs}
+\end{equation}
+where $\bar{c}_{j,A}$ is the cost of assembly, $p_{j,I}$ is the
+price of inputs, and $I_{j,A},I_{j,I}$ represent R\&D on the components
+of production.\footnote{An additive cost function implies that assembly and inputs are perfect
+complements in the downstream production function. In the empirical
+implementation I allow for imperfect substitution in the downstream
+production function, and estimation suggests inputs are complements.
+Derivations for a CES downstream production function between assembly
+and inputs are available in the Appendix.} Total R\&D is a aggregation of country-level R\&D expenditures, where
+countries differ in their R\&D productivity either due to the stock
+of local knowledge $\mathcal{I}_{c}$ or manufacturing proximity effects:
+\begin{equation}
+I_{j,A}=\left(\sum_{c\in C_{j}}\left[I_{j,A,c}\zeta_{f,A,c}\mathcal{I}_{c}^{\omega}d_{j,A,c}^{\tau_{j}}\right]^{\varsigma}\right)^{1/\varsigma}\text{ and }I_{j,I}=\ensuremath{\left(\sum_{c\in C_{j}}\left[I_{j,I,c}\zeta_{f,I,c}\mathcal{I}_{c}^{\omega}d_{j,I,c}^{\tau_{jf}}\right]^{\zeta}\right)^{1/\varsigma}}\label{eq:Downstream-R=000026D}
+\end{equation}
+where $d_{j,A,c}$ is the proximity of firm $j$ to its own assembly
+plants while $d_{j,I,c}$ is the proximity to its suppliers manufacturing
+plants. The summand is over the set of countries $C_{j}$ that firm
+$j$ operates R\&D facilities in. Finally, the price of inputs is
+given by 
+\[
+p_{j,I}^{1-\theta}=\sum_{f\in M_{j}}\left(p_{f,j}\right)^{1-\theta}
+\]
+where $M_{j}$ is the set of supplier faced by $j$.\footnote{There are several ways to micro-found input demand of this firm. One
+interpretation is OEMs have a CES aggregation of supplier-specific
+varieties. The demand system for inputs specified in \ref{eq:OEM-offer}
+follows from such a setup. } 
+
+Next, for upstream firms, the cost of production is given by
+\[
+c_{f,j}=\frac{\bar{c}_{f,j}}{I_{f}^{\rho}I_{f,j}^{\rho}}
+\]
+where $\bar{c}_{f,j}$ is the baseline cost of production by supplier
+$f$ for buyer $j$ and $I_{f},I_{f,j}$ represent a generic and buyer-specific
+(specialized) component of R\&D. As before, R\&D is a aggregation
+of country-level R\&D expenditures where countries differ in their
+R\&D productivity either due to the stock of local knowledge $\mathcal{I}_{c}$
+or manufacturing proximity effects :
+\begin{equation}
+I_{f}=\left(\sum_{c\in C_{f}}\left[I_{f,c}\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}\right]^{\varsigma}\right)^{1/\varsigma}\text{ and }I_{j,I}=\ensuremath{\left(\sum_{c\in C_{f}}\left[I_{f,j,c}\zeta_{f,j,c}\mathcal{I}_{c}^{\omega}d_{f,j,c}^{\tau_{fj}}\right]^{\zeta}\right)^{1/\varsigma}}\label{eq:Upstream-R=000026D}
+\end{equation}
+where $d_{f,c}$ is the proximity of firm $f$ to its own manufacturing
+plants while $d_{f,j,c}$ is the proximity to its buyers manufacturing
+plants. The summand is over the set of countries $C_{f}$ that firm
+$f$ operates R\&D facilities in.
+
+In the notation of the theoretical model, the firm's structure can
+be summarized by the tuple $\boldsymbol{\omega}_{j}\equiv\{\bar{c}_{j,A},\{d_{j,A,c}\}_{c},C_{j},M_{j}\}$
+and for suppliers $\boldsymbol{\omega}_{f}\equiv\{\bar{c}_{f,j},\{d_{j,f}\}_{c},C_{f}\}$.
+A firms production structure determines their baseline production
+costs, their proximity to their own plants, their set of R\&D facilities,
+and their set of suppliers. The R\&D vectors are summarized by $\boldsymbol{I}_{j}\equiv\{I_{j,A,c},I_{j,I,c}\}_{c}$
+and $\boldsymbol{I}_{f}\equiv\{I_{f,c},\{I_{f,j,c}\}_{f}\}_{c}$ -
+the country-level expenditures on assembly and input R\&D as well
+as generic and specialized R\&D. And finally, the aggregate states
+includes local R\&D expenditure $\boldsymbol{\mathcal{I}}\equiv\{\mathcal{I}_{c}^{\omega}\}_{c}$
+and the proximity to partner firms $\boldsymbol{\Omega}\equiv\left\{ d_{j,I,c},d_{f,j,c}\right\} .$
+XXX {[}partner plant locations determine part of $\bar{c}_{f,j}${]}
+
+\paragraph{Utility Maximization. }
+
+In the baseline model, I consider CES demand for the differentiated
+varieties produced by downstream firms, subject to a fixed budget
+constraint:
+
+\[
+\max_{x_{j}}\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}\text{ subject to }\sum_{j\in N}x_{j}p_{j}\leq\bar{D}.
+\]
+But in the Appendix Section X, I consider an extension to quasi-linear
+preferences where the aggregate industry price index determines the
+total level of demand. 
+
+\paragraph{Profit Maximization. }
+
+Firm optimization unfolds over two stages. First, firms determine
+their production structure $\omega_{j},\omega_{f}$. Second, R\&D
+is allocated, input and final prices are determined, and goods are
+produced and consumed. I start by characterizing the second stage.
+In particular, the downstream firms choose final prices and R\&D:
+\begin{equation}
+\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)=\max_{p_{j},\{I_{j,A,c},I_{j,I,c}\}_{c}}D\left(p_{j}\right)^{-\sigma}\left(p_{j}-c_{j}\left(\{p_{f,j}\}_{f},\{I_{j,A,c},I_{j,I,c}\},\boldsymbol{\omega}_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\sum_{c\in C_{j}}r_{c}\Bigl(I_{j,A,c}+I_{j,I,c}\Bigr)\label{eq:Upstream-Profits-Param}
+\end{equation}
+where $D=\bar{D}P^{\sigma-1}$ and $P^{1-\sigma}=\sum_{j}p_{j}^{1-\sigma}$.
+Then, upstream firms determine R\&D. 
+\begin{equation}
+\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)=\max_{\{I_{f,c},\{I_{f,j,c}\}_{f}\}_{c}}\sum_{j}q_{f,j}\left(p_{f,j}-c_{f,j}\left(\{I_{f,c},I_{f,j,c}\},\boldsymbol{\omega}_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\sum_{c\in C_{f}}r_{c}\Bigl(I_{f}+\sum_{j}I_{f,j}\Bigr)\label{eq:Downstream-Profits-Param}
+\end{equation}
+And finally, input prices are determined simultaneously by OEM's take
+it or leave it offer. OEM's, utilizing their larger market position,
+choose input prices that minimize their input expenditure subject
+to the participation of their supplier: 
+\begin{equation}
+p_{f,j}=\arg\min_{p_{f,j}}\underbrace{D\left(p_{j}\right)^{-\sigma}\frac{p_{j,I}}{I_{j,I}^{\alpha}}\frac{p_{f,j}^{-\theta}}{p_{j,I}^{1-\theta}}}_{\equiv q_{f,j}}p_{f,j}\text{ \text{subject to }}\tilde{\pi}_{f,j}>0.\label{eq:OEM-offer}
+\end{equation}
+The condition $\tilde{\pi}_{f,j}>0$ is a participation constraint
+that ensures that supplier $f$ makes positive profits from supplier
+$j$ accounting for $j's$ contribute to the R\&D expenses.\footnote{The explicit participation constrain is listed in Appendix Section
+X. It requires that OEMs compensate suppliers for the entire specialized
+R\&D expenses and their relative share of the generic R\&D expenditure.}
+
+The stage-1 problem is then to choose the production structure that
+maximizes the stage 2 profits: 
+\[
+\max_{\boldsymbol{\omega}_{j}}\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)-f\left(\boldsymbol{\omega}_{j}\right)\text{ and \ensuremath{\max_{\boldsymbol{\omega}_{f}}}\ensuremath{\pi_{f}\left(\boldsymbol{\omega}_{f},\boldsymbol{\Omega}\right)}}-f\left(\boldsymbol{\omega}_{j}\right).
+\]
+I do not characterize the optimal choices at this point. The estimation
+will condition on the observes production structure, and counterfactuals
+will consider exogenous changes in production structure.\footnote{In the future, I plan to solve this problem and compute counterfactuals.
+I additionally want to consider strategic behavior by firms at the
+point where production structure are determined. That is, compute
+firms' best-responses to their competitors strategies, anticipating
+the effect of all production structure on the aggregate state:
+
+\[
+\max_{\omega_{j}}\pi_{j}\left(\omega_{j},\boldsymbol{\Omega}\left(\left\{ \omega_{-j},\omega_{f}\right\} \right)\right)-f\left(\omega_{j}\right)\text{ and \ensuremath{\max_{\omega_{f}}}\ensuremath{\pi_{f}\left(\omega_{f},\boldsymbol{\Omega}\left(\left\{  \omega_{j},\omega_{-f}\right\}  \right) \right)}}-f\left(\omega_{j}\right).
+\]
+}
+
+\paragraph{Aggregate State. }
+
+The aggregator function $\boldsymbol{\Omega}$ determines manufacturing
+proximity from firms' production structures, $\boldsymbol{\Omega}:\left\{ \omega_{f},\omega_{j}\right\} \mapsto d_{j,I,c},d_{f,j,c}$.
+And, the aggregator $\boldsymbol{\mathcal{I}}$determines local R\&D
+stocks from firms' R\&D expenditures: 
+\[
+\mathcal{I}_{c}=\sum_{f}\left(I_{f,c}+\sum_{j}I_{f,j,c}\right)+\sum_{j}\left(I_{j,I,c}+I_{j,A,c}\right).
+\]
+
+\pagebreak{}
+
+\subsection{Equilibrium Allocations\label{subsec:Equilibrium-Allocations}}
+
+In this section I characterized the allocations implied by the solutions
+to \ref{eq:Upstream-Profits-Param}, \ref{eq:Downstream-Profits-Param},
+and \ref{eq:OEM-offer}, starting with the optimal input contract. 
+\begin{lem}
+\label{lem:Optimal-Contract}The optimal contract offered by a buyer
+agrees to purchase inputs at a fixed markup
+
+\[
+\mu_{f,j}=1+2\rho\alpha,
+\]
+or, in terms of the optimal price level, a cost-plus contract
+\[
+p_{f,j}=\text{Unit Cost}+\alpha\times\frac{\text{R\&D Costs}}{\text{Quantities}}.
+\]
+\end{lem}
+The optimal contract is a cost-plus contract that reimburses the suppliers
+for a multiple $\alpha$ of their R\&D investments.\footnote{I interpret $\alpha$ as reduced-form parameter that captures the
+bargaining power of suppliers. When $\alpha$ is higher, suppliers
+can demand greater returns to their R\&D investments. } The contracted markup is increasing in $\rho$. When the returns
+to R\&D are high, OEMs allow suppliers to receive greater profits
+and this incentivize innovation. Additionally, final prices $p_{j}$,
+will be a standard CES markup over marginal costs. 
+
+Next, to characterize the R\&D allocations, it will be useful to define
+R\&D productivity indices. These indices come from solving out the
+optimal R\&D allocation across countries, allowing us to compactly
+write other allocation results. For example, with supplier's generic
+R\&D, we use \ref{eq:Upstream-R=000026D} to write
+\begin{equation}
+\bar{\zeta}_{f}=\left(\sum_{c\in C_{f}}\left[\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}r_{c}^{-\zeta}\right]^{\frac{\varsigma}{1-\varsigma}}\right)^{\frac{1-\varsigma}{\varsigma}}.\label{eq:Productivity-Index}
+\end{equation}
+This index embeds the optimal allocation of R\&D across countries,
+and effectively summarizes the marginal cost of raising the level
+of $I_{f}$. Appendix Section X characterizes an equivalent index
+for specialized R\&D $\bar{\zeta}_{f,j}$ and OEM's R\&D $\bar{\zeta}_{j,I},\bar{\zeta}_{j,A}$
+using the expressions in \ref{eq:Downstream-R=000026D} and \ref{eq:Upstream-R=000026D}.
+With this notation defined, I present the following allocation results: 
+\begin{prop}
+\label{prop: Suppliers R=000026D Allocation-1}Upstream firms allocate
+their R\&D across generic and specialized R\&D, and within specialized
+R\&D, as follows: 
+
+\[
+\frac{I_{f}}{\bar{\zeta}_{f}}=\sum_{j}\frac{I_{f,j}}{\bar{\zeta}_{f,j}}\text{ and }\frac{I_{f,j}}{\sum I_{f,j}}=\frac{\left(\bar{\zeta}_{f,j}q_{f,j}\bar{c}_{f,j}\right)^{\frac{1}{1+\rho}}}{\sum_{j}\left(\bar{\zeta}_{f,j}q_{f,j}\bar{c}_{f,j}\right)^{\frac{1}{1+\rho}}}.
+\]
+Downstream firms allocate their R\&D across components of production
+according to 
+\[
+\frac{I_{j,I}}{I_{j,A}+I_{j,I}}=\frac{\left(\bar{\zeta}_{j,I}p_{j,I}\right)^{\frac{1}{1+\eta}}}{\left(\bar{\zeta}_{j,A}\bar{c}_{j,A}\right)^{\frac{1}{1+\eta}}+\left(\bar{\zeta}_{j,I}p_{j,I}\right)^{\frac{1}{1+\eta}}}
+\]
+An upstream firms allocates generic R\&D expenditures across countries
+according to 
+\[
+\frac{I_{f,c}}{\sum_{c'}I_{f,c'}}=\frac{\left(I_{f,c}\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}r_{c}^{-1}\right)^{\frac{\varsigma}{1-\varsigma}}}{\sum_{c'}\left(I_{f,c'}\zeta_{f,c'}\mathcal{I}_{c'}^{\omega}d_{f,c'}^{\tau_{f}}r_{c'}^{-1}\right)^{\frac{\varsigma}{1-\varsigma}}}
+\]
+with an equivalent expression for specialized R\&D $I_{f,j,c}$ and
+OEM's allocations $I_{j,I,c},I_{j,A,c}$. 
+\end{prop}
+This characterization highlights four economic forces. First, the
+division between generic and specialized R\&D reflects their relative
+productivity and returns. When generic R\&D is highly productive (high
+$\bar{\zeta}_{f}$), suppliers tilt investment towards cost reductions
+that benefits all buyers. When buyer-specific productivity is high,
+specialized R\&D becomes more attractive.
+
+Second, specialized R\&D is allocated towards buyers for which suppliers
+are productive $\bar{\zeta}_{f,j}$, have high quantity $q_{f,j}$,
+and have high cost $\bar{c}_{f,j}$. Higher quantities increase the
+scale over which cost-reducing innovations apply, and higher cost
+increase the marginal benefit of innovation.\footnote{In equilibrium, higher costs will also reduce the quantities that
+suppliers receive. Both through competition in input markets, and
+reduced input purchase from downstream firms. The equilibrium implications
+of cost shocks should therefore not be interpreted as shocks that
+necessarily increase innovation.} When the elasticity $\rho$ increases, the returns to R\&D become
+stronger ad more uniform across buyers.
+
+Third, OEMs allocate R\&D towards the components of production where
+productivity improvements have the highest return - either due to
+high R\&D productivity ($\bar{\zeta}_{j,I},\bar{\zeta}_{j,A}$) or
+high production costs ($p_{j,I},$$\bar{c}_{j,A}$).\footnote{This result hinges on the assumption that inputs are complements.
+If inputs were sufficiently substitutable, it would be the case that
+more R\&D would be allocated to the components of production that
+had the lowest cost. The data supports the fact that inputs are complements.}
+
+Fourth, the cross-country allocation of R\&D reflects a standard CES
+tradeoff between productivity and cost. R\&D flows to locations where
+productivity is high relative to costs. And as $\varsigma\rightarrow1$,
+expenditure concentrates in the single most productive location.\footnote{This theory suggests why directly interpreting reduced-form coefficients
+from innovation outcomes as causal coefficients, even when using instruments,
+is problematic. As R\&D will endogenously be allocated to the locations
+where it is most productive.} 
+
+\pagebreak{}
+
+\subsection{Equilibrium Comparative Statics - First Order\label{subsec:Comparative-Statics-First-Order}}
+
+To get a better sense of the model mechanism and the potential implications
+of policy, I characterize the response of industry outcomes GDP to
+price and R\&D efficiency shocks. But changes in prices and R\&D efficiency
+depend on more primitive parameters, and hence we provide some results
+to think about how prices respond to cost shocks (which affect productivity
+by raising unit costs) and R\&D productivity shocks (which affect
+the efficiency of R\&D investment). Throughout, these comparative
+statics allow R\&D allocations and prices to adjust, but treat $\omega_{f},\omega_{j}$
+as exogenous variables from Stage 1.
+
+\begin{table}
+\centering{}\caption{Variable Summary\label{tab:Lambda-Summary}}
+\def\arraystretch{1.4}%%
+\begin{tabular}{cll}
+\hline 
+\multicolumn{1}{c}{Variables} &  & \multicolumn{1}{c}{Description}\tabularnewline
+\hline 
+\hline 
+\multirow{1}{*}{$\Lambda_{j}$} & $:$ & Share of $j$ in Final Expenditure\tabularnewline
+$\lambda_{j,A},\lambda_{j,I}$ & $:$ & Share of Assembly/Inputs in $j$'s Cost \tabularnewline
+$\lambda_{f,j}$ & $:$ & Share of Buyer $j$ in Supplier $f$'s Sales\tabularnewline
+$\lambda_{j,f}$ & $:$ & Share of Supplier $f$ in Buyer $j$'s Cost\tabularnewline
+$\lambda_{f,c},\lambda_{j,c}$ & $:$ & Share of Country $c$ in Firm $f$'s/$j$'s R\&D\tabularnewline
+$\lambda_{c,f},\lambda_{c,j}$ & $:$ & Share of Firm $f$'s/$j$'s in Country $c$'s Total R\&D\tabularnewline
+\hline 
+\end{tabular}
+\end{table}
+
+I start by noting that changes in real output in this industry can
+be characterized by the following comparative static:
+\begin{prop}
+\label{prop: Network Response-1-1}The first-order change in real
+industry output is given by
+\[
+d\log\text{GDP}=-\sum_{j}\Lambda_{j}d\log p_{j}=-\sum_{j}\Lambda_{j}\left(\lambda_{j,A}\left(d\log\bar{c}_{j,A}-\eta\bar{\zeta}_{j,A}\right)-\lambda_{j,I}\left(d\log p_{j,I}-\eta\bar{\zeta}_{j,I}\right)\right),
+\]
+with $\Lambda_{j}$ measure the share of firm $j$ in final expenditure,
+and $\lambda_{j,A},\lambda_{j,I}$ measure the share of assembly and
+inputs in the cost of firm $j$. 
+\end{prop}
+Changes in real output arise from either changes in productivity,
+manifesting as changes in assembly costs $\bar{c}_{j,A}$ or input
+prices $p_{j,I}$, or changes in R\&D efficiency, represented by changes
+in the indices $\bar{\zeta}_{j,I}$ and $\bar{\zeta}_{j,A}$. While
+assembly costs are a technological parameter, inputs prices and productivity
+indices are endogenous through either individual R\&D choices or aggregate
+R\&D spillovers.\footnote{Assembly costs are a technological parameter as we have conditioned
+on the Stage 1 choices. In principle, these too are endogenous to
+the plant location and market entry choices of firms.} The following results characterize the response of each to primitive
+cost or R\&D productivity shocks. 
+\begin{prop}
+\label{prop: Network Response}The response of input prices to a set
+of buyer-supplier cost shocks $d\log\bar{c}_{f,j}$ is given by 
+\[
+d\log p_{f,j}=d\log\bar{c}_{f,j}-\sum_{k}\left(\delta_{2}\mathbb{1}_{j=k}+\delta_{3}\lambda_{f,k}\right)\left((1-\theta)d\log\bar{c}_{f,k}+\tilde{\lambda}_{j,I}d\log p_{k,I}\right)-\delta_{1}\sum_{k}\Lambda_{k}\lambda_{k,I}d\log p_{k,I}
+\]
+where $d\log p_{k,I}=\sum\lambda_{k,f}d\log p_{f,k}$. The variable
+$\lambda_{f,j}$ is the share of downstream firm j in upstream firm
+f's revenue, and $\lambda_{j,f}$ is the share of upstream firm $f$
+in the input price of downstream firm $j$. The variable $\mathbb{1}_{j=k}$
+is an indicator that takes a value of 1 when buyer $k$ in the summand
+equals buyer $j$. The parameters $\delta_{1}$, $\delta_{2}$, and
+$\delta_{3}$are defined below. 
+\end{prop}
+This comparative static reflects several forces. First, there is the
+direct effect of costs to prices, which ignoring any adjustments in
+quantity or R\&D, directly pass through due to the pricing implications
+of Lemma \ref{lem:Optimal-Contract}. 
+
+Second, for every buyer in a supplier's network, there is a potential
+supplier-specific cost shock $d\log\bar{c}_{f,k}$, which affects
+R\&D incentives as it increases costs and lowers demand (hence the
+$1-\theta$). And, each buyer is also experience a change in its total
+input costs $d\log p_{k,I}$, arising from changes in the prices offered
+by each supplier. Total input costs affect the R\&D incentives of
+suppliers through four separate mechanisms: 
+\[
+\tilde{\lambda}_{j,I}\equiv\underbrace{\theta-1\frac{}{\vphantom{\left(\right)}}}_{\text{Upstream Competition}}+\underbrace{1\vphantom{\frac{}{\vphantom{\left(\right)}}}}_{\text{Input Expenditure}}-\underbrace{\frac{\rho}{\rho+1\vphantom{\left(\right)}}}_{\text{Input R\&D}}-\underbrace{\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\lambda_{j,I}}_{\text{Downstream Demand}}.
+\]
+Higher input prices faced by buyer $j$, benefit each supplier as
+it perceives weaker perceive competition and higher input expenditure.
+However, higher input prices lead downstream firms to reallocate R\&D
+towards inputs and raise final prices, which both lower input demand.
+The resulting changes in R\&D affect costs through though the reallocation
+of specialized R\&D, which affects particular buyers, and expansion
+of generic R\&D spending as well as the overall R\&D budget, which
+benefits all buyers: 
+
+\[
+\delta_{2}\mathbb{1}_{j=k}+\delta_{3}\lambda_{f,k}=\underbrace{\frac{\rho}{1+\rho\left(1-\theta\right)}}_{\text{Reallocation of R\&D to \ensuremath{j}}}\times\mathbb{1}_{j=k}+\biggl(\underbrace{\frac{2\rho}{1-2\rho\left(\theta-1\right)}}_{\text{Generic R\&D and R\&D Budget}}-\underbrace{\frac{\rho}{1-\rho\left(\theta-1\right)}}_{\text{Reallocation of R\&D to \ensuremath{k}}}\biggr)\times\lambda_{f,k}.
+\]
+
+The final term normalizes changes in $d\log p_{k,I}$ to emphasize
+that relative prices changes are what determines reallocation in downstream
+demand: $\delta_{1}=\left(\delta_{2}+\delta_{3}\right)\left(\sigma-1\right)/1+\rho\left(1-\sigma\right)$.
+But notably, this last term will not cancel out the other $d\log p_{k,I}$
+terms since even if every firm experienced the same cost shock such
+that relative quantities did not change, the absolute level of demand
+would change which would affect the R\&D incentives of firms. 
+
+Specializing Proposition \ref{prop: Network Response} to a single
+buyer, removes terms associated with reallocation across buyers, and
+highlights the key sources of inefficiency in the model. 
+\begin{cor*}
+Consider the case with only one downstream buyer, the change in real
+GDP can be expressed as 
+
+\[
+d\log\text{GDP}=\frac{\lambda_{j,I}\sum_{f}d\log\bar{c}_{f,j}}{\left(1-\left(\frac{2\rho}{1+2\rho\left(1-\theta\right)}\right)\left(\frac{1}{1+\eta}\lambda_{j,I}+\frac{\eta}{1+\eta}\right)\right)}.
+\]
+\end{cor*}
+This result echo's Hulten's theorem, but has a non-unitary coefficient.
+This arises due to the presence of a baseline externality, alluded
+to in Proposition \ref{prop:Optimal-Tax-1} from the failure of Shephard's
+Lemma. Suppliers do not capture the full extent of their productivity
+improvement. In particular, they do not capture the fact that productivity
+improvements affect downstream quantities, $\frac{1}{1+\eta}\lambda_{j,I}$,
+and downstream R\&D allocation, $\frac{\eta}{1+\eta}$. Next, I discuss
+changes in R\&D efficiency: 
+\begin{prop}
+\label{prop: Network Response-1-2}Consider the response of the productivity
+index $\bar{\zeta}_{f}$ to a set of shocks $\left\{ \zeta_{f,c}\right\} \forall f,c$:
+\[
+\begin{alignedat}{1}d\log\bar{\zeta}_{f}= & \sum_{c\in C_{f}}\lambda_{f,c}\Biggl(\underbrace{d\log\zeta_{f,c}}_{\text{Direct Productivity Effect}}+\frac{\omega}{1-\zeta}\sum_{f'}\lambda_{c,f'}\biggl(\underbrace{d\log\zeta_{f',c}-\sum_{c'\in C_{f'}}\lambda_{f,c'}d\log\zeta_{f',c'}}_{\text{Spillovers from Across-Country R\&D Reallocation}}\biggr)\\
+ & \quad-\omega\biggl(\underbrace{\frac{1}{\rho}\sum_{f'}\lambda_{c,f'}\sum_{j}\lambda_{f',j}d\log p_{f',j}+\frac{1}{\eta}\sum_{j}\lambda_{c,j}d\log p_{j}}_{\text{Spillovers from R\&D Expansion}}\biggr)\Biggr)
+\end{alignedat}
+\]
+where $\lambda_{f,c}$ is the share of R\&D expenditure by firm $f$
+in country $c$, $\lambda_{c,f'}$ is the share of R\&D in country
+$c$ done by firm $f'$. 
+\end{prop}
+This comparative static reflects several forces. First, the R\&D efficiency
+index responds to R\&D productivity shocks in all countries, with
+shares depending on the extent of baseline R\&D expenditure done in
+each country. Second, R\&D efficiency responds to R\&D shocks at all
+firms and all countries, to the extent that the strength of R\&D spillovers
+measured by $\omega$ are higher. In particular, based on R\&D productivity
+shocks, firms relocate their R\&D expenditure across countries - where
+the higher substantially there is $\zeta$, the stronger these effects
+are. If other firms are relocating R\&D to the countries where firm
+$f$ does R\&D intensely, then this firm benefits. Finally, in general,
+R\&D productivity changes will induce more R\&D investment by suppliers
+and buyers. In the absence of cost-shocks, prices only adjust due
+to R\&D changes and hence scaling prices changes by the inverse of
+the returns to R\&D get the expansion in total R\&D. Obviously, prices
+are a potentially complicated endogenous object, so we characterize
+their response to R\&D shocks in Appendix Section X. 
+
+\subsection{Equilibrium Comparative Statics - Second-Order}
+
+The final result we provide in this section is a characterization
+of the second-order effect of cost shocks. To parse these results,
+I first introduce some notation. First, we use Proposition \ref{prop: Network Response}
+to characterize the first-order price response to cost changes, which
+we compactly represent as
+\[
+\psi_{f,k}^{j}=d\log P_{j}/d\log c_{f,k}.
+\]
+Second, we introduce two notions of covariance in the first-order
+price response. The first of these,
+\[
+Cov_{\Lambda}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)=\sum_{j}\Lambda_{j}\lambda_{j,I}\psi_{f,k}^{j}\lambda_{j,I}\psi_{f,j}^{j}-\sum_{j}\Lambda_{j}\lambda_{j,I}\psi_{f,j}^{j}\sum_{k}\lambda_{k,I}\Lambda_{k}\psi_{f,k}^{j},
+\]
+measures the covariance in prices changes experienced by downstream
+buyers, where we use the distribution of buyers in the downstream
+price index $\Lambda_{j}$. The second of these,
+\[
+Cov_{\lambda_{f}}\left(\tilde{\lambda}_{j,I}\psi_{f,j}^{j},\tilde{\lambda}_{j,I}\psi_{f,k}^{j}\right)=\sum_{j}\lambda_{f,j}\tilde{\lambda}_{j,I}\psi_{f,j}^{j}\tilde{\lambda}_{j,I}\psi_{f,k}^{j}-\sum_{j}\lambda_{f,j}\tilde{\lambda}_{j,I}\psi_{f,j}^{j}\sum_{k}\lambda_{f,k}\tilde{\lambda}_{k,I}\psi_{f,k}^{l}.
+\]
+again measures the covariance in prices changes experienced by downstream
+buyers, but instead uses the distribution of buyers in the profits
+of supplier $f$. Using these definitions. We can now characterize
+the response of second-order effect of cost shocks on input prices. 
+\begin{prop}
+\label{prop: Network Response - Second Order-1}The second-order response
+of input prices to a set of buyer-supplier cost shocks \{$d\log\bar{c}_{f,j}$,$d\log\bar{c}_{f,k}$\}
+where $j\neq k$ is given by 
+\[
+\begin{alignedat}{1} & \frac{d^{2}\log p_{f,j}}{d\log\bar{c}_{f,j}d\log\bar{c}_{f,k}}=\delta_{1}\delta_{6}Cov_{\Lambda}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)+\delta_{1}\delta_{7}\sum_{j}\left(\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\right)\lambda_{j,I}\Lambda_{j}\psi_{f,j}^{j}\\
+ & \quad+\delta_{2}\delta_{8}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}+\delta_{3}\delta_{8}\sum_{j}\lambda_{f,j}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}-\delta_{3}\delta_{5}Cov_{\lambda_{f}}\left(\tilde{\lambda}_{j,I}\psi_{f,j}^{j},\tilde{\lambda}_{j,I}\psi_{f,k}^{j}\right)
+\end{alignedat}
+.
+\]
+\end{prop}
+Now to unpack this expression, we define each new parameter in turn.
+First, recall from above that $\delta_{1}$ determines how changes
+in the aggregate downstream price index affect the profit incentive
+for innovating for each buyer. With that in mind, note that 
+\[
+\delta_{6}=\frac{\sigma-1}{1+\rho\left(1-\sigma\right)},
+\]
+which is the elasticity of downstream demand shares with respect to
+cost changes. What this term captures is how the first-order changes
+in the final prices of downstream firms relocate quantity across buyers.
+These quantities in turn affect the demand faced by various suppliers
+and thus their incentive to do R\&D. The covariance appears as a measure
+of the extent to which buyers which are experiencing large first-order
+price effects are in the second-order also experiencing reallocations
+of demand shares towards them. Relatedly, we have $\delta_{7}=1/\left(1+\rho\right),$
+which captures how for each downstream firm in the final price index,
+the cost share of inputs is changing - and hence the ability of upstream
+R\&D to influence downstream prices. 
+
+Next, recall that $\delta_{2}$ and $\delta_{3}$ determine how changes
+in the input prices of various buyers affects the R\&D incentives
+of suppliers either through a competition effect or a reallocation/expansion
+of input demand. Now note,
+\[
+\delta_{4,j}=\frac{1}{\rho+1},
+\]
+which similar to $\delta_{7}$, captures how within each buyer $j$
+the share of costs that is determined by upstream R\&D choice is changing,
+and this amplifies any first-order feedback effect between upstream
+R\&D and demand for inputs. The first component of $\delta_{4,j}$
+captures how this second-order effect does not alter the competition
+effect from the change in input prices which is governed by $-\theta$;
+it only influences the input demand expansion channel $\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\lambda_{j,I}$. 
+
+Finally, we have another change stemming from the common component
+of upstream R\&D, where we have 
+\[
+\delta_{5}=\frac{1}{1-\rho\left(\theta-1\right)},
+\]
+which is the elasticity of profit shares $\lambda_{f,j}$ with respect
+to profit shifters $y_{j}.$ And why this appears with a covariance
+term is to measure the extent to which buyers which are experiencing
+large first-order price effects are in the second-order also experiencing
+reallocations of profits shares in supplier $f$ toward them.
+
+XXX Note how this $\bar{c}_{f,j}$ can also be a wedge. Policy instrument
+- effect on outcomes. 
+\[
+\delta_{8}=\frac{-\sigma}{1+\eta\left(1-\sigma\right)}\frac{1}{\left(1+\eta\right)^{2}}
+\]
+
+\pagebreak{}
+
+\subsection{Specialized Equilibrium Characterization}
+
+{[}X{]} Comparativ Static - Second Order Productivity Change
+
+{[}X{]} Comparative Statics - Can go here next if prev is finished. 
+
+{[}X{]} GDP Corollary
+\end{document}

@@ -1,0 +1,5993 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{lscape}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{bookmark}
+\usepackage{array}
+\usepackage{refstyle}
+\usepackage{float}
+\usepackage{dcolumn}
+\usepackage{capt-of}
+\usepackage{multirow}
+\usepackage{titling}
+\usepackage{pdfpages}
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
+
+\hypersetup{colorlinks=true,citecolor=black, linkcolor=darkred}
+\hypersetup{urlcolor=darkred}
+
+\newref{fig}{refcmd={\hyperref[#1]{Figure \ref{#1}}}}
+\newref{tab}{refcmd={\hyperref[#1]{Table \ref{#1}}}}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.10\textwidth}}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setlength{\droptitle}{-50pt}
+%%\setlength{\footskip}{20pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.75in
+\topmargin 0.75in
+\rightmargin 0.75in
+\bottommargin 0.75in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Theoretical Model
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Theoretic-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider an environment with a two-tiered production network.
+ Downstream firms, indexed by 
+\begin_inset Formula $j$
+\end_inset
+
+, sell differentiated varieties to consumers.
+ Upstream firms, indexed by 
+\begin_inset Formula $f$
+\end_inset
+
+, sell inputs used in production by the downstream firms.
+ Firms, both upstream and downstream, will be able to alter their productivity
+ through their choice of R&D, represented by 
+\begin_inset Formula $\boldsymbol{I}$
+\end_inset
+
+, or production structure, represented by 
+\begin_inset Formula $\boldsymbol{\omega}$
+\end_inset
+
+.
+ Aggregate R&D, 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+, and aggregate network structure, 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+, will depend on firm-level choices and additionally influence production
+ technology.
+ Factor prices are determined by a freely-traded outside good.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I interpret the model results as characterizing optimal policy for one sector,
+ sufficiently small that outcome on this sector do not affect economy-wide
+ aggregates like factor prices or preferences.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Technology.
+ 
+\end_layout
+
+\begin_layout Standard
+I specify technology in terms of a upstream and downstream firm's  cost
+ of production:
+\begin_inset Formula 
+\[
+\begin{alignedat}{2}\text{c_{f,j}\Bigl(\boldsymbol{I}_{f},\boldsymbol{\omega}_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\Bigr)} & \text{ and } & c_{j}\Bigl(\boldsymbol{\bar{p}}_{j,I},\boldsymbol{I}_{j},\boldsymbol{\omega}_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\Bigr)\end{alignedat}
+.
+\]
+
+\end_inset
+
+Each firm can affect productivity through R&D expenditures 
+\begin_inset Formula $\{\boldsymbol{I}_{j},\boldsymbol{I}_{f}\}$
+\end_inset
+
+ - potentially along a number of input-specific, buyer-specific, or country-spec
+ific dimensions.
+ Each firm chooses a production structure that alters costs, 
+\begin_inset Formula $\{\boldsymbol{\omega}_{j},\boldsymbol{\omega}_{f}\}$
+\end_inset
+
+.
+ As an example, this may represent locations decisions - both the choice
+ of where to produce and where to do R&D - or firm-to-firm linkages made
+ between suppliers and buyers.
+ Downstream costs additionally depend on a vector of input prices, 
+\begin_inset Formula $\boldsymbol{\bar{p}}_{j,I}=\{\bar{p}_{f,j}\}_{f}$
+\end_inset
+
+, provided by upstream firms.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The dependence of costs on factor prices is suppressed into the choice of
+ production structure 
+\begin_inset Formula $\omega_{j},\omega_{f}$
+\end_inset
+
+.
+ For instance, 
+\begin_inset Formula $\omega$
+\end_inset
+
+ may denote the location of production.
+ If locations vary only in the cost of labor, differences in cost under
+ various values of 
+\begin_inset Formula $\omega$
+\end_inset
+
+ simply reflects difference in wages.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The aggregates state - which includes moments of R&D expenditure, 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+, and industry structure, 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ - additionally affect costs.
+ The state variable 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+ represents a standard form of Marshallian externalities from collective
+ knowledge production, while aggregate industry 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ structure capture other forms of spillovers like geographic agglomeration
+ forces.
+ These aggregates can be multi-dimensional and depend differently on the
+ components of R&D and production structure.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For example, there may be country-specific aggregate R&D levels that depend
+ only on R&D spending done in those countries.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Policy.
+ 
+\end_layout
+
+\begin_layout Standard
+A planner will have the opportunity to affect the prices and costs enter
+ the firms' problems.
+ In particular, I write final prices 
+\begin_inset Formula $\{\bar{p}_{j}\}$
+\end_inset
+
+, input prices 
+\begin_inset Formula $\{\bar{p}_{f,j}\}$
+\end_inset
+
+, and R&D costs 
+\begin_inset Formula $\{\bar{r}_{j,k},\bar{r}_{f,l}\}$
+\end_inset
+
+ as a function of the underlying variables and policy wedges: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{alignedat}{2}\text{Final Price:} & \quad & \bar{p}_{j}= & \left(1-t_{j}\right)p_{j},\\
+\text{Input Prices:} & \quad & \bar{p}_{f,j}= & \left(1-t_{f}\right)\left(1-t_{f,j}\right)p_{f,j},\\
+\text{Downstream R\&D Cost:} & \quad & \bar{r}_{j,k}= & \left(1-s_{j,k}\right)r,\\
+\text{Upstream R\&D Cost:} & \quad & \bar{r}_{f,k}= & \left(1-s_{f,k}\right)r.
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}\bar{p}_{j}= & \left(1-t_{j}\right)p_{j},\\
+\bar{p}_{f,j}= & \left(1-t_{f}\right)\left(1-t_{f,j}\right)p_{f,j},\\
+\bar{r}_{j,k}= & \left(1-s_{j,k}\right)r,\\
+\bar{r}_{f,l}= & \left(1-s_{f,l}\right)r.
+\end{alignedat}
+\]
+
+\end_inset
+
+The indices 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell$
+\end_inset
+
+ are for each separate dimension of 
+\begin_inset Formula $\boldsymbol{I}_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{I}_{f}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For example, 
+\begin_inset Formula $\boldsymbol{I}_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{I}_{f}$
+\end_inset
+
+ may consist of location-specific R&D components that differentially affect
+ cost according to xxx.
+\end_layout
+
+\end_inset
+
+ In addition, I assume that the cost of a particular production structure
+ takes the following form 
+\begin_inset Formula 
+\[
+\bar{f}\left(\omega_{f}\right)=f\left(\omega_{f}\right)+\phi\left(\omega_{f}\right)\text{ and }\bar{f}\left(\omega_{j}\right)=f\left(\omega_{j}\right)+\phi\left(\omega_{j}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\{\phi^{U}(\omega_{j}),\phi^{D}(\omega_{j})\}$
+\end_inset
+
+is a tax/subsidy associated with production structure 
+\begin_inset Formula $\omega_{j}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Profit Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+Downstream firms determine final prices, R&D expenditures, and firm structure
+ to maximize profits:
+\begin_inset Formula 
+\begin{equation}
+\pi_{j}=\max_{\bar{p}_{j},\boldsymbol{I}_{j},\omega_{j}}q_{j}\left(p_{j}\right)\left(\bar{p}_{j}-c_{j}\left(\boldsymbol{\bar{p}}_{j,I},\boldsymbol{I_{j}},\omega_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\boldsymbol{\bar{r}}_{j}\boldsymbol{I}_{j}-\bar{f}\left(\omega_{j}\right).\label{eq: Downstream Profits}
+\end{equation}
+
+\end_inset
+
+Downstream firms each face a residual demand curve and wield some monopoly
+ power.
+ I assume that R&D resources are in perfectly elastic supply at a cost 
+\begin_inset Formula $\boldsymbol{\bar{r}}_{j}$
+\end_inset
+
+ to the firm.
+ Finally, each production structure is associated with fixed cost payment.
+ 
+\end_layout
+
+\begin_layout Standard
+Likewise, upstream firms face a similar profit maximization problem:
+\begin_inset Formula 
+\begin{equation}
+\pi_{f}=\max_{\left\{ \bar{p}_{f,j}\right\} _{j},\boldsymbol{I}_{f},\omega_{f}}\sum_{j}q_{f,j}\left(p_{f,j}\right)\left[\bar{p}_{f,j}-c_{f,j}\Bigl(\boldsymbol{I}_{f},\omega_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\Bigr)\right]-\boldsymbol{\bar{r}}_{f}\boldsymbol{I}_{f}-\bar{f}\left(\omega_{f}\right)\label{eq: Upstream Profits}
+\end{equation}
+
+\end_inset
+
+where the substantive difference of note is that profits come from the sum
+ of sales across all buyers.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Aggregate State.
+ 
+\end_layout
+
+\begin_layout Standard
+The firm-level choices of R&D expenditure 
+\begin_inset Formula $\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\}$
+\end_inset
+
+ and structure 
+\begin_inset Formula $\{\omega_{f},\omega_{j}\}$
+\end_inset
+
+ determine the aggregate R&D levels and industry structure.
+ And these aggregate can be multi-dimensional functions of the firms' choices:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\mathcal{I}}=\boldsymbol{\mathcal{I}}\left(\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\}\right)\text{ and }\boldsymbol{\Omega}=\boldsymbol{\Omega}\left(\{\omega_{f},\omega_{j}\}\right).\label{eq: Aggregation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[X] What if 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}=\boldsymbol{\mathcal{I}}\left(\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\},\left\{ \omega_{f},\omega_{j}\right\} \right)$
+\end_inset
+
+? So the local R&D spillovers are directly effects by production structure?
+ 
+\end_layout
+
+\begin_layout Paragraph
+Utility Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+I assume that the industry modeled here is small relative to the rest of
+ the economy such that utility can be represented by a quasi-linear utility
+ function.
+ XXX Drop In particular, a representative agent solves
+\end_layout
+
+\end_inset
+
+A representative agent chooses an optimal consumption profile over the varieties
+ produces by downstream firms and an outside good 
+\begin_inset Formula $C$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+U=\max_{C,\left\{ c_{j}\right\} _{j}}u\left(C,\left\{ c_{j}\right\} _{j}\right)\label{eq: Utility}
+\end{equation}
+
+\end_inset
+
+subject to 
+\begin_inset Formula $C+\sum p_{j}c_{j}\leq\boldsymbol{w}\boldsymbol{L}^{\prime}+\sum_{f}\pi_{f}+\sum_{j}\pi_{j}+T.$
+\end_inset
+
+ I set as numeraire the price of the outside good 
+\begin_inset Formula $C$
+\end_inset
+
+, use 
+\begin_inset Formula $\boldsymbol{w}\boldsymbol{L}^{\prime}$
+\end_inset
+
+ to denote the total payments received by factors (including payments for
+ R&D and entry), and 
+\begin_inset Formula $T$
+\end_inset
+
+ to denote the net government revenue from taxes and subsidies.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Equilibrium.
+\end_layout
+
+\begin_layout Standard
+An equilibrium is defined by a set of prices, R&D investments, and production
+ structures that solve 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Upstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Utility"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ - subject to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Aggregation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as well as standard market clearing and budget constraints.
+ Note, this model may admits the possibility of multiple equilibria depending
+ on the extent of complementarities in R&D and network spillovers.
+ Policy has the opportunity to improve outcomes either by fixing allocations
+ within a given equilibrium, or by directing firms towards selecting an
+ equilibrium with higher aggregate welfare.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Optimal Policy
+\end_layout
+
+\begin_layout Standard
+A planner's objective is to choose a set of policy instruments, 
+\begin_inset Formula $\{t_{j},t_{f},t_{f,j},s_{j,k},s_{f,l},\phi(\omega_{f}),\phi(\omega_{j})\}$
+\end_inset
+
+, that maximize welfare according to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Utility"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ I characterize some features of the optimal industry policy
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Optimal-Tax-1"
+
+\end_inset
+
+Assume the choice of production structure is fixed.
+ A planner chooses a standard set of taxes on final production and supplier
+ production that corrects the monopoly distortion.
+ They choose a set of taxes on the purchase of inputs that satisfies
+\begin_inset Formula 
+\[
+1-t_{f,j}=\frac{q_{j}}{q_{f,j}}\frac{\partial c_{j}}{\partial p_{f,j}}
+\]
+
+\end_inset
+
+and they choose an R&D subsidy that satisfies 
+\begin_inset Formula 
+\[
+s_{f}=\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{f,j}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first tax corrects the extent to which upstream firms do not fully internali
+zes the benefits of price-reductions to downstream firms.
+ If Shephard's lemma held for the cost function implied by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, then the first tax would not be necessary.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Solving 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the optimal allocation of R&D implies a cost-function that can be written
+ as a function of factor prices and quantities.
+ See Appendix Section x for an example.
+ If Shephard's lemma held, then 
+\begin_inset Formula $q_{j}\frac{\partial c_{j}}{\partial p_{f,j}}=q_{f,j}$
+\end_inset
+
+ and the implied tax is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ However, in the presence of an endogenous R&D allocation and thus potential
+ non-constant returns to scale, a reduction in the price of inputs can lead
+ downstream firms to change their R&D expenditure and affect their unit
+ cost - an effect no internalized by suppliers.
+ The second tax corrects for the extent to which all firms do not fully
+ internalize how R&D investment spills over into the aggregate R&D state
+ 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+.[Lemma 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+.From which we get 
+\begin_inset Formula 
+\[
+I_{j,A}=\left(\underbrace{D\left(p_{j}\right)^{-\sigma}}_{q_{j}}c_{A}\frac{\rho}{r}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{j,A}=\left(\underbrace{D\left(p_{j}\right)^{-\sigma}}_{q_{j}}c_{A}\frac{\rho}{r}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{I_{j,A}}{I_{j,I}}=\left(\frac{c_{A}}{c_{I}}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}\left(\frac{c_{A}}{I_{j,A}^{\rho}}+\frac{c_{I}}{I_{j,I}^{\rho}}\right)
+\]
+
+\end_inset
+
+So we get 
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}\left(c_{A}\left(\frac{\rho}{r}q_{j}c_{A}\right)^{\frac{-\rho}{\rho+1}}+c_{I}\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{\rho+1}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)
+\]
+
+\end_inset
+
+So unit costs are 
+\begin_inset Formula 
+\[
+c_{j}=q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)
+\]
+
+\end_inset
+
+Now we have 
+\begin_inset Formula 
+\[
+\frac{dc_{j}}{dc_{i}}=\frac{1}{\rho+1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+Now note that input demand is
+\begin_inset Formula 
+\[
+\left\{ I_{j,I}\right\} :\rho q_{j}c_{I}I_{j,I}^{-\rho-1}=r\implies\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{1}{1+\rho}}=I_{j.I}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{I}=q_{j}\times\frac{1}{I_{j,I}^{\rho}}=q_{j}\times\frac{1}{I_{j,I}^{\rho}}=q_{j}\times\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{1+\rho}}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\frac{q_{j}}{q_{f,j}}\frac{\partial c_{j}}{\partial p_{f,j}}=\frac{q_{j}}{q_{j}\times\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{1+\rho}}}\frac{1}{\rho+1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{1}{\rho+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.InCES model we have 
+\begin_inset Formula 
+\[
+\left(p_{j}-c_{j}\right)dq_{j}=-t_{j}q_{j}dp_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{p}_{j}=\frac{\sigma}{\sigma-1}c\implies p_{j}=\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}
+\]
+
+\end_inset
+
+so we have 
+\begin_inset Formula 
+\[
+\tau=-\frac{\left(p_{j}-c_{j}\right)}{p_{j}}\frac{dq_{j}/q_{j}}{dp_{j}/p_{j}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\frac{\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}c-c}{\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}c}\times\sigma
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)\left(1-\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)+\left(\sigma-1\right)\left(\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)+\sigma\tau-\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=1+\sigma\tau-\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\frac{1}{2-\sigma}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\tau=\frac{\left(\sigma-1\right)}{\sigma}\left(1-\tau\right)\left(-\sigma\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\left(\sigma-1\right)\left(1-\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau-1=\left(\sigma-1\right)
+\]
+
+\end_inset
+
+XXX Should it be 
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\sum_{j}q_{j}\times dp_{j}\\
++ & \left(\bar{p}_{j}-c_{j}\right)dq_{j}+q_{j}d\bar{p}_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+\sum_{j}t_{j}q_{j}dp_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{p}_{j}=\left(1-t_{j}\right)p_{j}$
+\end_inset
+
+ hence 
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\sum_{j}q_{j}\times dp_{j}\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}+q_{j}dp_{j}\left(1-t_{j}\right)\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+\sum_{j}t_{j}q_{j}dp_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\left(p_{j}-c_{j}\right)dq_{j}=0
+\]
+
+\end_inset
+
+Now we write for supplers
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & q_{j}\left(p_{j}\right)\frac{\partial c_{j}\left(\left\{ p_{f,j}\right\} _{f},I_{j},K\right)}{\partial p_{f,j}}dp_{f,j}\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The next set of policies regards correcting the choice of 
+\begin_inset Formula $\omega_{j}$
+\end_inset
+
+.
+ I can not characterize a fully generic policy here, so I specialize the
+ model to a simplified case with only two types of upstream and downstream
+ firms.
+ As an intuitive example, one can think of these choices are representing
+ the choice of suppliers or downstream firms to offshore production.
+\end_layout
+
+\begin_layout Standard
+To make sense of what policy may look like for production structures, consider
+ the following case.
+ There is a unit mass of homogenous upstream and downstream firms.
+ Firms can choose one of two structures 
+\begin_inset Formula $\omega_{f}\in\left\{ 0,1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{j}\in\left\{ 0,1\right\} $
+\end_inset
+
+ such that the mass of type 1 upstream and downstream firms can be represented
+ by 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Suppose that the cost function is monotonic in all arguments.
+ One can heuristically think about these as extensive margin choices to
+ offshore production.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Optimal-Tax-2"
+
+\end_inset
+
+Consider the case described in the previous paragraph.
+ Suppose an equilibrium allocation is interior, so that 
+\begin_inset Formula $M,N\in\left(0,1\right)$
+\end_inset
+
+, and marginal changes in M and N are well defined.
+ Then, the optimal tax on type 
+\begin_inset Formula $1$
+\end_inset
+
+ firms is
+\begin_inset Formula 
+\[
+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\Omega}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\Omega}}q_{f,j}\right)\times\frac{d\Omega}{dM}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}q_{f,j}\right)\times\left(\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}\right)=\phi_{f}.
+\]
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In that case, the planner compares welfare across the feasible corner allocation
+s and sets taxes/subsidies on production structure so as to implement the
+ preferred allocation as an equilibrium.
+ The sign of the marginal externality continues to determine the direction
+ of the optimal intervention, but the level of the tax/subsidy is pinned
+ down by the requirement that firms’ private incentives satisfy the relevant
+ inequality at the corner.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A tax is required to correct two externalities through the aggregate states.
+ First, firms do not internalize how their choice to offshore affects the
+ aggregate industry structure which alters the unit cost of other firms.
+ For instance, if there are geographic agglomeration affects from the proximity
+ of manufacturing.
+ Second, firms do no internalize that the different R&D levels that come
+ with offshoring will affect other firms through the Marshallian externalities.
+ For example, if offshoring is a substitute for R&D or causes firms to relocate
+ R&D abroad.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I model R&D as a productivity-improving endeavor.
+ As a result, the marginal returns to R&D are high when costs are high.
+ However, high costs also tend to lower quantities sold, and the marginal
+ returns to R&D rise with quantities.
+ In order for offshoring to be a substitute for R&D, the cost reduction
+ has to offset the quantity gains.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[X] Second-Best Policy Instruments, [X] Clean Proofs, [X] Strategic Consideratio
+ns: prop4_offshoring_pd.lyx 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+From Claude 
+\begin_inset Quotes eld
+\end_inset
+
+The model already acknowledges multiple equilibria (p.
+ 4 of the draft).
+ This is the most underexploited feature.
+ When R&D is complementary across firms — because spillovers mean one firm's
+ investment raises the return to another's — there can be a low-R&D trap
+ where no individual firm has an incentive to deviate, even though all firms
+ investing simultaneously would constitute a Pareto-superior equilibrium.
+\end_layout
+
+\begin_layout Plain Layout
+The classic Murphy-Shleifer-Vishny (1989) big-push model shows that coordinated
+ subsidies can achieve an equilibrium switch that firm-by-firm Pigouvian
+ corrections cannot.
+ Your model is richer: the network structure means the multiplier on coordinated
+ investment depends on which links are central, not just how many firms
+ are subsidized.
+ A proposition here would characterize the minimum coalition of firms whose
+ simultaneous subsidization triggers a switch to the high-R&D equilibrium
+ — essentially, the "tipping network." This would be the first such result
+ in a supply chain context with endogenous R&D and would directly motivate
+ the paper's policy results: standard Pigouvian corrections are within-equilibri
+um; the paper's industrial policy framework is needed precisely when you
+ want to select across equilibria.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ [X] Strategic Policy Considerations 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+From Claude 
+\begin_inset Quotes eld
+\end_inset
+
+The current comparative statics treat the small open economy as a price-taker.
+ But the most policy-relevant applications — the CHIPS Act, IRA, EU Green
+ Deal — are explicitly strategic: the US and EU are subsidizing domestic
+ R&D knowing that the other bloc is doing the same.
+ In a two-country extension, each government's R&D subsidy reduces domestic
+ costs, which through the supply chain affects input prices and innovation
+ incentives in the other country.
+ Whether subsidies are strategic complements or substitutes depends on the
+ sign of $
+\backslash
+tilde{
+\backslash
+lambda}_{j,I}$ — which your model already characterizes.
+\end_layout
+
+\begin_layout Plain Layout
+This connects to Brander-Spencer (1985) but with a supply chain mechanism
+ rather than Cournot competition: the channel is not output competition
+ but R&D spillovers mediated through bilateral prices.
+ The natural result is a proposition characterizing when beggar-thy-neighbor
+ subsidies emerge (strong cross-country spillovers, so foreign subsidies
+ reduce domestic R&D incentives) versus when free-riding dominates (weak
+ spillovers, so each country prefers the other to subsidize).
+ With the network structure, the answer will depend on the topology of which
+ supplier-buyer links cross borders, connecting directly to your IHS data.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Parametric Model
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Parametric-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to take the model to the data, formalize additional theoretical
+ results, and make precise quantitative statements, I need to parametrize
+ the model.
+ This involves taking stances on the functional forms for costs and preferences.
+ This section implements a simplified model for applied work, but in the
+ later sections I enrich the model further for an empirical implementation.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Technology.
+ 
+\end_layout
+
+\begin_layout Standard
+I start by specifying the cost of production for downstream firms:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+c_{j}=\frac{\bar{c}_{j,A}}{I_{j,A}^{\eta}}+\frac{p_{j,I}}{I_{j,I}^{\eta}}\label{eq:Downstream-Costs}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{c}_{j,A}$
+\end_inset
+
+ is the cost of assembly, 
+\begin_inset Formula $p_{j,I}$
+\end_inset
+
+ is the price of inputs, and 
+\begin_inset Formula $I_{j,A},I_{j,I}$
+\end_inset
+
+ represent R&D on the components of production.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+An additive cost function implies that assembly and inputs are perfect complemen
+ts in the downstream production function.
+ In the empirical implementation I allow for imperfect substitution in the
+ downstream production function, and estimation suggests inputs are complements.
+ Derivations for a CES downstream production function between assembly and
+ inputs are available in the Appendix.
+\end_layout
+
+\end_inset
+
+ Total R&D is a aggregation of country-level R&D expenditures, where countries
+ differ in their R&D productivity either due to the stock of local knowledge
+ 
+\begin_inset Formula $\mathcal{I}_{c}$
+\end_inset
+
+ or manufacturing proximity effects:
+\begin_inset Formula 
+\begin{equation}
+I_{j,A}=\left(\sum_{c\in C_{j}}\left[I_{j,A,c}\zeta_{f,A,c}\mathcal{I}_{c}^{\omega}d_{j,A,c}^{\tau_{j}}\right]^{\varsigma}\right)^{1/\varsigma}\text{ and }I_{j,I}=\ensuremath{\left(\sum_{c\in C_{j}}\left[I_{j,I,c}\zeta_{f,I,c}\mathcal{I}_{c}^{\omega}d_{j,I,c}^{\tau_{jf}}\right]^{\zeta}\right)^{1/\varsigma}}\label{eq:Downstream-R&D}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $d_{j,A,c}$
+\end_inset
+
+ is the proximity of firm 
+\begin_inset Formula $j$
+\end_inset
+
+ to its own assembly plants while 
+\begin_inset Formula $d_{j,I,c}$
+\end_inset
+
+ is the proximity to its suppliers manufacturing plants.
+ The summand is over the set of countries 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ that firm 
+\begin_inset Formula $j$
+\end_inset
+
+ operates R&D facilities in.
+ Finally, the price of inputs is given by 
+\begin_inset Formula 
+\[
+p_{j,I}^{1-\theta}=\sum_{f\in M_{j}}\left(p_{f,j}\right)^{1-\theta}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+ is the set of supplier faced by 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+There are several ways to micro-found input demand of this firm.
+ One interpretation is OEMs have a CES aggregation of supplier-specific
+ varieties.
+ The demand system for inputs specified in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:OEM-offer"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ follows from such a setup.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Next, for upstream firms, the cost of production is given by
+\begin_inset Formula 
+\[
+c_{f,j}=\frac{\bar{c}_{f,j}}{I_{f}^{\rho}I_{f,j}^{\rho}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{c}_{f,j}$
+\end_inset
+
+ is the baseline cost of production by supplier 
+\begin_inset Formula $f$
+\end_inset
+
+ for buyer 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{f},I_{f,j}$
+\end_inset
+
+ represent a generic and buyer-specific (specialized) component of R&D.
+ As before, R&D is a aggregation of country-level R&D expenditures where
+ countries differ in their R&D productivity either due to the stock of local
+ knowledge 
+\begin_inset Formula $\mathcal{I}_{c}$
+\end_inset
+
+ or manufacturing proximity effects :
+\begin_inset Formula 
+\begin{equation}
+I_{f}=\left(\sum_{c\in C_{f}}\left[I_{f,c}\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}\right]^{\varsigma}\right)^{1/\varsigma}\text{ and }I_{j,I}=\ensuremath{\left(\sum_{c\in C_{f}}\left[I_{f,j,c}\zeta_{f,j,c}\mathcal{I}_{c}^{\omega}d_{f,j,c}^{\tau_{fj}}\right]^{\zeta}\right)^{1/\varsigma}}\label{eq:Upstream-R&D}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $d_{f,c}$
+\end_inset
+
+ is the proximity of firm 
+\begin_inset Formula $f$
+\end_inset
+
+ to its own manufacturing plants while 
+\begin_inset Formula $d_{f,j,c}$
+\end_inset
+
+ is the proximity to its buyers manufacturing plants.
+ The summand is over the set of countries 
+\begin_inset Formula $C_{f}$
+\end_inset
+
+ that firm 
+\begin_inset Formula $f$
+\end_inset
+
+ operates R&D facilities in.
+\end_layout
+
+\begin_layout Standard
+In the notation of the theoretical model, the firm's structure can be summarized
+ by the tuple 
+\begin_inset Formula $\boldsymbol{\omega}_{j}\equiv\{\bar{c}_{j,A},\{d_{j,A,c}\}_{c},C_{j},M_{j}\}$
+\end_inset
+
+ and for suppliers 
+\begin_inset Formula $\boldsymbol{\omega}_{f}\equiv\{\bar{c}_{f,j},\{d_{j,f}\}_{c},C_{f}\}$
+\end_inset
+
+.
+ A firms production structure determines their baseline production costs,
+ their proximity to their own plants, their set of R&D facilities, and their
+ set of suppliers.
+ The R&D vectors are summarized by 
+\begin_inset Formula $\boldsymbol{I}_{j}\equiv\{I_{j,A,c},I_{j,I,c}\}_{c}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{I}_{f}\equiv\{I_{f,c},\{I_{f,j,c}\}_{f}\}_{c}$
+\end_inset
+
+ - the country-level expenditures on assembly and input R&D as well as generic
+ and specialized R&D.
+ And finally, the aggregate states includes local R&D expenditure 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}\equiv\{\mathcal{I}_{c}^{\omega}\}_{c}$
+\end_inset
+
+ and the proximity to partner firms 
+\begin_inset Formula $\boldsymbol{\Omega}\equiv\left\{ d_{j,I,c},d_{f,j,c}\right\} .$
+\end_inset
+
+ XXX [partner plant locations determine part of 
+\begin_inset Formula $\bar{c}_{f,j}$
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Paragraph
+Utility Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+In the baseline model, I consider CES demand for the differentiated varieties
+ produced by downstream firms, subject to a fixed budget constraint:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\max_{x_{j}}\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}\text{ subject to }\sum_{j\in N}x_{j}p_{j}\leq\bar{D}.
+\]
+
+\end_inset
+
+But in the Appendix Section X, I consider an extension to quasi-linear preferenc
+es where the aggregate industry price index determines the total level of
+ demand.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We also consider an extension where 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.
+\begin_inset Formula 
+\[
+\kappa\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{\sigma-1}{\sigma}-1}-\lambda p_{j}
+\]
+
+\end_inset
+
+From which we get 
+\begin_inset Formula 
+\[
+x_{j}^{\frac{-1}{\sigma}}/x_{k}^{\frac{-1}{\sigma}}=p_{j}/p_{k}
+\]
+
+\end_inset
+
+So we can write 
+\begin_inset Formula 
+\[
+\kappa\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{-1}{\sigma}}=p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(x_{j}^{\frac{\sigma-1}{\sigma}}\sum_{k\in N}\frac{x_{k}^{\frac{\sigma-1}{\sigma}}}{x_{j}^{\frac{\sigma-1}{\sigma}}}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{-1}{\sigma}}=p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(x_{j}^{\frac{\sigma-1}{\sigma}}\sum_{k\in N}\left(p_{k}/p_{j}\right)^{1-\sigma}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{-1}{\sigma}}=p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(x_{j}^{\frac{\sigma-1}{\sigma}}p_{j}^{\sigma-1}\sum_{k\in N}\left(p_{k}\right)^{1-\sigma}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{-1}{\sigma}}=p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(\sum_{k\in N}\left(p_{k}\right)^{1-\sigma}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}x_{j}^{\frac{\sigma-1}{\sigma}\left(\gamma\frac{\sigma}{\sigma-1}-1\right)}p_{k}^{\left(\sigma-1\right)\left(\gamma\frac{\sigma}{\sigma-1}-1\right)}x_{j}^{\frac{-1}{\sigma}}=p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(\sum_{k\in N}\left(p_{k}\right)^{1-\sigma}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}p_{k}^{\sigma\left(\gamma-1\right)}=x_{j}^{1-\gamma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(P^{1-\sigma}\right)^{\gamma\frac{\sigma}{\sigma-1}-1}p_{k}^{\sigma\left(\gamma-1\right)}=x_{j}^{1-\gamma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(P\right)^{-\gamma\sigma-1+\sigma}p_{k}^{\sigma\left(\gamma-1\right)}=x_{j}^{1-\gamma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\left(P\right)^{\sigma\left(1-\gamma\right)}P^{-1}p_{k}^{\sigma\left(\gamma-1\right)}=x_{j}^{1-\gamma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{\kappa}{P}\right)^{\frac{1}{1-\gamma}}\left(P\right)^{\sigma}p_{k}^{-\sigma}=x_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{\kappa}{P}\right)^{\frac{1}{1-\gamma}}\frac{p_{k}^{-\sigma}}{P^{-\sigma}}=x_{j}
+\]
+
+\end_inset
+
+Otherwise, we have 
+\begin_inset Formula 
+\[
+x_{j}^{\frac{-1}{\sigma}}/x_{k}^{\frac{-1}{\sigma}}=p_{j}/p_{k}
+\]
+
+\end_inset
+
+Then we have 
+\begin_inset Formula 
+\[
+\sum_{j\in N}x_{j}p_{j}\leq D
+\]
+
+\end_inset
+
+So we can write 
+\begin_inset Formula 
+\[
+x_{j}^{\frac{-1}{\sigma}}/x_{k}^{\frac{-1}{\sigma}}=p_{j}/p_{k}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{j}^{\frac{-1}{\sigma}}p_{k}=x_{k}^{\frac{-1}{\sigma}}p_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{j}p_{k}^{-\sigma}=x_{k}p_{j}^{-\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{j}p_{k}^{1-\sigma}=p_{k}x_{k}p_{j}^{-\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{j}\sum_{k}p_{k}^{1-\sigma}=\sum_{k}p_{k}x_{k}p_{j}^{-\sigma}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{j}=D\frac{p_{j}^{-\sigma}}{\sum_{k}p_{k}^{1-\sigma}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ there is a market expansion effect...
+\begin_inset Formula 
+\[
+\max_{x_{j}}X+\frac{\kappa}{\gamma}\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\gamma\frac{\sigma}{\sigma-1}}\text{ subject to }X+\sum_{j\in N}x_{j}p_{j}\leq\bar{D}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Profit Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+Firm optimization unfolds over two stages.
+ First, firms determine their production structure 
+\begin_inset Formula $\omega_{j},\omega_{f}$
+\end_inset
+
+.
+ Second, R&D is allocated, input and final prices are determined, and goods
+ are produced and consumed.
+ I start by characterizing the second stage.
+ In particular, the downstream firms choose final prices and R&D:
+\begin_inset Formula 
+\begin{equation}
+\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)=\max_{p_{j},\{I_{j,A,c},I_{j,I,c}\}_{c}}D\left(p_{j}\right)^{-\sigma}\left(p_{j}-c_{j}\left(\{p_{f,j}\}_{f},\{I_{j,A,c},I_{j,I,c}\},\boldsymbol{\omega}_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\sum_{c\in C_{j}}r_{c}\Bigl(I_{j,A,c}+I_{j,I,c}\Bigr)\label{eq:Upstream-Profits-Param}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $D=\bar{D}P^{\sigma-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $P^{1-\sigma}=\sum_{j}p_{j}^{1-\sigma}$
+\end_inset
+
+.
+ Then, upstream firms determine R&D.
+ 
+\begin_inset Formula 
+\begin{equation}
+\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)=\max_{\{I_{f,c},\{I_{f,j,c}\}_{f}\}_{c}}\sum_{j}q_{f,j}\left(p_{f,j}-c_{f,j}\left(\{I_{f,c},I_{f,j,c}\},\boldsymbol{\omega}_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\right)-\sum_{c\in C_{f}}r_{c}\Bigl(I_{f}+\sum_{j}I_{f,j}\Bigr)\label{eq:Downstream-Profits-Param}
+\end{equation}
+
+\end_inset
+
+And finally, input prices are determined simultaneously by OEM's take it
+ or leave it offer.
+ OEM's, utilizing their larger market position, choose input prices that
+ minimize their input expenditure subject to the participation of their
+ supplier: 
+\begin_inset Formula 
+\begin{equation}
+p_{f,j}=\arg\min_{p_{f,j}}\underbrace{D\left(p_{j}\right)^{-\sigma}\frac{p_{j,I}}{I_{j,I}^{\alpha}}\frac{p_{f,j}^{-\theta}}{p_{j,I}^{1-\theta}}}_{\equiv q_{f,j}}p_{f,j}\text{ \text{subject to }}\tilde{\pi}_{f,j}>0.\label{eq:OEM-offer}
+\end{equation}
+
+\end_inset
+
+The condition 
+\begin_inset Formula $\tilde{\pi}_{f,j}>0$
+\end_inset
+
+ is a participation constraint that ensures that supplier 
+\begin_inset Formula $f$
+\end_inset
+
+ makes positive profits from supplier 
+\begin_inset Formula $j$
+\end_inset
+
+ accounting for 
+\begin_inset Formula $j's$
+\end_inset
+
+ contribute to the R&D expenses.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The explicit participation constrain is listed in Appendix Section X.
+ It requires that OEMs compensate suppliers for the entire specialized R&D
+ expenses and their relative share of the generic R&D expenditure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The stage-1 problem is then to choose the production structure that maximizes
+ the stage 2 profits: 
+\begin_inset Formula 
+\[
+\max_{\boldsymbol{\omega}_{j}}\pi_{j}\left(\boldsymbol{\omega}_{j},\boldsymbol{\Omega}\right)-f\left(\boldsymbol{\omega}_{j}\right)\text{ and \ensuremath{\max_{\boldsymbol{\omega}_{f}}}\pi_{f}\left(\boldsymbol{\omega}_{f},\boldsymbol{\Omega}\right)}-f\left(\boldsymbol{\omega}_{j}\right).
+\]
+
+\end_inset
+
+I do not characterize the optimal choices at this point.
+ The estimation will condition on the observes production structure, and
+ counterfactuals will consider exogenous changes in production structure.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In the future, I plan to solve this problem and compute counterfactuals.
+ I additionally want to consider strategic behavior by firms at the point
+ where production structure are determined.
+ That is, compute firms' best-responses to their competitors strategies,
+ anticipating the effect of all production structure on the aggregate state:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\max_{\omega_{j}}\pi_{j}\left(\omega_{j},\boldsymbol{\Omega}\left(\left\{ \omega_{-j},\omega_{f}\right\} \right)\right)-f\left(\omega_{j}\right)\text{ and \ensuremath{\max_{\omega_{f}}}\pi_{f}\left(\omega_{f},\boldsymbol{\Omega}\left(\left\{  \omega_{j},\omega_{-f}\right\}  \right) \right)}-f\left(\omega_{j}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Aggregate State.
+ 
+\end_layout
+
+\begin_layout Standard
+The aggregator function 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ determines manufacturing proximity from firms' production structures, 
+\begin_inset Formula $\boldsymbol{\Omega}:\left\{ \omega_{f},\omega_{j}\right\} \mapsto d_{j,I,c},d_{f,j,c}$
+\end_inset
+
+.
+ And, the aggregator 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+determines local R&D stocks from firms' R&D expenditures: 
+\begin_inset Formula 
+\[
+\mathcal{I}_{c}=\sum_{f}\left(I_{f,c}+\sum_{j}I_{f,j,c}\right)+\sum_{j}\left(I_{j,I,c}+I_{j,A,c}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equilibrium Allocations
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Equilibrium-Allocations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section I characterized the allocations implied by the solutions
+ to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Upstream-Profits-Param"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Downstream-Profits-Param"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:OEM-offer"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, starting with the optimal input contract.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Optimal-Contract"
+
+\end_inset
+
+The optimal contract offered by a buyer agrees to purchase inputs at a fixed
+ markup
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula 
+\[
+\mu_{f,j}=1+2\rho\alpha,
+\]
+
+\end_inset
+
+or, in terms of the optimal price level, a cost-plus contract
+\begin_inset Formula 
+\[
+p_{f,j}=\text{Unit Cost}+\alpha\times\frac{\text{R\&D Costs}}{\text{Quantities}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The optimal contract is a cost-plus contract that reimburses the suppliers
+ for a multiple 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ of their R&D investments.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I interpret 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ as reduced-form parameter that captures the bargaining power of suppliers.
+ When 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is higher, suppliers can demand greater returns to their R&D investments.
+ 
+\end_layout
+
+\end_inset
+
+ The contracted markup is increasing in 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ When the returns to R&D are high, OEMs allow suppliers to receive greater
+ profits and this incentivize innovation.
+ Additionally, final prices 
+\begin_inset Formula $p_{j}$
+\end_inset
+
+, will be a standard CES markup over marginal costs.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, to characterize the R&D allocations, it will be useful to define R&D
+ productivity indices.
+ These indices come from solving out the optimal R&D allocation across countries
+, allowing us to compactly write other allocation results.
+ For example, with supplier's generic R&D, we use 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Upstream-R&D"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to write
+\begin_inset Formula 
+\begin{equation}
+\bar{\zeta}_{f}=\left(\sum_{c\in C_{f}}\left[\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}r_{c}^{-\zeta}\right]^{\frac{\varsigma}{1-\varsigma}}\right)^{\frac{1-\varsigma}{\varsigma}}.\label{eq:Productivity-Index}
+\end{equation}
+
+\end_inset
+
+This index embeds the optimal allocation of R&D across countries, and effectivel
+y summarizes the marginal cost of raising the level of 
+\begin_inset Formula $I_{f}$
+\end_inset
+
+.
+ Appendix Section X characterizes an equivalent index for specialized R&D
+ 
+\begin_inset Formula $\bar{\zeta}_{f,j}$
+\end_inset
+
+ and OEM's R&D 
+\begin_inset Formula $\bar{\zeta}_{j,I},\bar{\zeta}_{j,A}$
+\end_inset
+
+ using the expressions in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Downstream-R&D"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Upstream-R&D"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ With this notation defined, I present the following allocation results:
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Suppliers R&D Allocation-1"
+
+\end_inset
+
+Upstream firms allocate their R&D across generic and specialized R&D, and
+ within specialized R&D, as follows: 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\frac{I_{f}}{\bar{\zeta}_{f}}=\sum_{j}\frac{I_{f,j}}{\bar{\zeta}_{f,j}}\text{ and }\frac{I_{f,j}}{\sum I_{f,j}}=\frac{\left(\bar{\zeta}_{f,j}q_{f,j}\bar{c}_{f,j}\right)^{\frac{1}{1+\rho}}}{\sum_{j}\left(\bar{\zeta}_{f,j}q_{f,j}\bar{c}_{f,j}\right)^{\frac{1}{1+\rho}}}.
+\]
+
+\end_inset
+
+Downstream firms allocate their R&D across components of production according
+ to 
+\begin_inset Formula 
+\[
+\frac{I_{j,I}}{I_{j,A}+I_{j,I}}=\frac{\left(\bar{\zeta}_{j,I}p_{j,I}\right)^{\frac{1}{1+\eta}}}{\left(\bar{\zeta}_{j,A}\bar{c}_{j,A}\right)^{\frac{1}{1+\eta}}+\left(\bar{\zeta}_{j,I}p_{j,I}\right)^{\frac{1}{1+\eta}}}
+\]
+
+\end_inset
+
+An upstream firms allocates generic R&D expenditures across countries according
+ to 
+\begin_inset Formula 
+\[
+\frac{I_{f,c}}{\sum_{c'}I_{f,c'}}=\frac{\left(I_{f,c}\zeta_{f,c}\mathcal{I}_{c}^{\omega}d_{f,c}^{\tau_{f}}r_{c}^{-1}\right)^{\frac{\varsigma}{1-\varsigma}}}{\sum_{c'}\left(I_{f,c'}\zeta_{f,c'}\mathcal{I}_{c'}^{\omega}d_{f,c'}^{\tau_{f}}r_{c'}^{-1}\right)^{\frac{\varsigma}{1-\varsigma}}}
+\]
+
+\end_inset
+
+with an equivalent expression for specialized R&D 
+\begin_inset Formula $I_{f,j,c}$
+\end_inset
+
+ and OEM's allocations 
+\begin_inset Formula $I_{j,I,c},I_{j,A,c}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This characterization highlights four economic forces.
+ First, the division between generic and specialized R&D reflects their
+ relative productivity and returns.
+ When generic R&D is highly productive (high 
+\begin_inset Formula $\bar{\zeta}_{f}$
+\end_inset
+
+), suppliers tilt investment towards cost reductions that benefits all buyers.
+ When buyer-specific productivity is high, specialized R&D becomes more
+ attractive.
+\end_layout
+
+\begin_layout Standard
+Second, specialized R&D is allocated towards buyers for which suppliers
+ are productive 
+\begin_inset Formula $\bar{\zeta}_{f,j}$
+\end_inset
+
+, have high quantity 
+\begin_inset Formula $q_{f,j}$
+\end_inset
+
+, and have high cost 
+\begin_inset Formula $\bar{c}_{f,j}$
+\end_inset
+
+.
+ Higher quantities increase the scale over which cost-reducing innovations
+ apply, and higher cost increase the marginal benefit of innovation.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In equilibrium, higher costs will also reduce the quantities that suppliers
+ receive.
+ Both through competition in input markets, and reduced input purchase from
+ downstream firms.
+ The equilibrium implications of cost shocks should therefore not be interpreted
+ as shocks that necessarily increase innovation.
+\end_layout
+
+\end_inset
+
+ When the elasticity 
+\begin_inset Formula $\rho$
+\end_inset
+
+ increases, the returns to R&D become stronger ad more uniform across buyers.
+\end_layout
+
+\begin_layout Standard
+Third, OEMs allocate R&D towards the components of production where productivity
+ improvements have the highest return - either due to high R&D productivity
+ (
+\begin_inset Formula $\bar{\zeta}_{j,I},\bar{\zeta}_{j,A}$
+\end_inset
+
+) or high production costs (
+\begin_inset Formula $p_{j,I},$
+\end_inset
+
+
+\begin_inset Formula $\bar{c}_{j,A}$
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This result hinges on the assumption that inputs are complements.
+ If inputs were sufficiently substitutable, it would be the case that more
+ R&D would be allocated to the components of production that had the lowest
+ cost.
+ The data supports the fact that inputs are complements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fourth, the cross-country allocation of R&D reflects a standard CES tradeoff
+ between productivity and cost.
+ R&D flows to locations where productivity is high relative to costs.
+ And as 
+\begin_inset Formula $\varsigma\rightarrow1$
+\end_inset
+
+, expenditure concentrates in the single most productive location.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This theory suggests why directly interpreting reduced-form coefficients
+ from innovation outcomes as causal coefficients, even when using instruments,
+ is problematic.
+ As R&D will endogenously be allocated to the locations where it is most
+ productive.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Despite the fact that inputs are specified as perfect complements in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Downstream-Costs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, unit costs will not be additive in the cost of assembly and inputs since
+ the endogenous allocation of R&D allows firms to reduce their dependence
+ on the expensive component of production.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Do I characterize prices? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Equilibrium Comparative Statics - First Order
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Comparative-Statics-First-Order"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get a better sense of the model mechanism and the potential implications
+ of policy, I characterize the response of industry outcomes GDP to price
+ and R&D efficiency shocks.
+ But changes in prices and R&D efficiency depend on more primitive parameters,
+ and hence we provide some results to think about how prices respond to
+ cost shocks (which affect productivity by raising unit costs) and R&D productiv
+ity shocks (which affect the efficiency of R&D investment).
+ Throughout, these comparative statics allow R&D allocations and prices
+ to adjust, but treat 
+\begin_inset Formula $\omega_{f},\omega_{j}$
+\end_inset
+
+ as exogenous variables from Stage 1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Variable Summary
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Lambda-Summary"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+arraystretch{1.4}%
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variables
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Lambda_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of 
+\begin_inset Formula $j$
+\end_inset
+
+ in Final Expenditure
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{j,A},\lambda_{j,I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of Assembly/Inputs in 
+\begin_inset Formula $j$
+\end_inset
+
+'s Cost 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{j,f}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of Supplier 
+\begin_inset Formula $f$
+\end_inset
+
+ in Buyer 
+\begin_inset Formula $j$
+\end_inset
+
+'s Cost
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{f,j}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of Buyer 
+\begin_inset Formula $j$
+\end_inset
+
+ in Supplier 
+\begin_inset Formula $f$
+\end_inset
+
+'s Sales
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{f,c},\lambda_{j,c}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of Country 
+\begin_inset Formula $c$
+\end_inset
+
+ in Firm 
+\begin_inset Formula $f$
+\end_inset
+
+'s/
+\begin_inset Formula $j$
+\end_inset
+
+'s R&D
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{c,f},\lambda_{c,j}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $:$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Share of Firm 
+\begin_inset Formula $f$
+\end_inset
+
+'s/
+\begin_inset Formula $j$
+\end_inset
+
+'s in Country 
+\begin_inset Formula $c$
+\end_inset
+
+'s Total R&D
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I start by noting that changes in real output in this industry can be characteri
+zed by the following comparative static:
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:GDP-Response"
+
+\end_inset
+
+The first-order change in real industry output is given by
+\begin_inset Formula 
+\[
+d\log\text{GDP}=-\sum_{j}\Lambda_{j}d\log p_{j}=-\sum_{j}\Lambda_{j}\left(\lambda_{j,A}\left(d\log\bar{c}_{j,A}-\eta\bar{\zeta}_{j,A}\right)+\lambda_{j,I}\left(d\log p_{j,I}-\eta\bar{\zeta}_{j,I}\right)\right),
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\Lambda_{j}$
+\end_inset
+
+ measure the share of firm 
+\begin_inset Formula $j$
+\end_inset
+
+ in final expenditure, and 
+\begin_inset Formula $\lambda_{j,A},\lambda_{j,I}$
+\end_inset
+
+ measure the share of assembly and inputs in the cost of firm 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Changes in real output arise from either changes in productivity, manifesting
+ as changes in assembly costs 
+\begin_inset Formula $\bar{c}_{j,A}$
+\end_inset
+
+ or input prices 
+\begin_inset Formula $p_{j,I}$
+\end_inset
+
+, or changes in R&D efficiency, represented by changes in the indices 
+\begin_inset Formula $\bar{\zeta}_{j,I}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\zeta}_{j,A}$
+\end_inset
+
+.
+ While assembly costs are a technological parameter, inputs prices and productiv
+ity indices are endogenous through either individual R&D choices or aggregate
+ R&D spillovers.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Assembly costs are a technological parameter as we have conditioned on the
+ Stage 1 choices.
+ In principle, these too are endogenous to the plant location and market
+ entry choices of firms.
+\end_layout
+
+\end_inset
+
+ The following results characterize the response of each to primitive cost
+ or R&D productivity shocks.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The previous propositions provided characterizations of marginal price changes
+ with respect to endogenous variables: 
+\begin_inset Formula $c_{j,I}$
+\end_inset
+
+ (inputs prices) in Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Downstream Innovation Allocation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset Formula $y_{f,j}$
+\end_inset
+
+ (upstream profit shifters) in Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Upstream Innovation Allocation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Now I offer a complete characterization of the price response to changes
+ in exogenous component of input costs 
+\begin_inset Formula $\bar{c}_{f,j}$
+\end_inset
+
+ and assembly costs 
+\begin_inset Formula $c_{j,A}.$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We ask 
+\begin_inset Formula 
+\[
+\frac{d\log p_{f,j}}{d\log\bar{c}_{f,j}}=-\delta_{1}\sum_{j}\left(\Lambda_{j}\lambda_{j,I}\right)\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}+\delta_{2}\left((\theta-1)+\tilde{\lambda}_{j,I}\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}\right)+\delta_{3}\sum_{j}\lambda_{f,j}\left((\theta-1)+\tilde{\lambda}_{j,I}\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}\right)
+\]
+
+\end_inset
+
+Now we ask 
+\begin_inset Formula 
+\[
+\frac{d^{2}\log p_{f,j}}{d\log\bar{c}_{f,j}d\log\bar{c}_{f,k}}=-\delta_{1}\sum_{j}\left(\frac{d\log\Lambda_{j}}{d\log\bar{c}_{f,k}}\lambda_{j,I}+\frac{d\log\lambda_{j,I}}{d\log\bar{c}_{f,k}}\Lambda_{j}\right)\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}+\delta_{2}\frac{d\log\tilde{\lambda}_{j,I}}{d\log\bar{c}_{f,k}}\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}+\delta_{3}\sum_{j}\frac{d\log\lambda_{f,j}}{d\log\bar{c}_{f,k}}\left((\theta-1)+\tilde{\lambda}_{j,I}\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}\right)+\delta_{3}\sum_{j}\lambda_{f,j}\frac{d\log\tilde{\lambda}_{j,I}}{d\log\bar{c}_{f,k}}\frac{d\log P_{j}}{d\log\bar{c}_{f,j}}
+\]
+
+\end_inset
+
+Then we start to derive? So we have 
+\begin_inset Formula 
+\[
+\Lambda_{j}=\frac{P_{j}}{\sum P_{j}}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\lambda_{j,I}=\frac{\bar{c}_{j,I}}{\bar{c}_{j,I}+\bar{c}_{j,A}}=\frac{P_{j}}{P_{j}+c_{j,A}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lambda_{f,j}=\frac{\left(y_{f,j}\right)^{\frac{1}{1-\rho\left(\theta-1\right)}}}{\sum_{j}\left(y_{f,j}\right)^{\frac{1}{1-\rho\left(\theta-1\right)}}}
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+d\log P_{j}=\sum\lambda_{j,f}d\log p_{f,j}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\frac{d\log\Lambda_{j}}{d\log\bar{c}_{f,k}}=\frac{d\log P_{j}}{d\log\bar{c}_{f,k}}-\sum\Lambda_{j}\frac{d\log P_{j}}{d\log\bar{c}_{f,k}}
+\]
+
+\end_inset
+
+and we have 
+\begin_inset Formula 
+\[
+\frac{d\log\lambda_{j,I}}{d\log\bar{c}_{f,k}}=d\log P_{j}-\lambda_{j,I}P_{j}
+\]
+
+\end_inset
+
+and we have
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+XXx A partial version of hulten's theorm, but need to acknowledge that input
+ prices are endogenous, and productivity is endogenous 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Network Response"
+
+\end_inset
+
+The response of input prices to a set of buyer-supplier cost shocks 
+\begin_inset Formula $d\log\bar{c}_{f,j}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+d\log p_{f,j}=d\log\bar{c}_{f,j}-\sum_{k}\left(\delta_{2}\mathbb{1}_{j=k}+\delta_{3}\lambda_{f,k}\right)\left((1-\theta)d\log\bar{c}_{f,k}+\tilde{\lambda}_{j,I}d\log p_{k,I}\right)-\delta_{1}\sum_{k}\Lambda_{k}\lambda_{k,I}d\log p_{k,I}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $d\log p_{k,I}=\sum\lambda_{k,f}d\log p_{f,k}$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The variables 
+\begin_inset Formula $\Lambda_{j}$
+\end_inset
+
+ measure the share of firm 
+\begin_inset Formula $j$
+\end_inset
+
+ in final expenditure, 
+\begin_inset Formula $\lambda_{j,A},\lambda_{j,I}$
+\end_inset
+
+ measure the share of assembly and inputs in the cost of firm 
+\begin_inset Formula $j$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+
+The variable 
+\begin_inset Formula $\lambda_{f,j}$
+\end_inset
+
+ is the share of downstream firm j in upstream firm f's revenue, and 
+\begin_inset Formula $\lambda_{j,f}$
+\end_inset
+
+ is the share of upstream firm 
+\begin_inset Formula $f$
+\end_inset
+
+ in the input price of downstream firm 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ The variable 
+\begin_inset Formula $\mathbb{1}_{j=k}$
+\end_inset
+
+ is an indicator that takes a value of 1 when buyer 
+\begin_inset Formula $k$
+\end_inset
+
+ in the summand equals buyer 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXX I can add the market expansion thing easily.
+\end_layout
+
+\end_inset
+
+ The parameters 
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\delta_{3}$
+\end_inset
+
+are defined below.
+ 
+\end_layout
+
+\begin_layout Standard
+This comparative static reflects several forces.
+ First, there is the direct effect of costs to prices, which ignoring any
+ adjustments in quantity or R&D, directly pass through due to the pricing
+ implications of Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Optimal-Contract"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Second, for every buyer in a supplier's network, there is a potential supplier-s
+pecific cost shock 
+\begin_inset Formula $d\log\bar{c}_{f,k}$
+\end_inset
+
+, which affects R&D incentives as it increases costs and lowers demand (hence
+ the 
+\begin_inset Formula $1-\theta$
+\end_inset
+
+).
+ And, each buyer is also experience a change in its total input costs 
+\begin_inset Formula $d\log p_{k,I}$
+\end_inset
+
+, arising from changes in the prices offered by each supplier.
+ Total input costs affect the R&D incentives of suppliers through four separate
+ mechanisms: 
+\begin_inset Formula 
+\[
+\tilde{\lambda}_{j,I}\equiv\underbrace{\theta-1\frac{}{\vphantom{\left(\right)}}}_{\text{Upstream Competition}}+\underbrace{1\vphantom{\frac{}{\vphantom{\left(\right)}}}}_{\text{Input Expenditure}}-\underbrace{\frac{\rho}{\rho+1\vphantom{\left(\right)}}}_{\text{Input R\&D}}-\underbrace{\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\lambda_{j,I}}_{\text{Downstream Demand}}.
+\]
+
+\end_inset
+
+Higher input prices faced by buyer 
+\begin_inset Formula $j$
+\end_inset
+
+, benefit each supplier as it perceives weaker perceive competition and
+ higher input expenditure.
+ However, higher input prices lead downstream firms to reallocate R&D towards
+ inputs and raise final prices, which both lower input demand.
+ The resulting changes in R&D affect costs through though the reallocation
+ of specialized R&D, which affects particular buyers, and expansion of generic
+ R&D spending as well as the overall R&D budget, which benefits all buyers:
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta_{2}\mathbb{1}_{j=k}+\delta_{3}\lambda_{f,k}=\underbrace{\frac{\rho}{1+\rho\left(1-\theta\right)}}_{\text{Reallocation of R\&D to \ensuremath{j}}}\times\mathbb{1}_{j=k}+\biggl(\underbrace{\frac{2\rho}{1-2\rho\left(\theta-1\right)}}_{\text{Generic R\&D and R\&D Budget}}-\underbrace{\frac{\rho}{1-\rho\left(\theta-1\right)}}_{\text{Reallocation of R\&D to \ensuremath{k}}}\biggr)\times\lambda_{f,k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final term normalizes changes in 
+\begin_inset Formula $d\log p_{k,I}$
+\end_inset
+
+ to emphasize that relative prices changes are what determines reallocation
+ in downstream demand: 
+\begin_inset Formula $\delta_{1}=\left(\delta_{2}+\delta_{3}\right)\left(\sigma-1\right)/1+\rho\left(1-\sigma\right)$
+\end_inset
+
+.
+ But notably, this last term will not cancel out the other 
+\begin_inset Formula $d\log p_{k,I}$
+\end_inset
+
+ terms since even if every firm experienced the same cost shock such that
+ relative quantities did not change, the absolute level of demand would
+ change which would affect the R&D incentives of firms.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+which captures how a change in the aggregate price index, 
+\begin_inset Formula $d\log D=\sum_{j}\Lambda_{j}\lambda_{j,I}d\log P_{j}$
+\end_inset
+
+, makes any individual firm 
+\begin_inset Formula $j$
+\end_inset
+
+ perceive weaker competition, and hence raises their input demand.
+ What will matter is both the relative price of each downstream firm to
+ the price index, and the absolute level of prices of each firm.
+ These relative price changes determine which downstream firms have larger
+ quantities, and hence receive more directed R&D from suppliers.
+ And the absolute level of prices determines the number of units demanded,
+ which in turn shapes input demand and upstream R&D incentives.
+ And here, note how 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ begin to interact.
+ While 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ determines how price changes downstream translate to demand for downstream
+ firms, 
+\begin_inset Formula $\theta$
+\end_inset
+
+ determines how price changes upstream translate to demand for upstream
+ firms.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXXFootnote on how this compares to term next to 
+\begin_inset Formula $P$
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(Derivation for input demand 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{j,I}=\frac{\left(c_{I}\right)^{\frac{1}{\rho+1}}}{\left(c_{I}\right)^{\frac{1}{\rho+1}}+\left(c_{A}\right)^{\frac{1}{\rho+1}}}\lambda_{3}\lambda_{1}\pi_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi_{j}=\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}
+\]
+
+\end_inset
+
+/
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=\frac{D\left(p_{j}\right)^{-\sigma}}{I_{j,I}^{\rho}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=\frac{D\left(\lambda_{2}D^{\frac{-\rho}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\rho+1}{1+\rho\left(1-\sigma\right)}}\right)^{-\sigma}}{\left(\frac{\left(c_{I}\right)^{\frac{1}{\rho+1}}}{\left(c_{I}\right)^{\frac{1}{\rho+1}}+\left(c_{A}\right)^{\frac{1}{\rho+1}}}\lambda_{3}\lambda_{1}\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}\right)^{\rho}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D^{1+\frac{\rho\sigma-\rho}{1+\rho\left(1-\sigma\right)}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\lambda_{2}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)}{1+\rho\left(1-\sigma\right)}\left(-\sigma-\rho\left(1-\sigma\right)\right)+\rho}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\left(\rho+1\right)}{1+\rho\left(1-\sigma\right)}\left(-\sigma-\rho\left(1-\sigma\right)\right)+\rho=\frac{-\sigma\rho-\sigma-\rho+\rho\sigma-\rho^{2}+\rho^{2}\sigma+\rho+\rho^{2}-\sigma\rho^{2}}{1+\rho\left(1-\sigma\right)}=\frac{-\sigma\rho-\sigma+\rho\sigma}{1+\rho\left(1-\sigma\right)}=\frac{-\sigma}{1+\rho\left(1-\sigma\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\lambda_{2}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{-\sigma}{1+\rho\left(1-\sigma\right)}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\left(\sigma-1\right)\left(\rho+1\right)-\sigma=\rho\left(\sigma-1\right)-1}{}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+D^{\frac{1}{1+\rho\left(1-\sigma\right)}}=\left(\sum_{j}\left(\lambda_{2}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\rho+1}{1+\rho\left(1-\sigma\right)}}\right)^{1-\sigma}\right)^{-1}
+\]
+
+\end_inset
+
+And
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\lambda_{2}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{-\sigma}{1+\rho\left(1-\sigma\right)}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{j,I}=\frac{\left(c_{I}\right)^{\frac{1}{\rho+1}}}{\left(c_{I}\right)^{\frac{1}{\rho+1}}+\left(c_{A}\right)^{\frac{1}{\rho+1}}}\lambda_{3}\lambda_{1}\pi_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi_{j}=\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}
+\]
+
+\end_inset
+
+/
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=\frac{D\left(p_{j}\right)^{-\sigma}}{I_{j,I}^{\rho}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=\frac{D\left(\lambda_{2}D^{\frac{-\rho}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\rho+1}{1+\rho\left(1-\sigma\right)}}\right)^{-\sigma}}{\left(\frac{\left(c_{I}\right)^{\frac{1}{\rho+1}}}{\left(c_{I}\right)^{\frac{1}{\rho+1}}+\left(c_{A}\right)^{\frac{1}{\rho+1}}}\lambda_{3}\lambda_{1}\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}\right)^{\rho}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D^{1+\frac{\rho\sigma-\rho}{1+\rho\left(1-\sigma\right)}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{x_{j}}{I_{j,I}^{\rho}}=D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\lambda_{2}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)}{1+\rho\left(1-\sigma\right)}\left(-\sigma-\rho\left(1-\sigma\right)\right)+\rho}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\left(\rho+1\right)}{1+\rho\left(1-\sigma\right)}\left(-\sigma-\rho\left(1-\sigma\right)\right)+\rho=\frac{-\sigma\rho-\sigma-\rho+\rho\sigma-\rho^{2}+\rho^{2}\sigma+\rho+\rho^{2}-\sigma\rho^{2}}{1+\rho\left(1-\sigma\right)}=\frac{-\sigma\rho-\sigma+\rho\sigma}{1+\rho\left(1-\sigma\right)}=\frac{-\sigma}{1+\rho\left(1-\sigma\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second, we have
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\delta_{2}=\underbrace{\frac{\rho}{1+\rho\left(1-\theta\right)}}_{\text{R\&D Reallocation}}\text{ and \tilde{\lambda}_{j,I}=\left(\underbrace{\theta-1}_{\text{Upstream Competition}}+\underbrace{1}_{\text{Input Expedniture}}+\underbrace{\frac{\rho}{\rho+1}+\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\lambda_{j,I}}_{\text{Input Prices on Downstream Input Demand and R\&D}}\right)},
+\]
+
+\end_inset
+
+which reflect features of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Downstream Innovation Allocation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, namely the reallocation effect that comes from the buyer-specific component
+ of input prices in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Upstream Price"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This reallocation is driven by both the change in production costs 
+\begin_inset Formula $d\log\bar{c}_{f,j}$
+\end_inset
+
+ and the change in buyer 
+\begin_inset Formula $j$
+\end_inset
+
+'s input prices 
+\begin_inset Formula $d\log P_{j}$
+\end_inset
+
+.
+ A change in production costs both affects the demand received by a supplier
+ and the price it offers - hence the 
+\begin_inset Formula $\theta-1$
+\end_inset
+
+.
+ The extent to which this affects R&D incentives and hence the price offered
+ is governed by 
+\begin_inset Formula $\delta_{2}$
+\end_inset
+
+.
+ As for the change in the input price index, an increase in it poses a positive
+ incentive for a given supplier, since it now perceives worse upstream competiti
+on.
+ However, the higher prices also result in both more downstream R&D on inputs
+ and lower downstream quantities, which in turn reduce upstream demand and
+ the incentives to perform R&D.
+ Note, the extent to which R&D choices across suppliers are complements
+ or substitutes, depends on the values of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is larger, changes in the input price index generate larger swings in downstrea
+m quantities and hence input demand.
+ If 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is sufficiently small, this expansion in input demand can overcome any
+ of the negative competitive effects a supplier perceives from a lower input
+ price index.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To understand why 
+\begin_inset Formula $\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}$
+\end_inset
+
+ comes from, note that the input demand faced by suppliers is 
+\begin_inset Formula $x_{j}/I_{j,I}^{\rho}$
+\end_inset
+
+.
+ A change in input prices has several effects on this quantity.
+ First, it leads to reallocation to 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+.
+ Second, it expand the R&D budget and leads to reallocation away from 
+\begin_inset Formula $I_{j,I}$
+\end_inset
+
+.
+ Now the extent to which cost reductions across suppliers are complements
+ or substities depends on 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ versis 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Third, we have 
+\begin_inset Formula 
+\[
+\delta_{3}=\underbrace{\frac{2\rho}{1-2\rho\left(\theta-1\right)}}_{\text{Generic R\&D and Change in R\&D Budget}}-\underbrace{\frac{\rho}{1-\rho\left(\theta-1\right)}}_{\text{Reallocation of R\&D from \ensuremath{j}}},
+\]
+
+\end_inset
+
+which is the familiar affect discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Upstream Innovation Allocation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, namely the shared R&D component and budget effect in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Upstream Price"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Again, since innovation shares a common component through the generic component
+ of R&D and the R&D budget of suppliers, the change in profit incentives
+ to innovate for other buyers has spillover effects on the prices faced
+ by buyer 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ The terms that 
+\begin_inset Formula $\delta_{3}$
+\end_inset
+
+ brackets are exactly the same as those bracketed by 
+\begin_inset Formula $\delta_{2}$
+\end_inset
+
+ - for each buyer 
+\begin_inset Formula $j$
+\end_inset
+
+ the supplier 
+\begin_inset Formula $f$
+\end_inset
+
+ asks how its cost change 
+\begin_inset Formula $d\log\bar{c}_{f,j}$
+\end_inset
+
+ differs from the competition and how the aggregate input price is affecting
+ demand from downstream firms.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[XXX] Matrix formulation - then what do we need for uniqueness? 
+\end_layout
+
+\begin_layout Standard
+Specializing Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Network Response"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to a single buyer, removes terms associated with reallocation across buyers,
+ and highlights the key sources of inefficiency in the model.
+ 
+\end_layout
+
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:GDP-Cost"
+
+\end_inset
+
+Consider the case with only one downstream buyer, the change in real GDP
+ can be expressed as 
+\begin_inset Formula 
+\[
+d\log GDP=-\frac{1}{1-2\rho\left(\frac{1}{1+\eta}\lambda_{j,I}+\frac{\eta}{1+\eta}\right)}\sum_{f}\lambda_{j,f}d\log c_{f,j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This result echo's Hulten's theorem, but has a non-unitary coefficient.
+ This arises due to the presence of a baseline externality, alluded to in
+ Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:Optimal-Tax-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ from the failure of Shephard's Lemma.
+ Suppliers do not capture the full extent of their productivity improvement.
+ In particular, they do not capture the fact that productivity improvements
+ affect downstream quantities, 
+\begin_inset Formula $\frac{1}{1+\eta}\lambda_{j,I}$
+\end_inset
+
+, and downstream R&D allocation, 
+\begin_inset Formula $\frac{\eta}{1+\eta}$
+\end_inset
+
+.
+ Notably, when there is no R&D and 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+, we revert to the standard case.
+ 
+\end_layout
+
+\begin_layout Standard
+[XXX] Under what conditions does this equal 1? Is it less than 1? Or is
+ it greater than 1? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.
+\begin_inset Formula 
+\[
+\frac{2\rho}{1-2\rho(\theta-1)}\left(\frac{\lambda_{j,I}}{1+\eta}+\frac{\eta}{1+\eta}\right)<1
+\]
+
+\end_inset
+
+So worst-case scnario, we have
+\begin_inset Formula 
+\[
+\frac{2\rho}{1-2\rho(\theta-1)}<1
+\]
+
+\end_inset
+
+Which means 
+\end_layout
+
+\end_inset
+
+Next, I discuss changes in R&D efficiency: 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Network Response - R&D"
+
+\end_inset
+
+Consider the response of the productivity index 
+\begin_inset Formula $\bar{\zeta}_{f}$
+\end_inset
+
+ to a set of shocks 
+\begin_inset Formula $\left\{ \zeta_{f,c}\right\} \forall f,c$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}d\log\bar{\zeta}_{f}= & \sum_{c\in C_{f}}\lambda_{f,c}\Biggl(\underbrace{d\log\zeta_{f,c}}_{\text{Direct Productivity Effect}}+\frac{\omega}{1-\varsigma}\sum_{f'}\lambda_{c,f'}\biggl(\underbrace{d\log\zeta_{f',c}+d\log K_{c}-\sum_{c'\in C_{f'}}\lambda_{f',c'}\left(d\log\zeta_{f',c'}+d\log K_{c'}\right)}_{\text{Spillovers from Across-Country R\&D Reallocation}}\biggr)\\
+ & \quad-\omega\biggl(\underbrace{\frac{1}{\rho}\sum_{f'}\lambda_{c,f'}\sum_{j}\lambda_{f',j}d\log p_{f',j}+\frac{1}{\eta}\sum_{j}\lambda_{c,j}d\log p_{j}}_{\text{Spillovers from R\&D Expansion}}\biggr)\Biggr)
+\end{alignedat}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\lambda_{f,c}$
+\end_inset
+
+ is the share of R&D expenditure by firm 
+\begin_inset Formula $f$
+\end_inset
+
+ in country 
+\begin_inset Formula $c$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda_{c,f'}$
+\end_inset
+
+ is the share of R&D in country 
+\begin_inset Formula $c$
+\end_inset
+
+ done by firm 
+\begin_inset Formula $f'$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXX I can add the market expansion thing easily.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This comparative static reflects several forces.
+ First, the R&D efficiency index responds to R&D productivity shocks in
+ all countries, with shares depending on the extent of baseline R&D expenditure
+ done in each country.
+ Second, R&D efficiency responds to R&D shocks at all firms and all countries,
+ to the extent that the strength of R&D spillovers measured by 
+\begin_inset Formula $\omega$
+\end_inset
+
+ are higher.
+ In particular, based on R&D productivity shocks, firms relocate their R&D
+ expenditure across countries - where the higher substantially there is
+ 
+\begin_inset Formula $\varsigma$
+\end_inset
+
+, the stronger these effects are.
+ If other firms are relocating R&D to the countries where firm 
+\begin_inset Formula $f$
+\end_inset
+
+ does R&D intensely, then this firm benefits.
+ Finally, in general, R&D productivity changes will induce more R&D investment
+ by suppliers and buyers.
+ In the absence of cost-shocks, prices only adjust due to R&D changes and
+ hence scaling prices changes by the inverse of the returns to R&D get the
+ expansion in total R&D.
+ Obviously, prices are a potentially complicated endogenous object, so we
+ characterize their response to R&D shocks in Appendix Section X.
+ 
+\end_layout
+
+\begin_layout Corollary
+We have
+\begin_inset Formula 
+\[
+d\log GDP=-\frac{\rho}{\left(1+2\rho-2\rho\left(\frac{\eta}{1+\eta}+\frac{1}{1+\eta}\lambda_{j,I}\right)-\rho\omega\left(\frac{1}{\eta}\lambda_{c,j}+\frac{1}{2\rho}\lambda_{c,f}\right)\right)}\lambda_{j,I}d\log\zeta_{f,c}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\lambda_{c,j}$
+\end_inset
+
+ is the share of R&D conducted by buyers, and 
+\begin_inset Formula $\lambda_{c,f}$
+\end_inset
+
+ is the share of R&D conducted by suppliers.
+ 
+\end_layout
+
+\begin_layout Subsection
+Equilibrium Comparative Statics - Second-Order
+\end_layout
+
+\begin_layout Standard
+The final result we provide in this section is a characterization of the
+ second-order effect of cost shocks.
+ To parse these results, I first introduce some notation.
+ First, we use Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Network Response"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to characterize the first-order price response to cost changes, which we
+ compactly represent as
+\begin_inset Formula 
+\[
+\psi_{f,k}^{j}=d\log P_{j}/d\log c_{f,k}.
+\]
+
+\end_inset
+
+Second, we introduce two notions of covariance in the first-order price
+ response.
+ The first of these,
+\begin_inset Formula 
+\[
+Cov_{\Lambda}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)=\sum_{j}\Lambda_{j}\lambda_{j,I}\psi_{f,k}^{j}\lambda_{j,I}\psi_{f,j}^{j}-\sum_{j}\Lambda_{j}\lambda_{j,I}\psi_{f,j}^{j}\sum_{k}\lambda_{k,I}\Lambda_{k}\psi_{f,k}^{j},
+\]
+
+\end_inset
+
+measures the covariance in prices changes experienced by downstream buyers,
+ where we use the distribution of buyers in the downstream price index 
+\begin_inset Formula $\Lambda_{j}$
+\end_inset
+
+.
+ The second of these,
+\begin_inset Formula 
+\[
+Cov_{\lambda_{f}}\left(\tilde{\lambda}_{j,I}\psi_{f,j}^{j},\tilde{\lambda}_{j,I}\psi_{f,k}^{j}\right)=\sum_{j}\lambda_{f,j}\tilde{\lambda}_{j,I}\psi_{f,j}^{j}\tilde{\lambda}_{j,I}\psi_{f,k}^{j}-\sum_{j}\lambda_{f,j}\tilde{\lambda}_{j,I}\psi_{f,j}^{j}\sum_{k}\lambda_{f,k}\tilde{\lambda}_{k,I}\psi_{f,k}^{l}.
+\]
+
+\end_inset
+
+again measures the covariance in prices changes experienced by downstream
+ buyers, but instead uses the distribution of buyers in the profits of supplier
+ 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Using these definitions.
+ We can now characterize the response of second-order effect of cost shocks
+ on input prices.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Network Response - Second Order-1"
+
+\end_inset
+
+The second-order response of input prices to a set of buyer-supplier cost
+ shocks {
+\begin_inset Formula $d\log\bar{c}_{f,j}$
+\end_inset
+
+,
+\begin_inset Formula $d\log\bar{c}_{f,k}$
+\end_inset
+
+} where 
+\begin_inset Formula $j\neq k$
+\end_inset
+
+ is given by 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\begin{alignedat}{1} & \frac{d^{2}\log p_{f,j}}{d\log\bar{c}_{f,j}d\log\bar{c}_{f,k}}=\delta_{1}\delta_{6}Cov_{\Lambda}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)+\delta_{1}\delta_{7}\sum_{j}\left(\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\right)\lambda_{j,I}\Lambda_{j}\psi_{f,j}^{j}\\
+ & \quad+\delta_{2}\delta_{8}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}+\delta_{3}\delta_{8}\sum_{j}\lambda_{f,j}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}-\delta_{3}\delta_{5}Cov_{\lambda_{f}}\left(\tilde{\lambda}_{j,I}\psi_{f,j}^{j},\tilde{\lambda}_{j,I}\psi_{f,k}^{j}\right)
+\end{alignedat}
+.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}\frac{d^{2}\log p_{f,j}}{d\log\bar{c}_{f,k}}= & \delta_{8}\sum_{k}\left(\delta_{2}\mathbb{1}_{j=k}+\delta_{3}\lambda_{f,k}\right)\lambda_{j,I}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}+\delta_{7}\delta_{1}\sum_{j}\Lambda_{j}\lambda_{j,I}\left(1-\lambda_{j,I}\right)\psi_{f,k}^{j}\psi_{f,j}^{j}\\
+ & -\delta_{5}Cov_{\lambda_{f}}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)+\delta_{1}\delta_{6}Cov_{\Lambda}\left(\lambda_{j,I}\psi_{f,j}^{j},\lambda_{j,I}\psi_{f,k}^{j}\right)
+\end{alignedat}
+.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now to unpack this expression, we define each new parameter in turn.
+ First, recall from above that 
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+ determines how changes in the aggregate downstream price index affect the
+ profit incentive for innovating for each buyer.
+ With that in mind, note that 
+\begin_inset Formula 
+\[
+\delta_{6}=\frac{\sigma-1}{1+\rho\left(1-\sigma\right)},
+\]
+
+\end_inset
+
+which is the elasticity of downstream demand shares with respect to cost
+ changes.
+ What this term captures is how the first-order changes in the final prices
+ of downstream firms relocate quantity across buyers.
+ These quantities in turn affect the demand faced by various suppliers and
+ thus their incentive to do R&D.
+ The covariance appears as a measure of the extent to which buyers which
+ are experiencing large first-order price effects are in the second-order
+ also experiencing reallocations of demand shares towards them.
+ Relatedly, we have 
+\begin_inset Formula $\delta_{7}=1/\left(1+\rho\right),$
+\end_inset
+
+ which captures how for each downstream firm in the final price index, the
+ cost share of inputs is changing - and hence the ability of upstream R&D
+ to influence downstream prices.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, recall that 
+\begin_inset Formula $\delta_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta_{3}$
+\end_inset
+
+ determine how changes in the input prices of various buyers affects the
+ R&D incentives of suppliers either through a competition effect or a reallocati
+on/expansion of input demand.
+ Now note,
+\begin_inset Formula 
+\[
+\delta_{4,j}=\frac{1}{\rho+1},
+\]
+
+\end_inset
+
+which similar to 
+\begin_inset Formula $\delta_{7}$
+\end_inset
+
+, captures how within each buyer 
+\begin_inset Formula $j$
+\end_inset
+
+ the share of costs that is determined by upstream R&D choice is changing,
+ and this amplifies any first-order feedback effect between upstream R&D
+ and demand for inputs.
+ The first component of 
+\begin_inset Formula $\delta_{4,j}$
+\end_inset
+
+ captures how this second-order effect does not alter the competition effect
+ from the change in input prices which is governed by 
+\begin_inset Formula $-\theta$
+\end_inset
+
+; it only influences the input demand expansion channel 
+\begin_inset Formula $\frac{1}{\rho+1}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\lambda_{j,I}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, we have another change stemming from the common component of upstream
+ R&D, where we have 
+\begin_inset Formula 
+\[
+\delta_{5}=\frac{1}{1-\rho\left(\theta-1\right)},
+\]
+
+\end_inset
+
+which is the elasticity of profit shares 
+\begin_inset Formula $\lambda_{f,j}$
+\end_inset
+
+ with respect to profit shifters 
+\begin_inset Formula $y_{j}.$
+\end_inset
+
+ And why this appears with a covariance term is to measure the extent to
+ which buyers which are experiencing large first-order price effects are
+ in the second-order also experiencing reallocations of profits shares in
+ supplier 
+\begin_inset Formula $f$
+\end_inset
+
+ toward them.
+\end_layout
+
+\begin_layout Standard
+XXX Note how this 
+\begin_inset Formula $\bar{c}_{f,j}$
+\end_inset
+
+ can also be a wedge.
+ Policy instrument - effect on outcomes.
+ 
+\begin_inset Formula 
+\[
+\delta_{8}=\frac{-\sigma}{1+\eta\left(1-\sigma\right)}\frac{1}{\left(1+\eta\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[X] Comparativ Static - Second Order Productivity Change
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Specialized Equilibrium Characterization
+\end_layout
+
+\begin_layout Standard
+[X] are offshoring choices by firms complements or subsitties? Look at effect
+ on horizontally linked firms, and vertically linked firms, business stealling,
+ veruss shared supplier network!, versus local spillovers ...
+ versus market expansion? 
+\end_layout
+
+\begin_layout Standard
+[X] Comparative Statics - Can go here next if prev is finished.
+ 
+\end_layout
+
+\begin_layout Standard
+[X] Firm Expansion and growth - additional of new location?
+\end_layout
+
+\begin_layout Standard
+[X] Is there a model I can write with entry? Probabilistic sort of like
+ https://drive.google.com/file/d/15sBES8Eh6LYm1XjR4kr-ARw4PaVfzbmP/view? 
+\end_layout
+
+\begin_layout Standard
+SO there is a firm, they hire a certain amount in a location, and they innovate
+ a certain amount.
+ The probabilistically enter each market.
+ 
+\end_layout
+
+\begin_layout Standard
+[X] Since prices not prop to R&D, are these distributional gains from reallocati
+ng demand across firms - generate more R&D? More spillovers? Esp with diminishin
+g returns? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Symmetric Industry Equilibrium
+\end_layout
+
+\begin_layout Standard
+The previous section highlighted how the structure of a production network
+ generates a dependence between the R&D choices of firms vertically linked
+ as suppliers and buyers, and those horizontally linked either through competiti
+on or a shared set of suppliers.
+ While the heterogeneity present in that model is key for any quantitative
+ statements, one can push the theory and develop further intuition by focusing
+ on a simplified case.
+ In this section I characterize an industry equilibria with homogenous upstream
+ and downstream firms - abstracting from any heterogeneity in technology
+ or geography.
+ This simplification aims to make transparent how the model parameters govern
+ the response of the economy to outsourcing and offshoring shocks.
+ 
+\end_layout
+
+\begin_layout Standard
+Specifically, I assume there is a homogenous mass 
+\begin_inset Formula $M$
+\end_inset
+
+ of suppliers and mass 
+\begin_inset Formula $N$
+\end_inset
+
+ of buyers, all innovating in the same location.
+ Additionally, I assume that there is an entry cost for upstream and downstream
+ firms that is convex in the number of entrants: 
+\begin_inset Formula 
+\[
+\pi_{f}^{\gamma_{f}}=Mf_{M}\quad\text{and}\quad\pi_{j}^{\gamma_{j}}=Nf_{N},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\gamma_{f},\gamma_{j}\in[0,1]$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+One can imagine a factor in fixed supply - like land in the industry cluster
+ - that generates these convexities in entry.
+\end_layout
+
+\end_inset
+
+This entry process along with a homogenous versions of the previous equations,
+ completes the characterization of the industry equilibrium.
+ 
+\end_layout
+
+\begin_layout Definition*
+A symmetry equilibrium is characterized by upstream prices and quantities
+ (
+\begin_inset Formula $p_{f,j},\tilde{x}_{j}$
+\end_inset
+
+), profits (
+\begin_inset Formula $\pi_{f},\pi_{j}$
+\end_inset
+
+), entrants (
+\begin_inset Formula $M,N$
+\end_inset
+
+), and spillovers (
+\begin_inset Formula $K$
+\end_inset
+
+) that satisfy Appendix Equations X.
+ 
+\end_layout
+
+\begin_layout Standard
+I now provide two lemmas that I draw on and follow with comparative statics
+ for the industry equilibrium.
+ I will only be considering comparative statics with respect to distances
+ and the exogenous component of costs, which is a necessary simplification
+ for these results.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: No Downstream Entry"
+
+\end_inset
+
+In a symmetric equilibrium, there is no change in the number of downstream
+ firms in response to a change in production costs or distance.
+ Additionally, the total R&D expenditure of downstream firms remains fixed:
+ 
+\begin_inset Formula 
+\[
+d\log N=d\log\pi_{j}=d\log\left(I_{j,I}+I_{j,A}\right)=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This result largely follows from the assumption of fixed market size and
+ a fixed markup.
+ If we allowed substitution with an outside sector, e.g.
+ 
+\begin_inset Formula $D=\bar{D}P^{\sigma-1-\kappa}$
+\end_inset
+
+ through quasi-linear preference, then this would not continue to hold.
+ Changes in costs would create a market expansion effect, which would result
+ in room for more downstream entrants.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem: Upstream Profits and Prices"
+
+\end_inset
+
+In a symmetric equilibrium, in response to a change in production costs
+ or distance, we can express the change in profits as directly related to
+ the change in input prices: 
+\begin_inset Formula 
+\[
+\left(1+\left(1+\gamma_{f}\right)\lambda_{U}\frac{\omega}{\rho}\right)d\log\pi_{f}=-\frac{1}{2\rho}d\log p_{f,j}+\frac{\tau}{2\rho}d\log d_{f}+\frac{\tau}{2\rho}d\log d_{f,j},
+\]
+
+\end_inset
+
+and in turn we can relate 
+\begin_inset Formula 
+\[
+\frac{d\log K}{d\log\pi_{f}}=\left(1+\gamma_{f}\right)\lambda_{U}\text{ and }\frac{d\log M}{d\log\pi_{f}}=\gamma_{f}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\lambda_{U}$
+\end_inset
+
+ is the contribution of upstream firms to knowledge spillovers.
+ 
+\end_layout
+
+\begin_layout Standard
+This is a symmetric equilibrium version of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Network Response Corollary - Distance"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The inverse elasticity of prices with respect to R&D is 
+\begin_inset Formula $1/2\rho$
+\end_inset
+
+, and since profits are proportional to R&D expenditure
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(XXX is this a common feature of these models)
+\end_layout
+
+\end_inset
+
+, we can use changes in upstream prices as a sufficient statistic for profits
+ and thus entry.
+ Finally, this also lets us extrapolate to changes in the local knowledge
+ stock 
+\begin_inset Formula $K$
+\end_inset
+
+ since again R&D is proportional to profits, and it is only upstream profits
+ which are changing - following Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: No Downstream Entry"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+For intuition behind this result, note that spillovers have a larger effect
+ on prices than profits.
+ This difference is increasing in 
+\begin_inset Formula $\omega/\rho$
+\end_inset
+
+ - i.e.
+ when spillovers are stronger.
+ Otherwise, 
+\begin_inset Formula $\left(1+\gamma_{f}\right)\lambda_{U}$
+\end_inset
+
+ is the elasticity of spillovers with respect to profits, and 
+\begin_inset Formula $-\left(1+\left(1+\gamma_{f}\right)\lambda_{U}\frac{\omega}{\rho}\right)^{-1}/2\rho$
+\end_inset
+
+ is elasticity of profits with respect to prices.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, I provide sufficient conditions under which an equilibrium exists
+ and is unique.
+ One reason we might be worried about uniqueness or existence in this model
+ is the external knowledge spillovers in 
+\begin_inset Formula $K$
+\end_inset
+
+, and issues related to the R&D coordination between upstream and downstream
+ firms.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+XXX Big-push type equilibria where upstream and downstream firms have to
+ collectively undertake R&D to move into a higher profit equilibrium.
+ Neither has the private incentive to do it alone.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+A sufficient condition for equilibrium existence and uniqueness when 
+\begin_inset Formula $\omega>0$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\frac{2\omega}{1+2\rho}\left(\left(1+\gamma\right)\sigma_{\pi,p}\right)+\frac{2\rho}{1+2\rho}\left[-\gamma\sigma_{\pi,p}+\left(1+\frac{1}{\theta}\gamma\sigma_{\pi,p}\right)\right]<0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{\pi,p}=1/2\rho\left(\left(1+\gamma\right)\frac{\omega}{p}+1\right)$
+\end_inset
+
+.
+ Or, if 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+, we then have
+\begin_inset Formula 
+\[
+\underbrace{\frac{-\gamma}{2\rho}}_{\text{Business Stealing}}+\underbrace{\left(1+\frac{1}{\theta}\frac{\gamma}{2\rho}\right)}_{\text{Market Expansion}}<0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are several forces that work to determine equilibrium existence and
+ uniqueness.
+ To walk through them, imagine taking input prices to zero.
+ For existence, we want to make sure the changes that occur to firm R&D
+ incentives along this price path don't support an equilibrium with a price
+ of zero.
+ Following Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: Upstream Profits and Prices"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, this price change is associated with higher profits, more entry, and greater
+ knowledge spillovers.
+ How do these changes in turn affect the R&D incentives of firms? The knowledge
+ spillovers are consistent with lower prices.
+ And the lower prices themselves along with the lover of variety effect
+ from entry are generating higher input demand which is consistent with
+ high R&D and low price.
+ Existence then hinges on a business stealing effect, which has to be sufficient
+ly strong such that the incentive for R&D vanishes as prices go to zero.
+ A similar logic works for taking prices to infinity.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+XXX Note although these are sufficient conditions, they ought in practice
+ be close to the necessary conditions.
+ The proof relies on bounding an additive component by its upper bound.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Industry Planner Solution
+\end_layout
+
+\begin_layout Standard
+I start by relating the solution from the decentralized market equilibrium
+ to a pseudo social-planner.
+ Namely, I consider an industry planner which coordinates the investment
+ of upstream and downstream firms to maximize industry profits, while facing
+ an iso-elastic demand curv e with price elasticity 
+\begin_inset Formula $-\sigma$
+\end_inset
+
+.
+ For instance, imagine a national industry planner trying to coordinate
+ behavior in an industry, hoping to win global market share whilst facing
+ an elasticity of substitution across countries of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Planner Solution"
+
+\end_inset
+
+An industry planner would choose an allocation of R&D for input technology
+ across downstream and upstream firms that satisfies
+\begin_inset Formula 
+\[
+1=\frac{\sum_{f}I_{f}^{\text{Planner}}}{I_{j,I}^{\text{Planner}}},\quad\frac{\left(\theta-1\right)\left(\mu-1\right)}{\mu M^{-1/\theta}}=\frac{\sum_{f}I_{f}^{\text{Decentralized}}}{I_{j,I}^{\text{Decentralized}}}.
+\]
+
+\end_inset
+
+And, if firms additionally differ in the exogenous component of their costs,
+ a planner would allocate 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXX Move to another proposition XXX fix this for the more generic case
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\left(\bar{c}_{f',j}\right)^{\frac{\theta}{1-2\theta\rho}}}{\left(\bar{c}_{f,j}\right)^{\frac{\theta}{1-2\theta\rho}}}=\frac{I_{f}^{\text{Planner}}}{I_{f'}^{\text{Planner}}},\text{ and }\frac{\left(\bar{c}_{f',j}\right)^{\frac{\theta-1}{1-2\left(\theta-1\right)\rho}}}{\left(\bar{c}_{f,j}\right)^{\frac{\theta-1}{1-2\left(\theta-1\right)\rho}}}=\frac{I_{f}^{\text{Decentralized}}}{I_{f'}^{\text{Decentralized}}}
+\]
+
+\end_inset
+
+For planner that optimizes across firms: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\frac{I_{j,A}^{\text{Planner}}+I_{j,I}^{\text{Planner}}}{I_{j,A}^{\text{Planner}}+I_{j,I}^{\text{Planner}}}=\frac{I_{j,A}^{\text{Decentralized}}+I_{j,I}^{\text{Decentralized}}}{I_{j,A}^{\text{Decentralized}}+I_{j,I}^{\text{Decentralized}}}=\frac{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\left(\rho+1\right)\left(1-\sigma\right)}}{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\left(\rho+1\right)\left(1-\sigma\right)}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+and XXX 
+\begin_inset Note Note
+status open
+
+\begin_layout Proposition
+\begin_inset Formula 
+\[
+\frac{I_{j,A}^{\text{Planner}}+I_{j,I}^{\text{Planner}}}{I_{j,A}^{\text{Planner}}+I_{j,I}^{\text{Planner}}}=\frac{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\left(\rho+1\right)\left(1-\sigma\right)}}{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\left(\rho+1\right)\left(1-\sigma\right)}},\text{ and }\frac{I_{j,A}^{\text{Decentralized}}+I_{j,I}^{\text{Decentralized}}}{I_{j,A}^{\text{Decentralized}}+I_{j,I}^{\text{Decentralized}}}=\frac{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}}{\left(\left(c_{j,A}\right)^{\frac{1}{\rho+1}}+\left(c_{j,I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ XXX Market gets correct the relative allocation some places, but not the
+ levels.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Looking at equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Objective"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Upstream Objective"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we can see the elasticity of input costs with respect to upstream or downstrea
+m input R&D is 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Since these firms additionally face the same costs, it follows that the
+ input R&D should be equivalent between upstream and downstream sectors
+ in a planned economy.
+ However, when we move to the decentralized allocation, the private returns
+ to input R&D will differ across stages.
+ First, markups have two offsetting effects - higher markups lead to more
+ R&D upstream, but also raise the input cost leading downstream firms to
+ compensate with their own R&D.
+ Second, we have the 
+\begin_inset Formula $\theta-1$
+\end_inset
+
+ term, which is the elasticity of profits with respect to R&D, a similar
+ R&D profit motive is absent in the planned economy.
+ Finally, there is additionally over investment upstream due to a love-of-variet
+y effect that is not internalized by any upstream firms.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXX This might actually be because firms have to invest without knowing
+ their shock.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+XXX Who to subsidize for spillovers.
+ Bosch might have a production network that supports a lot of competitors,
+ but it might also generate large local spillovers!
+\end_layout
+
+\begin_layout Standard
+This suggests that downstream firms enjoy an environment with low variance
+ in preference heterogeneity (i.e.
+ high 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ While we take the preference distribution as exogenous, one can imagine
+ that if firms create increasingly homogenous downstream products or if
+ entrants mimic existing products, then their preferences for inputs will
+ become similar.
+ This homogeneity in demand will lead to more excess upstream competition
+ (relative to the preference of an industry planner), which moves the incidence
+ of input R&D onto the balance sheet of suppliers.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXXFlesh our the role of 
+\begin_inset Formula $r$
+\end_inset
+
+ - then do the planner versus private changes w.r.t.
+ 
+\begin_inset Formula $r$
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+Finally, while we focus here on a homogenous firm model, it is worth noting
+ that if there is heterogeneity in suppliers, there will be underinvestment
+ by the lower cost suppliers.
+ This is because while cost reductions achieved through R&D lead to higher
+ demand, they lower the price received on those units of production.
+ As for the industry planner, since any markup is just a transfer in profits
+ between suppliers and buyers, the planner does not have this offsetting
+ motive from lower prices.
+ Note, we have a simplified model setup with fixed markups, if markups are
+ higher for lower cost firms, then some of this underinvestment will be
+ offset.
+ 
+\end_layout
+
+\begin_layout Standard
+The market allocation is clearly not efficient, and this simplified model
+ doesn't touch on other forces that would be present in a heterogenous firms
+ model like business stealing or the input market expansion effects that
+ might generate further wedges from the first-best.
+ One obvious implication of this, there is room for policy to have first-order
+ positive effects on welfare.
+ 
+\end_layout
+
+\begin_layout Subsection
+Sourcing Inputs from Abroad
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+XXX This affects 
+\begin_inset Formula $d_{j,I}$
+\end_inset
+
+ too!! Need to adjust.
+\end_layout
+
+\end_inset
+
+The first change we consider is a change in the price of foreign inputs
+ 
+\begin_inset Formula $p_{\text{Foreign}}$
+\end_inset
+
+ - perhaps spurred by tariff changes or a technology shock abroad.
+ To implement this change, we write the input cost of downstream firms as
+ 
+\begin_inset Formula $P^{-\theta}=(Mp_{f,j}^{-\theta}+p_{\text{Foreign}}^{-\theta})$
+\end_inset
+
+, where the model accounts for endogenous adjustments in 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{f,j}$
+\end_inset
+
+ but takes the foreign price as exogenous.
+ We start by characterizing the effect on input prices
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+d\log p_{f,j}=\frac{\frac{-2\rho}{1+2\rho\left(1-\theta\right)}\left(\theta+\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j}^{p_{j}^{F}}\right)\lambda_{\text{Foreign}}\left(d\log p_{\text{Foreign}}\right)}{1+\frac{2\rho}{1+2\rho\left(1-\theta\right)}\left(\theta+\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j}^{p_{j}^{F}}\right)\lambda_{\text{Home}}\left(1-\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}\right)+\frac{2\omega}{1+2\rho\left(1-\theta\right)}\frac{d\log K}{d\log p_{f,j}}-\frac{2\rho}{1+2\rho\left(1-\theta\right)}\frac{d\log M}{d\log p_{f,j}}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\frac{d\log p^{F}}{d\log p_{\text{Foreign}}}=\underbrace{\frac{d\log p_{f,j}}{d\log p_{\text{Foreign}}}}_{<0}\left(\lambda_{\text{Home}}\lambda_{j}^{p_{j}^{F}}\left(1-\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}\right)-\omega\frac{d\log K}{d\log p_{f,j}}\right)+\lambda_{\text{Foreign}}\lambda_{j}^{p_{j}^{F}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Foreign Sourcing"
+
+\end_inset
+
+A change in the price of foreign inputs has an equilibrium effect on domestic
+ input prices of
+\begin_inset Formula 
+\[
+\left(1-\eta_{a}\right)\frac{d\log p_{f,j}}{d\log p_{\text{Foreign}}}=\frac{-2\rho}{1+2\rho\left(1-\theta\right)}\left(\underbrace{\theta}_{\text{Competition}}+\underbrace{\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j}^{p_{j}^{F}}}_{\text{Expansion of Input Demand}}\right)\lambda_{\text{Foreign}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{a}$
+\end_inset
+
+, defined in Appendix Equation X, summarizes the feedback effect of input
+ prices on itself which includes the effects on quantities, entry, and the
+ stock of local knowledge.
+ 
+\end_layout
+
+\begin_layout Standard
+The first direct effect of a change in the foreign input price is one of
+ competition.
+ Domestic suppliers now receive a smaller share of the total input demand
+ and as a result face less incentive to innovate.
+ At the same time, the decrease in input prices faced by downstream firms
+ leads them to demand more inputs and adjusts their R&D expenditure away
+ from inputs - freeing up more R&D to be done by suppliers.
+ On balance, since 
+\begin_inset Formula $\theta>1$
+\end_inset
+
+, the competition effect dominates, and tougher foreign competition leads
+ to higher input prices.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+XXX Need to connect to literature on escape competition.
+ How do you do this? Do you need to have firms intenalize effect on price
+ index.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now to extrapolate to the effect on final prices, we need to account for
+ a few more changes.
+ Using Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: Upstream Profits and Prices"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we note that alongside the change in input price, we have a change in
+ the number of upstream entrants and a change in the stock of local knowledge.
+ The change in the number of entrants of course has effects on the input
+ price, contained in 
+\begin_inset Formula $\eta_{a}$
+\end_inset
+
+, but they also have first-order effects in final prices through the love-of-var
+iety effect and the effect of knowledge spillovers on the productivity of
+ R&D by downstream firms.
+ So, even if total expenditure on inputs falls, if foreign sourcing sufficiently
+ deteriorates the amount of local R&D, then it can result in higher final
+ prices.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\log p^{F}}{d\log p_{\text{Foreign}}}=\underbrace{\frac{d\log p_{f,j}}{d\log p_{\text{Foreign}}}}_{<0}\left(\lambda_{\text{Home}}\lambda_{j}^{p_{j}^{F}}\left(1-\frac{1}{\theta}\underbrace{\frac{d\log M}{d\log p_{f,j}}}_{<0}\right)-\omega\underbrace{\frac{d\log K}{d\log p_{f,j}}}_{<0}\right)+\lambda_{\text{Foreign}}\lambda_{j}^{p_{j}^{F}}
+\]
+
+\end_inset
+
+So if a downstream firm determined that foreign sourcing, while lowering
+ input costs, could lead to ultimately worse local conditions, then what
+ other strategies could it pursue? For one, it could set up a joint venture
+ with the input supplier to move its R&D investment or knowledge from abroad
+ into the local economy.
+ This is perhaps what we are seeing in the partnerships between legacy automaker
+s in the US and battery suppliers from China, Japan, and South Korea - joint
+ ventures that seek to lower input prices but also transfer technology and
+ know-how into the local economy.
+ Additionally, note that we abstracted from endogenous adjustments abroad.
+ A knock-on effect from foreign sourcing is that foreign suppliers will
+ now undertake the input R&D previously done by local firms.
+ Presumably those foreign firms transact more with foreign downstream competitor
+s and share local knowledge spillovers with those firms.
+ The reallocation of R&D abroad would then worsen the relative technological
+ position of domestic firms.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, some caveats to these results.
+ Note again that Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Foreign Sourcing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ suggests that prices offered by domestic firms can only rise in response
+ to foreign competition.
+ We know that empirically, this isn't always the case (XXX reference), so
+ here we offer three caveats to the model that allow foreign sourcing to
+ lead to greater levels of innovation by domestic first.
+ First, note that in a model with heterogeneous firms, the firms exiting
+ would be the lowest productivity ones.
+ This may lead to reallocation of demand such that remaining high productivity
+ firms experience a rise in R&D.
+ In light of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Planner Solution"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, this reallocation corrects for underinvestment by high productivity firms.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Market Expansion
+\end_layout
+
+\begin_layout Standard
+Second, the baseline model keeps the extent of the market for downstream
+ goods fixed.
+ But if this were not the case, if aggregate demand increased as prices
+ fell, then foreign sourcing could lead to a more demand for all input suppliers.
+ Suppose that the demand shifter satisfied 
+\begin_inset Formula $D=\bar{D}P^{\sigma-1-\kappa}$
+\end_inset
+
+, then Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Foreign Sourcing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ could be adjusted as follows: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{Expansion of Input Demand:}\quad\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j}^{p_{j}^{F}}\Rightarrow\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\frac{1+\kappa}{1-\kappa\rho}\lambda_{j}^{p_{j}^{F}}
+\]
+
+\end_inset
+
+where if 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is sufficiently large, then the market expansion effect of foreign sourcing
+ would lead to gains for even domestic suppliers.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+XXXQuasi-linear preferences?
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\max_{x_{0},x_{j}}x_{0}+\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}\beta}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Escape Competition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\max_{I_{f},\left\{ I_{f,j}\right\} _{j\in N}}\sum_{j}y_{f,j}\left(I_{f}^{\rho}I_{f,j}^{\rho}\right)^{\theta-1}-r\left(I_{f}+I_{f,j}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y_{f,j}\equiv\bar{c}_{f,j}^{1-\theta}\left(\mu-1\right)\mu^{-\theta}x_{j}I_{j,I}^{-\rho}P_{j}^{-1}$
+\end_inset
+
+.
+ Let's write 
+\begin_inset Formula 
+\[
+\max_{I_{f},\left\{ I_{f,j}\right\} _{j\in N}}\sum_{j}\hat{y}_{f,j}\frac{\left(I_{f}^{\rho}I_{f,j}^{\rho}\right)^{\theta-1}}{P_{j}}-r\left(I_{f}+I_{f,j}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max_{I_{f},\left\{ I_{f,j}\right\} _{j\in N}}\sum_{j}\hat{y}_{f,j}\frac{\left(I_{f}^{\rho}I_{f,j}^{\rho}\right)^{\theta-1}}{\left(I_{f}^{\rho}I_{f,j}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}}-r\left(I_{f}+I_{f,j}\right)
+\]
+
+\end_inset
+
+So we have with assumptions
+\begin_inset Formula 
+\[
+\max_{I_{f},\left\{ I_{f,j}\right\} _{j\in N}}\hat{y}_{j}\frac{\left(I_{f}^{\rho}\right)^{\theta-1}}{\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}}-r\left(I_{f}\right)
+\]
+
+\end_inset
+
+now we get to 
+\begin_inset Formula 
+\[
+\hat{y}_{j}\frac{\rho\left(\theta-1\right)\left(I_{f}^{\rho}\right)^{\theta-2}\left(\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}\right)-\rho\left(\theta\right)\left(I_{f}^{\rho}\right)^{\theta-1}\left(I_{f}^{\rho}\right)^{\theta-1}}{\left(\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}\right)^{2}}-r=0
+\]
+
+\end_inset
+
+So we get 
+\begin_inset Formula 
+\[
+\frac{\rho\left(\theta-1\right)\left(I_{f}^{\rho}\right)^{\theta-2}}{\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}}-\frac{\rho\left(\theta\right)\left(I_{f}^{\rho}\right)^{\theta-1}\left(I_{f}^{\rho}\right)^{\theta-1}}{\left(\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}\right)^{2}}=\frac{r}{\hat{y}_{j}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho\left(\theta-1\right)\left(I_{f}^{\rho}\right)^{-2}\lambda_{f}-\frac{\rho\left(\theta\right)\left(I_{f}^{\rho}\right)^{2\theta-2}}{\left(\left(I_{f}^{\rho}\right)^{\theta}+\left(p_{\text{F}}\right)^{\theta}\right)^{2}}=\frac{r}{\hat{y}_{j}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\rho\left(\theta-1\right)\left(I_{f}^{\rho}\right)^{-2}\lambda_{f}-\rho\left(\theta\right)\left(I_{f}^{\rho}\right)^{-2}\lambda_{f}^{2}=\frac{r}{\hat{y}_{j}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{f}^{\rho}=\left(\left(\rho\left(\theta-1\right)\lambda_{f}-\rho\left(\theta\right)\lambda_{f}^{2}\right)\frac{\hat{y}_{j}}{r}\right)^{\frac{1}{2}}
+\]
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $\lambda=1$
+\end_inset
+
+, then we have 
+\begin_inset Formula 
+\[
+I_{f}^{\rho}=\left(\left(\rho\left(\theta-1\right)\lambda_{f}-\rho\left(\theta\right)\lambda_{f}^{2}\right)\frac{\hat{y}_{j}}{r}\right)^{\frac{1}{2}}
+\]
+
+\end_inset
+
+and we have 
+\begin_inset Formula 
+\[
+I_{f}^{\rho}=\left(\left(\rho\left(\theta-1\right)\lambda_{f}-\rho\left(\theta\right)\lambda_{f}^{2}\right)\frac{\hat{y}_{j}}{r}\right)^{\frac{1}{2}}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $\lambda=1$
+\end_inset
+
+, negative incentive to do R&D - just reduce prices.
+ Where 
+\begin_inset Formula 
+\[
+\lambda_{f}=\frac{\left(\mu\bar{c}_{f,j}I_{f}^{-\rho}\right)^{-\theta}}{\left(\mu\bar{c}_{f,j}I_{f}^{-\rho}\right)^{-\theta}+\left(p_{\text{\text{Foreign}}}\right)^{-\theta}}
+\]
+
+\end_inset
+
+so fixed point.
+ Suppose 
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Third, suppose domestic inputs were supplied by an oligopolist 
+\begin_inset Formula $f$
+\end_inset
+
+ that internalizes its impact on the supplier price index when it determines
+ its market share for the input demand from the buyer.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I continue to assume that the firm does not internalize its impact on downstream
+ prices and hence aggregate input demand.
+\end_layout
+
+\end_inset
+
+ Their new optimization problem is then: 
+\begin_inset Formula 
+\[
+\max_{I_{f}}\tilde{x}_{j}\frac{\mu-1}{\mu}\frac{\left(\mu\bar{c}_{f,j}I_{f}^{-2\rho}\right)^{1-\theta}}{\left(\mu\bar{c}_{f,j}I_{f}^{-2\rho}\right)^{-\theta}+\left(p_{\text{\text{Foreign}}}\right)^{-\theta}}-2rI_{f}
+\]
+
+\end_inset
+
+The firm's optimal R&D spending then satisfies
+\begin_inset Formula 
+\[
+I_{f}^{\rho}=\left(\left(\rho\left(\theta-1\right)\lambda_{f}-\rho\left(\theta\right)\lambda_{f}^{2}\right)\frac{\tilde{x}_{j}}{r}\right)^{\frac{1}{2}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\lambda_{f}=(\mu\bar{c}_{f,j}I_{f}^{-\rho})^{-\theta}/((\mu\bar{c}_{f,j}I_{f}^{-\rho})^{-\theta}+(p_{\text{\text{Foreign}}})^{-\theta}).$
+\end_inset
+
+ In the limiting case where 
+\begin_inset Formula $p_{\text{Foreign}}\rightarrow\infty$
+\end_inset
+
+, then there is no incentive to invest as suppliers already capture the
+ whole market and cost reduction will only lower the price they charge.
+ A shock from foreign competition can lead to more innovation as firms now
+ see a reason to spend on R&D to win back market share.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Theory : Escape Innovation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, I plot R&D as a function of the foreign price.
+ Note the non-monotonic response.
+ Decreases in price can either lower domestic R&D as they take market share
+ and potential profits away.
+ Or, price decreases can raise domestic R&D as they undermine the monopoly
+ position of the domestic firm and give it reason to invest to win back
+ market share.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\noindent
+\align left
+
+\size small
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\size small
+\begin_inset space \hfill{}
+\end_inset
+
+
+\size default
+
+\begin_inset Graphics
+	filename ../../Research/outsourcing_innovation/Theory/Code/Results/escape_competition.png
+	lyxscale 25
+	scale 15
+
+\end_inset
+
+
+\size small
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\size default
+
+\begin_inset VSpace -0.25cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Innovation to Escape Foreign Competition
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Theory : Escape Innovation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace 0.25cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\size footnotesize
+Note.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Offshoring Assembly Abroad
+\end_layout
+
+\begin_layout Standard
+I next consider how offshoring assembly impacts input prices through the
+ endogenous adjustment of R&D.
+ While, we have abstracted from a discrete sense of geography in this industry
+ equilibrium, we can approximate assembly offshoring through three changes.
+ First there is a decrease in assembly costs, 
+\begin_inset Formula $c_{j,A}\downarrow$
+\end_inset
+
+, second an increase in the distance between downstream innovation and assembly
+ 
+\begin_inset Formula $d_{j,A}$
+\end_inset
+
+, and third an increase in the distance between upstream innovation and
+ downstream production 
+\begin_inset Formula $d_{f,j}$
+\end_inset
+
+.
+ The following proposition summarizes the first-order effects of these three
+ changes on input prices.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Offshoring Assembly Equilibrium Response"
+
+\end_inset
+
+Offshoring assembly has an equilibrium effect on input prices of
+\begin_inset Formula 
+\[
+\left(1-\eta_{b}\right)d\log p_{f,j}=\frac{\tau}{1+2\rho}d\log d_{f,j}+\frac{2\rho}{1+2\rho}\frac{1}{\rho+1}\left(1-\lambda_{j}^{I}\right)\left(d\log c_{j,A}+\tau d\log d_{j,A}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{b}$
+\end_inset
+
+, defined in Appendix Equation X, summarizes the feedback effects of input
+ prices on itself which includes the effects on quantities, spillovers,
+ and entry.
+ 
+\end_layout
+
+\begin_layout Standard
+A decrease in assembly costs or increase in assembly R&D efficiency (e.g.
+ decrease in 
+\begin_inset Formula $d_{j,A}$
+\end_inset
+
+) reduces prices and hence increases physical quantities.
+ This raises the demand for inputs, captured by 
+\begin_inset Formula $(1-\lambda_{j}^{I})/(1+\rho)$
+\end_inset
+
+, which in turn raises the R&D incentives of upstream firms and hence lowers
+ prices (R&D response on prices is captured by 
+\begin_inset Formula $2\rho/(1+2\rho)$
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The 
+\begin_inset Formula $(1-\lambda_{j}^{I})/(1+\rho)$
+\end_inset
+
+ contains two forces - both the effect of lower prices on higher quantities
+ - but also the lower assembly prices in particular leads to downstream
+ R&D reallocation towards inputs, which dampens the quantity effect.
+\end_layout
+
+\end_inset
+
+ A more direct effect is the effect of upstream R&D efficiency, i.e.
+ the rise in 
+\begin_inset Formula $d_{f,j}$
+\end_inset
+
+, which has a first-order effect on prices.
+ 
+\end_layout
+
+\begin_layout Standard
+Two notes on Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Offshoring Assembly Equilibrium Response"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ First, it is not clear without estimate of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho$
+\end_inset
+
+ what the effect of offshoring is in input prices in a symmetric equilibrium
+ - this is because 
+\begin_inset Formula $c_{j,A}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{j,A}$
+\end_inset
+
+ move in opposite directions - offshoring offers better labor conditions
+ for production but makes innovation harder due to the geographic fragmentation
+ of production.
+ Second, even if the effect of offshoring was to raise input prices, final
+ prices might still fall.
+ The determination follows from the following calculation: 
+\begin_inset Formula 
+\[
+d\log p^{F}=\left(1-\lambda_{j}^{I}\right)\left(d\log c_{A}+\tau d\log d_{j,A}\right)+d\log p_{f,j}\left(\lambda_{j}^{I}\left(1-\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}\right)-\omega\frac{d\log K}{d\log p_{f,j}}\right)
+\]
+
+\end_inset
+
+More concretely, changes in input prices will only alter final prices according
+ to 
+\begin_inset Formula $\lambda_{j}^{I}$
+\end_inset
+
+ - their share in final prices.
+ If this share is small, or if the rise in input prices is insignificant,
+ offshoring may still lower final prices.
+ But, outside of the direct effect of an input price change, offshoring
+ - if it raises input prices - will also lead to upstream exit and will
+ lead to lower R&D investment by suppliers - deteriorating the spillover
+ component of innovation.
+ 
+\end_layout
+
+\begin_layout Standard
+One caveat with this result, no firm uses the response in Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop: Offshoring Assembly Equilibrium Response"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to calculate their returns to offshoring - this is purely the equilibrium
+ effect where all firms experience the same change in fundamentals.
+ To get some sense of the private incentives, we next consider the change
+ in input prices faced by a particular infinitesimal firm when it alone
+ offshores.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop: Offshoring Assembly Firm Response"
+
+\end_inset
+
+Consider offshoring by an infinitesimally small firm which poses no changes
+ on prices indices or the aggregate demand faced by suppliers: 
+\begin_inset Formula 
+\[
+\left(1-\eta_{c}\right)d\log p_{f,j}=\frac{\tau}{1+\rho\left(1-\theta\right)}d\log d_{f,j}+\frac{\rho}{1+\rho\left(1-\theta\right)}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\frac{1}{1+\rho}\left(1-\lambda_{j}^{p_{j}^{F}}\right)\left(d\log c_{j,A}+\tau d\log d_{j,A}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{c}$
+\end_inset
+
+, defined in Appendix Equation X, summarizes the feedback effects of input
+ prices on itself which includes the effects on quantities, spillovers,
+ and entry.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Or, consider a shock to assembly costs that occurs for some firms 
+\begin_inset Formula $j$
+\end_inset
+
+ but not 
+\begin_inset Formula $-j$
+\end_inset
+
+.
+ Then we have price difference, result from business stealling etc.
+ 
+\begin_inset Formula 
+\[
+d\log p_{j}-d\log p_{-j}=\frac{\rho+1}{1+\rho\left(1-\sigma\right)}\left(\lambda_{A}d\log c_{j}^{A}+\lambda_{I}\frac{\rho}{1-\rho\left(\theta-1\right)}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\frac{1}{1+\rho}\lambda^{A}d\log c_{j}^{A}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{2}$
+\end_inset
+
+, defined in Appendix Equation X, summarizes the recursive effect of input
+ prices on itself which includes the effects on quantities, spillovers,
+ and entry.
+\end_layout
+
+\end_inset
+
+This expression offers several differences; to start, the 
+\begin_inset Formula $2\rho/(1+2\rho)$
+\end_inset
+
+ is replaced by two terms.
+ First, there is the fact that a firm that offshores has a lower relative
+ price - hence higher demand.
+ This is a business stealing effect - where the elasticity of substitution
+ across downstream firms dictates the returns to offshoring.
+ Second, there is the fact that when faced with greater demand from a particular
+ buyer, upstream firms will invest more for that buyer, and extent of the
+ investment response on the profit elasticity 
+\begin_inset Formula $\rho\left(\theta-1\right)$
+\end_inset
+
+.
+ It is also clear from the fact that 
+\begin_inset Formula $\theta>1$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+, that the private returns from unilateral offshoring are larger than the
+ equilibrium returns.
+ Combined with fixed costs of offshoring, there is a possibility for a prisoner'
+s dilemma to emerge.
+ It may be privately optimal for any given firm to offshore from an equilibrium
+ where all firms are on-shore, but the equilibrium achieved when all firms
+ offshore leaves everyone worse off.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+So in equilibrium, profits aren't different - consumers face lowers prices
+ - firms sunk costs for nothing.
+ But, still individually profitable ex-ante if you give each firm the choice.
+ Prisoners dilema.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+d\log p_{f,j}=\frac{\frac{\tau}{1+\rho\left(1-\theta\right)}d\log d_{f,j}+\frac{\rho}{1-\rho\left(\theta-1\right)}\frac{1}{1+\rho}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\frac{1}{1+\rho\left(1-\sigma\right)}\left[d\log c_{A}+\tau d\log d_{j,A}\right]}{\left[1+\frac{\rho}{1-\rho\left(\theta-1\right)}\left(\underbrace{\theta}_{competition}-\underbrace{\frac{\rho}{\rho+1}}_{reallocation}\right)-\underbrace{\frac{\rho}{1-\rho\left(\theta-1\right)}\frac{1}{1+\rho}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\frac{1}{1+\rho\left(1-\sigma\right)}}_{\text{p through demand}}\right]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{\frac{1}{1+\rho\left(1-\sigma\right)}}_{\text{Elasticity of Final Prices w.r.t Inputs}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\underbrace{\left(\frac{1}{1+\rho}\frac{\sigma}{1+\rho\left(1-\sigma\right)}\right)}_{\text{\text{Elasticity of Input Demand w.r.t. Price }}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{\frac{\rho}{1-\rho\left(\theta-1\right)}}_{\text{Elasticity of Prices w.r.t. Profits}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+d\log p_{f,j}=\frac{\frac{\tau}{1+2\rho}d\log d_{f,j}+\frac{2\rho}{1+2\rho}\left(\underbrace{\frac{1}{\rho+1}\left(1-\lambda_{j}^{p_{j}^{F}}\right)}_{\text{Reallocation and Quantity Effect on \ensuremath{\tilde{x}}}}\right)\left(d\log c_{j,A}+\tau d\log d_{j,A}\right)}{1+\frac{2\rho}{1+2\rho}\left[\underbrace{\left(\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j}^{p_{j}^{F}}\right)}_{\text{Reallocation and Quantity Effect on \ensuremath{\tilde{x}}}}\left[1-\underbrace{\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}}_{\text{Love of Variety on Input Prices}}\right]\right]+\underbrace{\frac{2\omega}{1+2\rho}\frac{d\log K}{d\log p_{f,j}}}_{\text{Spillovers}}-\underbrace{\frac{2\rho}{1+2\rho}\frac{d\log M}{d\log p_{f,j}}}_{\text{Business Stealling}}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\log p^{F}=\left(1-\lambda_{j}^{p_{j}^{F}}\right)\left(d\log c_{A}+\tau d\log d_{j,A}\right)+d\log p_{f,j}\left(\lambda_{j}^{p_{j}^{F}}-\omega\frac{d\log K}{d\log p_{f,j}}-\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Do a figure in the c_j,A/d_j,A and d d_f,j space?
+\end_layout
+
+\begin_layout Plain Layout
+Fixed cost of exporting.
+\end_layout
+
+\begin_layout Plain Layout
+XXXXPlot the returns to offshoring, as a function of the mass of firms which
+ have already offshored - non-linearities - vary 
+\begin_inset Formula $\omega$
+\end_inset
+
+ and entry and such.
+ Add the market expansion thing too.
+ Do the innovation parameter 
+\begin_inset Formula $\rho$
+\end_inset
+
+ as well!
+\end_layout
+
+\begin_layout Plain Layout
+XXXX At a certain point, suppliers move abroad as well! As measure of offshore
+ rises - incentive for supplier to move as well rises
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+But that isn't everythgin.
+ If this firm also internalizes its spillovers to competitiors when making
+ its offshoring choice.
+ It would note that lower demand by competitiors - means less R&D for them
+ - means even higher prices.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+The Input Price Feedback Loop
+\end_layout
+
+\begin_layout Standard
+Finally, I unpack the term 
+\begin_inset Formula $\eta_{b}$
+\end_inset
+
+, while there are subtle differences in 
+\begin_inset Formula $\eta_{a},\eta_{b},\eta_{c}$
+\end_inset
+
+ - they all take the same general structure and capture the ways a change
+ in input prices feedback on itself through equilibrium adjustments like
+ entry, demand, and spillovers:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1-\eta_{b}\equiv1+\frac{2\rho}{1+2\rho}\left[\underbrace{\left(\frac{-\rho}{\rho+1}-\frac{1}{\rho+1}\lambda_{j,I}\right)}_{\text{Reallocation and Scale Effect on \ensuremath{\tilde{x}}}}\left[1-\underbrace{\frac{1}{\theta}\frac{d\log M}{d\log p_{f,j}}}_{\text{Love of Variety}}\right]\right]+\underbrace{\frac{2\omega}{1+2\rho}\frac{d\log K}{d\log p_{f,j}}}_{\text{Spillovers}}-\underbrace{\frac{2\rho}{1+2\rho}\frac{d\log M}{d\log p_{f,j}}}_{\text{Business Stealling}}
+\]
+
+\end_inset
+
+Where recall that Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem: Upstream Profits and Prices"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ provides expressions for 
+\begin_inset Formula $d\log M/d\log p_{f,j}$
+\end_inset
+
+ and 
+\begin_inset Formula $d\log K/d\log p_{f,j}$
+\end_inset
+
+ in terms of model parameters.
+ As for intuition, we first have the downstream R&D reallocation and scale
+ effects.
+ Higher input prices lead to more downstream R&D on inputs, and less downstream
+ quantities which both reduce the demand faced by upstream firms.
+ Where note, the price faced by downstream firms for inputs consists of
+ both the input price itself and the love of variety effect from the number
+ of suppliers.
+ Additionally, input prices affect entry and local R&D spillovers - with
+ spillovers reducing prices by raising the efficiency of R&D and entry raising
+ prices through a business stealing effect where each firm receives a lower
+ share of demand and hence faces a lower return to cost reductions.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Now if these weren't infinitesmal, there would be the effects ...
+\end_layout
+
+\begin_layout Plain Layout
+XXX Can we do the proposition without the infinitesmal effects? This would
+ be the 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ thing.
+\end_layout
+
+\begin_layout Plain Layout
+Note, if firms internalized their effect on the ...
+ - effects could be even larger!
+\end_layout
+
+\begin_layout Subsection
+Strategic Behavior
+\end_layout
+
+\begin_layout Plain Layout
+Delta Offshoring profit as a function of the number of firms that has moved?
+ And, profit of each firm individally.
+\end_layout
+
+\begin_layout Plain Layout
+And, offshoring profit for suppliers? As a function of how many have moved?
+\end_layout
+
+\begin_layout Plain Layout
+Second-order? Compare to private benefit? Non-linear dynamics?
+\end_layout
+
+\begin_layout Plain Layout
+Offshoring - increase initial profits...? Keep moving a measure of firms abroad
+ slowly? Now allows supplier adjustment? Do this model 
+\begin_inset Formula $P^{\theta}=\left(Mp_{f,j}^{-\theta}+M_{\text{Foreign}}p_{Foreign}^{-\theta}\right)^{-1}$
+\end_inset
+
+ but try to allow two separate profit functions and ...
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+http://www.promexicoindustry.com/en/article/ford-inaugurates-the-global-center-for
+-technology-and-business-in-mexico
+\end_layout
+
+\begin_layout Plain Layout
+https://www.prodensa.com/insights/blog/the-strategic-role-of-rd-in-enhancing-manuf
+acturing-in-mexico
+\end_layout
+
+\begin_layout Plain Layout
+https://gmauthority.com/blog/2025/04/30th-anniversary-for-gm-mexico-regional-engi
+neering-center/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+XXXX This is just taking the matrix inverse and collapsing it since we have
+ homogenous firms.
+ 
+\end_layout
+
+\begin_layout Standard
+XXXX Is it then possible to stick with the matrix stuff, by do a 2-country
+ case!!!! So like can one analytically use the matrix inversion? What assumption
+ would need to be made to simplify things!!!
+\end_layout
+
+\begin_layout Standard
+XXXXX Optimal policy - should it be a tariff or a subsidy? Well the tariff
+ is coordination device - don't actually need to pay out anything.
+ But the subsidy you actually have to pay out! So which one is optimal?
+ 
+\end_layout
+
+\begin_layout Subsection
+Ideas
+\end_layout
+
+\begin_layout Standard
+XXXX I need a theory with multi-locations.
+ 
+\end_layout
+
+\begin_layout Standard
+XXXX Do that next.
+ Have entry that is country-specific? Will that be tractable? 
+\end_layout
+
+\begin_layout Standard
+XXXX What if spillovers are input-specific? So like there are spillovers
+ from only input R&D onto supplier R&D, then that substition matters a lot.
+\end_layout
+
+\begin_layout Standard
+XXXX Nash in production network.
+ Assume homogenous ? Assume that downstream firms anticipate price response
+ of upstream.
+ 
+\end_layout
+
+\begin_layout Standard
+XXXX If there is relative underinvestment by high productivity in 
+\begin_inset Formula $I_{f,j}$
+\end_inset
+
+, what does that mean about 
+\begin_inset Formula $I_{f}/$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+XXXX What if there are heteogenous innovation costs? Should the buyer, if
+ they have lower innovation costs, over-innovate? 
+\end_layout
+
+\begin_layout Standard
+XXXX Compute Nash numerically!!!
+\end_layout
+
+\begin_layout Standard
+XXXX You can think of input innovation as in a reduced-form way capturing
+ outsourcing!!! Firms innovate to reduce dependence on outside firms, instead
+ supplying some of the input internally.
+ 
+\end_layout
+
+\begin_layout Standard
+XXXX In a monopolistic competition model, profits are prop to revenue.
+ Revenues are fixed in this model with insdustry demand fixed.
+ So no adjustment in downstream R&D.
+ 
+\end_layout
+
+\begin_layout Standard
+XXX Dynamic model.
+ So everywhere in my model, it has to be the case the the marginal value
+ of innovation is equalized.
+ Each firm is setting marginal profit equal to marginal cost, hence it must
+ be the same so long as marginal costs are the same.
+ 
+\end_layout
+
+\begin_layout Standard
+XXXX Would a recursive structure help? 
+\begin_inset Formula 
+\[
+V_{j}=\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{A}K_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}K_{I}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}+V_{j}
+\]
+
+\end_inset
+
+[
+\series bold
+XXX Dynamic Model 
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.
+\begin_inset Formula 
+\[
+\max_{x_{j}}\left(\sum_{j\in N}x_{j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}\text{ subject to }\sum_{j\in N}x_{j}p_{j}\leq\bar{D}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\max_{p_{j},I_{j,A},I_{j,I}}D\left(p_{j}\right)^{-\sigma}\times\left(p_{j}-\frac{c_{j,A}}{I_{j,A}^{\rho}}-\frac{c_{j,I}}{I_{j,I}^{\rho}}\right)-r\left(I_{j,A}+I_{j,I}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{I_{j,I}}{I_{j,A}+I_{j,I}}=\frac{\left(c_{j,I}\right)^{\frac{1}{\rho+1}}}{\left(c_{j,I}\right)^{\frac{1}{\rho+1}}+\left(c_{j,A}\right)^{\frac{1}{\rho+1}}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+I_{j,A}+I_{j,I}=\lambda_{1}D^{\frac{1}{1+\rho\left(1-\sigma\right)}}\left(\left(c_{j,I}\right)^{\frac{1}{\rho+1}}+\left(c_{j,A}\right)^{\frac{1}{\rho+1}}\right)^{\frac{\left(\rho+1\right)\left(1-\sigma\right)}{1+\rho\left(1-\sigma\right)}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}\left(\frac{c_{A}}{I_{j,A}^{\rho}}+\frac{c_{I}}{I_{j,I}^{\rho}}\right)
+\]
+
+\end_inset
+
+So we have
+\begin_inset Formula 
+\[
+\pi\left(I_{j,A},I_{j,I},K_{,jA},K_{,jI}\right)=\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{,jI}}\right)\right)^{1-\sigma}D-r\left(I_{j,A}+I_{j,I}\right)
+\]
+
+\end_inset
+
+Then we have 
+\begin_inset Formula 
+\[
+V\left(K_{,jA},K_{,jI}\right)=\max_{I_{j,A},I_{j,I}}\pi\left(I_{j,A},I_{j,I},K_{,jA},K_{,jI}\right)+\beta V\left(K_{j,A}\left(1-\delta\right)+I_{j,A},K_{,jI}\left(1-\delta\right)+I_{j,A}\right)
+\]
+
+\end_inset
+
+So in steady state we require
+\begin_inset Formula 
+\[
+K_{t+1}=K_{t}\left(1-\delta\right)+I_{t}
+\]
+
+\end_inset
+
+So we require
+\begin_inset Formula 
+\[
+K=\frac{1}{\delta}I.
+\]
+
+\end_inset
+
+Then we have
+\begin_inset Formula 
+\[
+\left(1-\beta\right)V\left(K_{,jA},K_{,jI}\right)=\max_{I_{j,A},I_{j,I}}\pi\left(I_{j,A},I_{j,I},\frac{1}{\delta}I_{j,A},\frac{1}{\delta}I_{j,I}\right)
+\]
+
+\end_inset
+
+From which we have 
+\begin_inset Formula 
+\[
+\max_{I_{j,A},I_{j,I}}\pi\left(I_{j,A},I_{j,I},\frac{1}{\delta}I_{j,A},\frac{1}{\delta}I_{j,I}\right)
+\]
+
+\end_inset
+
+So we have FOC 
+\begin_inset Formula 
+\[
+\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{K_{j,I}}I_{j,I}^{-\rho-1}\rho-r+\beta V_{I}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{A}}{K_{,jA}}I_{j,A}^{-\rho-1}\rho-r+\beta V_{A}=0
+\]
+
+\end_inset
+
+And we have envelope conditions 
+\begin_inset Formula 
+\[
+V_{I}=\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{I_{j,I}^{\rho}}K_{j,I}^{-2}-r+\delta V_{I}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{A}=\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{A}}{I_{j,A}^{\rho}}K_{,jA}^{-2}-r+\delta V_{A}
+\]
+
+\end_inset
+
+Now impose steady state conditions, we have 
+\begin_inset Formula 
+\[
+\left(1-\delta\right)V_{I}=\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{I_{j,I}^{\rho}}K_{j,I}^{-2}-r
+\]
+
+\end_inset
+
+so we get 
+\begin_inset Formula 
+\[
+\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{K_{j,I}}I_{j,I}^{-\rho-1}\rho-r+\frac{\beta}{1-\delta}\left(\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{I_{j,I}^{\rho}}K_{j,I}^{-2}-r\right)=0
+\]
+
+\end_inset
+
+Now impose the condition 
+\begin_inset Formula $K=\frac{1}{\delta}I.$
+\end_inset
+
+ And we get 
+\begin_inset Formula 
+\[
+\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{\frac{1}{\delta}I_{j,I}}I_{j,I}^{-\rho-1}\rho-r+\frac{\beta}{1-\delta}\left(\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}\frac{c_{I}}{I_{j,I}^{\rho}}\left(\frac{1}{\delta}I_{j,I}\right)^{-2}-r\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{1}{\sigma}\left(\frac{\sigma}{\sigma-1}\right)^{1-\sigma}\left(\frac{c_{A}}{I_{j,A}^{\rho}K_{,jA}}+\frac{c_{I}}{I_{j,I}^{\rho}K_{j,I}}\right)^{-\sigma}c_{I}I_{j,I}^{-\rho-2}\right)\left(\rho\delta+\frac{\beta}{1-\delta}\delta^{2}\right)-r\left(1+\frac{\beta}{1-\delta}\right)=0
+\]
+
+\end_inset
+
+So we can get relative allocations, then absolute allocations.
+\end_layout
+
+\begin_layout Plain Layout
+Now we ask about 
+\begin_inset Formula 
+\[
+K_{t+1}=K_{t}\left(1-\delta\right)+I_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+I_{t}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Try this https://www.princeton.edu/~reddings/papers/NGIW_Paper.pdf
+\end_layout
+
+\begin_layout Plain Layout
+XXX Why this matters.
+ If you pursue IP to improve your sector to where K_SS is higher, you might
+ have actually worse K_SS than competitors all along the transisiton until
+ you get to the long-run equilibrium.
+ Then dynamically, it would not be optiml.
+\end_layout
+
+\begin_layout Plain Layout
+XXXX So let's say you offshore production, then the innovation spillovers
+ start happening abroad and take a while to rival your domestic firms.
+ But, in the meantime, the domestic downstream firms benefit from the lower
+ costs, so they innovate more.
+ But in the long run, you get beat out.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.
+\begin_inset Formula 
+\[
+\max_{I_{f},I_{f,j}}\sum_{j}y_{j}\left(I_{f}^{\rho}I_{f,j}^{\rho}\right)^{\theta-1}-r\left(I_{f}+I_{f,j}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi\left(I_{f},\left\{ I_{f,j}\right\} \right)=\sum_{j}y_{j}\left(I_{f}^{\rho}K_{f}I_{f,j}^{\rho}K_{f,j}\right)^{\theta-1}-\sum_{j}r\left(I_{f}+I_{f,j}\right)
+\]
+
+\end_inset
+
+Then we have 
+\begin_inset Formula 
+\[
+V\left(K_{f},\left\{ K_{f,j}\right\} \right)=\max_{I_{f},\left\{ I_{f,j}\right\} }\pi\left(I_{f},\left\{ I_{f,j}\right\} \right)+\beta V\left(K_{f}\delta+I_{f},\left\{ K_{f,j}\delta+I_{f,j}\right\} \right)
+\]
+
+\end_inset
+
+We have FOCs
+\begin_inset Formula 
+\[
+\left\{ I_{f}\right\} :\rho\left(\theta-1\right)I_{f}^{\rho\left(\theta-1\right)-1}\sum_{j}y_{j}\left(K_{f}I_{f,j}^{\rho}K_{f,j}\right)^{\theta-1}-r+\beta V_{f}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\{ I_{f,j}\right\} :\rho\left(\theta-1\right)I_{f,j}^{\rho\left(\theta-1\right)-1}y_{j}\left(I_{f}^{\rho}K_{f}K_{f,j}\right)^{\theta-1}-r+\beta V_{f,j}
+\]
+
+\end_inset
+
+And we have envelope conditions
+\begin_inset Formula 
+\[
+V_{f}=\left(\theta-1\right)K_{f}^{\left(\theta-1\right)-1}\sum_{j}y_{j}\left(I_{f}^{\rho}I_{f,j}^{\rho}K_{f,j}\right)^{\theta-1}-r+\beta\delta V_{f}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{f}=\left(\theta-1\right)K_{f,j}^{\left(\theta-1\right)-1}y_{j}\left(I_{f}^{\rho}K_{f}I_{f}^{\rho}\right)^{\theta-1}-r+\beta\delta V_{f,j}=0
+\]
+
+\end_inset
+
+Now we write 
+\begin_inset Formula 
+\[
+\rho\left(\theta-1\right)I_{f}^{\rho\left(\theta-1\right)-1}\sum_{j}y_{j}\left(K_{f}I_{f,j}^{\rho}K_{f,j}\right)^{\theta-1}-r+\frac{\beta}{1-\beta\delta}\left(\left(\theta-1\right)K_{f}^{\left(\theta-1\right)-1}\sum_{j}y_{j}\left(I_{f}^{\rho}I_{f,j}^{\rho}K_{f,j}\right)^{\theta-1}-r\right)=0
+\]
+
+\end_inset
+
+and we impose 
+\begin_inset Formula $K_{f}=\delta^{-1}I_{f}$
+\end_inset
+
+ and 
+\begin_inset Formula $K_{f,j}=\delta^{-1}I_{f,j}$
+\end_inset
+
+.
+ Then we have
+\begin_inset Formula 
+\[
+\rho\left(\theta-1\right)I_{f}^{\left(\rho+1\right)\left(\theta-1\right)-1}\sum_{j}y_{j}\left(\delta^{-1}I_{f,j}^{\rho+1}\delta^{-1}\right)^{\theta-1}-r+\frac{\beta}{1-\beta\delta}\left(\left(\theta-1\right)\left(\delta^{-1}\right)^{\left(\theta-1\right)-1}I_{f}^{\left(\rho+1\right)\left(\theta-1\right)-1}\sum_{j}y_{j}\left(I_{f,j}^{\rho+1}\right)^{\theta-1}-r\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\left(\theta-1\right)I_{f}^{\left(\rho+1\right)\left(\theta-1\right)-1}\sum_{j}y_{j}\left(\delta^{-1}I_{f,j}^{\rho+1}\delta^{-1}\right)^{\theta-1}\right)\left(\rho-\frac{\beta}{1-\beta\delta}\left(\delta^{-1}\right)^{\left(\theta-1\right)-1}\right)-\left(1+\frac{\beta}{1-\beta\delta}\right)r=0
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\left(\left(\theta-1\right)I_{f,j}^{\left(\rho+1\right)\left(\theta-1\right)-1}y_{j}I_{f}^{\left(\rho+1\right)\left(\theta-1\right)}\right)\left(\rho-\frac{\beta}{1-\beta\delta}\left(\delta^{-1}\right)^{\left(\theta-1\right)-1}\right)-\left(1+\frac{\beta}{1-\beta\delta}\right)r=0
+\]
+
+\end_inset
+
+So we get 
+\begin_inset Formula 
+\[
+\frac{\left(y_{j}\right)^{\frac{1}{1-\rho\left(\theta-1\right)}}}{\sum_{j}\left(y_{j}\right)^{\frac{1}{1-\rho\left(\theta-1\right)}}}I_{f}=I_{f,j}
+\]
+
+\end_inset
+
+Now we ask about 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+] [XXXX Dynamic model with growth in demand 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+]
+\end_layout
+
+\end_body
+\end_document
