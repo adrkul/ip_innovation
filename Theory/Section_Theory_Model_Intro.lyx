@@ -1,0 +1,1532 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{lscape}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{bookmark}
+\usepackage{array}
+\usepackage{refstyle}
+\usepackage{float}
+\usepackage{dcolumn}
+\usepackage{capt-of}
+\usepackage{multirow}
+\usepackage{titling}
+\usepackage{pdfpages}
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
+
+\hypersetup{colorlinks=true,citecolor=black, linkcolor=darkred}
+\hypersetup{urlcolor=darkred}
+
+\newref{fig}{refcmd={\hyperref[#1]{Figure \ref{#1}}}}
+\newref{tab}{refcmd={\hyperref[#1]{Table \ref{#1}}}}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.10\textwidth}}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setlength{\droptitle}{-50pt}
+%%\setlength{\footskip}{20pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.75in
+\topmargin 0.75in
+\rightmargin 0.75in
+\bottommargin 0.75in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+This section illustrates the role of reshoring policy in supporting innovation.
+ Reshoring policy can be rationalized due to two spillovers.
+ Either, offshoring substitutes for R&D which previously benefit other firms,
+ or offshoring directly affects R&D productivity internally, or externally
+ .....
+\end_layout
+
+\begin_layout Subsection
+Theoretical Model
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Theoretic-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider an environment with a two-tiered production network.
+ Assembly firms, indexed by 
+\begin_inset Formula $j$
+\end_inset
+
+, sell differentiated varieties to consumers.
+ Supplier firms, indexed by 
+\begin_inset Formula $f$
+\end_inset
+
+, sell inputs used in production by the assembly firms.
+ Both types of firms may alter their productivity through innovation, represente
+d by 
+\begin_inset Formula $\{\boldsymbol{I}_{j},\boldsymbol{I}_{f}\}$
+\end_inset
+
+, or production structure, represented by 
+\begin_inset Formula $\{\boldsymbol{\omega}_{j},\boldsymbol{\omega}_{f}\}$
+\end_inset
+
+.
+ Two state variables, summarizing aggregate R&D and production structure
+ 
+\begin_inset Formula $\{\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\}$
+\end_inset
+
+, will depend on firm-level choices and affect the innovation process.
+ Factor prices are determined by the production of an outside good, which
+ serves as numeraire.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I interpret the model results as characterizing optimal policy for one sector,
+ sufficiently small that outcome on this sector do not affect economy-wide
+ aggregates like factor prices or preferences.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Technology.
+ 
+\end_layout
+
+\begin_layout Standard
+I specify technology in terms of a upstream and downstream firm's  cost
+ of production:
+\begin_inset Formula 
+\[
+\begin{alignedat}{2}\text{c_{f,j}\left(\boldsymbol{I}_{f},\boldsymbol{\omega}_{f}\right)} & \text{ and } & c_{j}\left(\boldsymbol{p}_{j,I},\boldsymbol{I}_{j},\boldsymbol{\omega}_{j}\right)\end{alignedat}
+.
+\]
+
+\end_inset
+
+Each firm can affect productivity through innovation 
+\begin_inset Formula $\{\boldsymbol{I}_{j},\boldsymbol{I}_{f}\}$
+\end_inset
+
+ - potentially along a number of input-specific, buyer-specific, or country-spec
+ific dimensions.
+ Each firm chooses a production structure that alters costs, 
+\begin_inset Formula $\{\boldsymbol{\omega}_{j},\boldsymbol{\omega}_{f}\}$
+\end_inset
+
+.
+ In the empirical model, this will representation location decisions - both
+ the choice of where to produce and where to do R&D - and firm-to-firm linkages
+ made between suppliers and buyers.
+ Downstream costs additionally depend on a vector of input prices, 
+\begin_inset Formula $\boldsymbol{p}_{j,I}=\{\tilde{p}_{f,j}\}_{f}$
+\end_inset
+
+, provided by upstream firms.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The dependence of costs on factor prices is suppressed into the choice of
+ production structure 
+\begin_inset Formula $\omega_{j},\omega_{f}$
+\end_inset
+
+.
+ For instance, 
+\begin_inset Formula $\omega$
+\end_inset
+
+ may denote the location of production.
+ If locations vary only in the cost of labor, differences in cost under
+ various values of 
+\begin_inset Formula $\omega$
+\end_inset
+
+ simply reflects difference in wages.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Innovation.
+\end_layout
+
+\begin_layout Standard
+Innovation is expressed as the outcome of a an R&D process:
+\begin_inset Formula 
+\[
+\boldsymbol{I}_{f}=\boldsymbol{I}_{f}\left(\boldsymbol{\iota}_{f},\boldsymbol{\omega}_{f},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right)\text{ and }\boldsymbol{I}_{j}=\boldsymbol{I}_{j}\left(\boldsymbol{\iota}_{j},\boldsymbol{\omega}_{j},\boldsymbol{\mathcal{I}},\boldsymbol{\Omega}\right).
+\]
+
+\end_inset
+
+Innovation is directly controlled by firms through R&D expenditure 
+\begin_inset Formula $\{\boldsymbol{\iota}_{f},\boldsymbol{\iota}_{j}\}$
+\end_inset
+
+, which may be a vector-valued input due to country-specific or function-specifi
+c R&D expenditures that contribute differently to innovation.
+ The productivity of R&D expenditure varies with production structure.
+ This reflects interactions between innovation and manufacturing activity
+ within-firm that spur innovation including learning by doing, tacit knowledge
+ transfers between workers, increased iteration speed, or joint problem-solving.
+ Additionally, R&D productivity is affected by R&D spillovers, summarized
+ by the state variable 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+, and production structure spillovers captured by 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+.
+ The former captures standard Marshallian forces in R&D, while the later
+ captures across-firm spillovers from production structure to R&D including
+ knowledge diffusion arising from suppliers and buyers coordination or labor
+ mobility across facilities operated by many firms.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For example, there may be country-specific aggregate R&D levels that depend
+ only on R&D spending done in those countries.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+and through an aggregate state 
+\end_layout
+
+\begin_layout Plain Layout
+The aggregates state - which includes moments of R&D expenditure, 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+, and industry structure, 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ - additionally affect costs.
+ The state variable 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+ represents a standard form of Marshallian externalities from collective
+ knowledge production, while aggregate industry 
+\begin_inset Formula $\boldsymbol{\Omega}$
+\end_inset
+
+ structure capture other forms of spillovers like geographic agglomeration
+ forces.
+ These aggregates can be multi-dimensional and depend differently on the
+ components of R&D and production structure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Policy.
+ 
+\end_layout
+
+\begin_layout Standard
+A planner will have the opportunity to affect the all margins of firm adjustment.
+ In particular, I write final prices 
+\begin_inset Formula $\bar{p}_{j}$
+\end_inset
+
+, input prices offered by suppliers 
+\begin_inset Formula $\{\bar{p}_{f,j}$
+\end_inset
+
+ and faced by buyers 
+\begin_inset Formula $\tilde{p}_{f,j}$
+\end_inset
+
+, and R&D costs 
+\begin_inset Formula $\{\bar{r}_{j,k},\bar{r}_{f,l}\}$
+\end_inset
+
+ as a function of the underlying variables and policy wedges: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{alignedat}{2}\text{Final Price:} & \quad & \bar{p}_{j}= & \left(1-t_{j}\right)p_{j},\\
+\text{Input Prices:} & \quad & \bar{p}_{f,j}= & \left(1-t_{f}\right)\left(1-t_{f,j}\right)p_{f,j},\\
+\text{Downstream R\&D Cost:} & \quad & \bar{r}_{j,k}= & \left(1-s_{j,k}\right)r,\\
+\text{Upstream R\&D Cost:} & \quad & \bar{r}_{f,k}= & \left(1-s_{f,k}\right)r.
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}\bar{p}_{j}= & \left(1-t_{j}\right)p_{j},\\
+\bar{p}_{f,j}= & \left(1-t_{j,j}\right)p_{j},\\
+\tilde{p}_{f,j}= & \left(1-s_{f,j}\right)p_{f,j},\\
+\bar{r}_{j,k}= & \left(1-s_{j,k}\right)r_{j,k},\\
+\bar{r}_{f,l}= & \left(1-s_{f,l}\right)r_{f.l}.
+\end{alignedat}
+\]
+
+\end_inset
+
+The indices 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell$
+\end_inset
+
+ are for each separate dimension of 
+\begin_inset Formula $\boldsymbol{\iota}_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\iota}_{f}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For example, 
+\begin_inset Formula $\boldsymbol{I}_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{I}_{f}$
+\end_inset
+
+ may consist of location-specific R&D components that differentially affect
+ cost according to xxx.
+\end_layout
+
+\end_inset
+
+ In addition, I assume that the cost of a particular production structure
+ takes the following form 
+\begin_inset Formula 
+\[
+\bar{f}\left(\boldsymbol{\omega}_{f}\right)=f\left(\boldsymbol{\omega}_{f}\right)+\phi\left(\boldsymbol{\omega}_{f}\right)\text{ and }\bar{f}\left(\boldsymbol{\omega}_{j}\right)=f\left(\boldsymbol{\omega}_{j}\right)+\phi\left(\boldsymbol{\omega}_{j}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\{\phi(\boldsymbol{\omega}_{f}),\phi(\boldsymbol{\omega}_{j})\}$
+\end_inset
+
+is a tax/subsidy associated with a production structure choice.
+\end_layout
+
+\begin_layout Paragraph
+Profit Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+Downstream firms determine final prices, R&D expenditures, and firm structure
+ to maximize profits:
+\begin_inset Formula 
+\begin{equation}
+\pi_{j}=\max_{\bar{p}_{j},\boldsymbol{I}_{j},\omega_{j}}q_{j}\left(p_{j}\right)\left(\bar{p}_{j}-c_{j}\left(\boldsymbol{p}_{j,I},\boldsymbol{I}_{j},\boldsymbol{\omega}_{j}\right)\right)-\boldsymbol{\bar{r}}_{j}\boldsymbol{I}_{j}-\bar{f}\left(\boldsymbol{\omega}_{j}\right).\label{eq: Downstream Profits}
+\end{equation}
+
+\end_inset
+
+Downstream firms each face a residual demand curve arising from consumer
+ demand and wield some monopoly power.
+ I assume that R&D resources are in perfectly elastic supply at a cost 
+\begin_inset Formula $\boldsymbol{\bar{r}}_{j}$
+\end_inset
+
+ to the firm.
+ Finally, each production structure is associated with fixed cost payment.
+ Upstream firms face a functionally equivalent 
+\end_layout
+
+\begin_layout Standard
+Likewise, upstream firms face a similar profit maximization problem:
+\begin_inset Formula 
+\begin{equation}
+\pi_{f}=\max_{\left\{ \bar{p}_{f,j}\right\} _{j},\boldsymbol{I}_{f},\omega_{f}}\sum_{j}q_{f,j}\left(p_{f,j}\right)\left[\bar{p}_{f,j}-c_{f,j}\left(\boldsymbol{I}_{f},\boldsymbol{\omega}_{f}\right)\right]-\boldsymbol{\bar{r}}_{f}\boldsymbol{I}_{f}-\bar{f}\left(\boldsymbol{\omega}_{f}\right)\label{eq: Upstream Profits}
+\end{equation}
+
+\end_inset
+
+where demand arises from the assembly firms' input expenditure, and profits
+ come from the sum of input sales to all assembly firms.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Aggregate State.
+ 
+\end_layout
+
+\begin_layout Standard
+The firm-level choices of R&D expenditure and production structure determine
+ the R&D state and industry structure.
+ And these aggregate can be multi-dimensional functions of the firms' choices:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\mathcal{I}}=\boldsymbol{\mathcal{I}}\left(\{\boldsymbol{\iota}_{f},\boldsymbol{\iota}_{j}\}\right)\text{ and }\boldsymbol{\Omega}=\boldsymbol{\Omega}\left(\{\omega_{f},\omega_{j}\}\right).\label{eq: Aggregation}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+[XXX] What if 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}=\boldsymbol{\mathcal{I}}\left(\{\boldsymbol{I}_{f},\boldsymbol{I}_{j}\},\left\{ \omega_{f},\omega_{j}\right\} \right)$
+\end_inset
+
+? So the local R&D spillovers are directly effects by production structure?
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Utility Maximization.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+I assume that the industry modeled here is small relative to the rest of
+ the economy such that utility can be represented by a quasi-linear utility
+ function.
+ XXX Drop In particular, a representative agent solves
+\end_layout
+
+\end_inset
+
+A representative agent chooses an optimal consumption profile over the varieties
+ produces by downstream firms and an outside good 
+\begin_inset Formula $C$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+U=\max_{C,\left\{ c_{j}\right\} _{j}}u\left(C,\left\{ c_{j}\right\} _{j}\right)\label{eq: Utility}
+\end{equation}
+
+\end_inset
+
+subject to 
+\begin_inset Formula $C+\sum p_{j}c_{j}\leq\boldsymbol{w}\boldsymbol{L}^{\prime}+\sum_{f}\pi_{f}+\sum_{j}\pi_{j}+T.$
+\end_inset
+
+ I set as numeraire the price of the outside good 
+\begin_inset Formula $C$
+\end_inset
+
+, use 
+\begin_inset Formula $\boldsymbol{w}\boldsymbol{L}^{\prime}$
+\end_inset
+
+ to denote the total payments received by factors (including payments for
+ R&D and entry), and 
+\begin_inset Formula $T$
+\end_inset
+
+ to denote the net government revenue from taxes and subsidies.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Equilibrium.
+\end_layout
+
+\begin_layout Standard
+An equilibrium is defined by a set of prices, R&D investments, and production
+ structures that solve 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Upstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Utility"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ - subject to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Aggregation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as well as standard market clearing and budget constraints.
+ Note, this model may admits the possibility of multiple equilibria depending
+ on the extent of complementarities in R&D and network spillovers.
+ Policy has the opportunity to improve outcomes either by fixing allocations
+ within a given equilibrium, or by directing firms towards selecting an
+ equilibrium with higher aggregate welfare.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Optimal Policy
+\end_layout
+
+\begin_layout Standard
+A planner's objective is to choose a set of policy instruments, 
+\begin_inset Formula $\{t_{j},t_{f},s_{f,j},s_{j,k},s_{f,l},\phi(\omega_{f}),\phi(\omega_{j})\}$
+\end_inset
+
+, that maximize welfare according to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Utility"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ I characterize some features of the optimal industry policy
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Optimal-Tax-1"
+
+\end_inset
+
+Assume the choice of production structure is fixed.
+ A planner chooses a standard set of taxes on final production and supplier
+ production that corrects the monopoly distortion.
+ They choose a set of taxes on the purchase of inputs that satisfies
+\begin_inset Formula 
+\[
+1-t_{f,j}=\frac{q_{j}}{q_{f,j}}\frac{\partial c_{j}}{\partial p_{f,j}}
+\]
+
+\end_inset
+
+and they choose an R&D subsidy that satisfies 
+\begin_inset Formula 
+\[
+s_{f}=\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}\frac{\partial\boldsymbol{\mathcal{I}}}{\partial\boldsymbol{I}_{f}}q_{f,j}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first tax corrects the extent to which upstream firms do not fully internali
+zes the benefits of price-reductions to downstream firms.
+ If Shephard's lemma held for the cost function implied by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, then the first tax would not be necessary.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Solving 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Downstream Profits"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for the optimal allocation of R&D implies a cost-function that can be written
+ as a function of factor prices and quantities.
+ See Appendix Section x for an example.
+ If Shephard's lemma held, then 
+\begin_inset Formula $q_{j}\frac{\partial c_{j}}{\partial p_{f,j}}=q_{f,j}$
+\end_inset
+
+ and the implied tax is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ However, in the presence of an endogenous R&D allocation and thus potential
+ non-constant returns to scale, a reduction in the price of inputs can lead
+ downstream firms to change their R&D expenditure and affect their unit
+ cost - an effect no internalized by suppliers.
+ The second tax corrects for the extent to which all firms do not fully
+ internalize how R&D investment spills over into the aggregate R&D state
+ 
+\begin_inset Formula $\boldsymbol{\mathcal{I}}$
+\end_inset
+
+.[Lemma 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.From which we get 
+\begin_inset Formula 
+\[
+I_{j,A}=\left(\underbrace{D\left(p_{j}\right)^{-\sigma}}_{q_{j}}c_{A}\frac{\rho}{r}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{j,A}=\left(\underbrace{D\left(p_{j}\right)^{-\sigma}}_{q_{j}}c_{A}\frac{\rho}{r}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{I_{j,A}}{I_{j,I}}=\left(\frac{c_{A}}{c_{I}}\right)^{\frac{1}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}\left(\frac{c_{A}}{I_{j,A}^{\rho}}+\frac{c_{I}}{I_{j,I}^{\rho}}\right)
+\]
+
+\end_inset
+
+So we get 
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}\left(c_{A}\left(\frac{\rho}{r}q_{j}c_{A}\right)^{\frac{-\rho}{\rho+1}}+c_{I}\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{\rho+1}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p_{j}=\frac{\sigma}{\sigma-1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)
+\]
+
+\end_inset
+
+So unit costs are 
+\begin_inset Formula 
+\[
+c_{j}=q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(\left(c_{A}\right)^{\frac{1}{\rho+1}}+\left(c_{I}\right)^{\frac{1}{\rho+1}}\right)
+\]
+
+\end_inset
+
+Now we have 
+\begin_inset Formula 
+\[
+\frac{dc_{j}}{dc_{i}}=\frac{1}{\rho+1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+Now note that input demand is
+\begin_inset Formula 
+\[
+\left\{ I_{j,I}\right\} :\rho q_{j}c_{I}I_{j,I}^{-\rho-1}=r\implies\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{1}{1+\rho}}=I_{j.I}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{I}=q_{j}\times\frac{1}{I_{j,I}^{\rho}}=q_{j}\times\frac{1}{I_{j,I}^{\rho}}=q_{j}\times\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{1+\rho}}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\frac{q_{j}}{q_{f,j}}\frac{\partial c_{j}}{\partial p_{f,j}}=\frac{q_{j}}{q_{j}\times\left(\frac{\rho}{r}q_{j}c_{I}\right)^{\frac{-\rho}{1+\rho}}}\frac{1}{\rho+1}q_{j}^{\frac{-\rho}{\rho+1}}\left(\frac{\rho}{r}\right)^{\frac{-\rho}{\rho+1}}\left(c_{I}\right)^{\frac{-\rho}{\rho+1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{1}{\rho+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+.InCES model we have 
+\begin_inset Formula 
+\[
+\left(p_{j}-c_{j}\right)dq_{j}=-t_{j}q_{j}dp_{j}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{p}_{j}=\frac{\sigma}{\sigma-1}c\implies p_{j}=\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}
+\]
+
+\end_inset
+
+so we have 
+\begin_inset Formula 
+\[
+\tau=-\frac{\left(p_{j}-c_{j}\right)}{p_{j}}\frac{dq_{j}/q_{j}}{dp_{j}/p_{j}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\frac{\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}c-c}{\frac{\sigma}{\sigma-1}\frac{c}{1-\tau}c}\times\sigma
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)\left(1-\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)+\left(\sigma-1\right)\left(\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\sigma-\left(\sigma-1\right)+\sigma\tau-\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=1+\sigma\tau-\tau
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\frac{1}{2-\sigma}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\tau=\frac{\left(\sigma-1\right)}{\sigma}\left(1-\tau\right)\left(-\sigma\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau=\left(\sigma-1\right)\left(1-\tau\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau-1=\left(\sigma-1\right)
+\]
+
+\end_inset
+
+XXX Should it be 
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\sum_{j}q_{j}\times dp_{j}\\
++ & \left(\bar{p}_{j}-c_{j}\right)dq_{j}+q_{j}d\bar{p}_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+\sum_{j}t_{j}q_{j}dp_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{p}_{j}=\left(1-t_{j}\right)p_{j}$
+\end_inset
+
+ hence 
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\sum_{j}q_{j}\times dp_{j}\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}+q_{j}dp_{j}\left(1-t_{j}\right)\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+\sum_{j}t_{j}q_{j}dp_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & -\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}
+\end{alignedat}
+\]
+
+\end_inset
+
+So we have 
+\begin_inset Formula 
+\[
+\left(p_{j}-c_{j}\right)dq_{j}=0
+\]
+
+\end_inset
+
+Now we write for supplers
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}dU/\frac{\partial V}{\partial I}= & q_{j}\left(p_{j}\right)\frac{\partial c_{j}\left(\left\{ p_{f,j}\right\} _{f},I_{j},K\right)}{\partial p_{f,j}}dp_{f,j}\\
++ & \left(\left(1-t_{j}\right)p_{j}-c_{j}\right)dq_{j}\\
++ & \sum_{j}t_{j}dq_{j}p_{j}+
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The next set of policies regards correcting the choice of 
+\begin_inset Formula $\omega_{j}$
+\end_inset
+
+.
+ I can not characterize a fully generic policy here, so I specialize the
+ model to a simplified case with only two types of upstream and downstream
+ firms.
+ As an intuitive example, one can think of these choices are representing
+ the choice of suppliers or downstream firms to offshore production.
+\end_layout
+
+\begin_layout Standard
+XXX The equilibrium that arises will depend on conduct assumptions on how
+ firms choose 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To make sense of what policy may look like for production structures, consider
+ the following case.
+ There is a unit mass of homogenous upstream and downstream firms.
+ Firms can choose one of two structures 
+\begin_inset Formula $\omega_{f}\in\left\{ 0,1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\omega_{j}\in\left\{ 0,1\right\} $
+\end_inset
+
+ such that the mass of type 1 upstream and downstream firms can be represented
+ by 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Suppose that the cost function is monotonic in all arguments.
+ 
+\end_layout
+
+\end_inset
+
+One can heuristically think about these as extensive margin choices to offshore
+ production.
+ 
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:Optimal-Tax-2"
+
+\end_inset
+
+Consider the case described in the previous paragraph.
+ Suppose an equilibrium allocation is interior, so that 
+\begin_inset Formula $M,N\in\left(0,1\right)$
+\end_inset
+
+, and marginal changes in M and N are well defined.
+ Then, the optimal tax on type 
+\begin_inset Formula $1$
+\end_inset
+
+ firms is
+\begin_inset Formula 
+\[
+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\Omega}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\Omega}}q_{f,j}\right)\times\frac{d\Omega}{dM}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}q_{f,j}\right)\times\left(\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}\right)=\phi_{f}.
+\]
+
+\end_inset
+
+If firms are not marginal at the planner's preferred allocation 
+\begin_inset Formula $\left\{ M,N\right\} $
+\end_inset
+
+, the optimal tax is for inducing 
+\begin_inset Formula $\omega_{f}=0$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\phi_{f}=\pi_{f}\left(\omega_{f}=1;M,N\right)-\pi_{f}\left(\omega_{f}=1;M,N\right),
+\]
+
+\end_inset
+
+and compensates firms for the entire profit difference between...
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In that case, the planner compares welfare across the feasible corner allocation
+s and sets taxes/subsidies on production structure so as to implement the
+ preferred allocation as an equilibrium.
+ The sign of the marginal externality continues to determine the direction
+ of the optimal intervention, but the level of the tax/subsidy is pinned
+ down by the requirement that firms’ private incentives satisfy the relevant
+ inequality at the corner.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A tax is required to correct two externalities through the aggregate states.
+ First, firms do not internalize how their choice to offshore affects the
+ aggregate industry structure which alters the unit cost of other firms.
+ For instance, if there are geographic agglomeration affects from the proximity
+ of manufacturing.
+ Second, firms do no internalize that the different R&D levels that come
+ with offshoring will affect other firms through the Marshallian externalities.
+ For example, if offshoring is a substitute for R&D or causes firms to relocate
+ R&D abroad.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I model R&D as a productivity-improving endeavor.
+ As a result, the marginal returns to R&D are high when costs are high.
+ However, high costs also tend to lower quantities sold, and the marginal
+ returns to R&D rise with quantities.
+ In order for offshoring to be a substitute for R&D, the cost reduction
+ has to offset the quantity gains.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A marginal equilibrium may arise because choises are strategic subsitites,
+ and the economy can only sustain a limited number offshoring firms.
+ Now if they are complements, then the first firm may find offshoring profitable
+, makes the second firm think it is profitable...
+ Such that even though 
+\begin_inset Formula $\Delta\left(1\right)>0$
+\end_inset
+
+ we have 
+\begin_inset Formula $W<0$
+\end_inset
+
+.
+ But for the first firm 
+\begin_inset Formula $\Delta\left(0\right)>Externality$
+\end_inset
+
+.
+ In this case marginal equilibrium would not exist.
+ And policy would have to correct the corner.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Newpage pagebreak
+\end_inset
+
+We start by defining the private returns to offshoring, given the aggregate
+ state 
+\begin_inset Formula $\boldsymbol{\Omega}=\left\{ M,N\right\} $
+\end_inset
+
+, as 
+\begin_inset Formula 
+\[
+\Delta_{f}\left(M,N\right)=\pi_{f}\left(\omega_{f}=1;M,N\right)-\pi_{f}\left(\omega_{f}=1;M,N\right)
+\]
+
+\end_inset
+
+with an equivalent expression for 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\Delta_{f}\left(M,N\right)>0$
+\end_inset
+
+, firms privately prefer structure 1.
+ Next, we define the marginal externality from increasing 
+\begin_inset Formula $M$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+\tau_{f}\left(M,N\right)=\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\Omega}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\Omega}}q_{f,j}\right)\times\frac{d\Omega}{dM}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}q_{f,j}\right)\times\left(\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The derivative of welfare with respsect to the mass of type-1 firms is ....
+\end_layout
+
+\begin_layout Plain Layout
+A purely margina tax is sufficent to implement the equilibrium only if firms
+ are marginal: 
+\begin_inset Formula $\Delta_{f}\left(M,N\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+If firms are not marginal, the smallest tax that maxes firms ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Now, even if at some point 
+\begin_inset Formula $\Delta_{f}\left(M,N\right)>|\tau_{f}\left(M,N\right)|$
+\end_inset
+
+, depends on the kind of equilibria that can be sustained.
+ If the planner believes that.
+ It may even be the case that this is true for all 
+\begin_inset Formula $\left(M,N\right)$
+\end_inset
+
+ but still prefer to implement the initial corner.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Optimal policy may be unrelated to the size of the externality, but may
+ need to ...
+\end_layout
+
+\begin_layout Proposition
+Assume that ...
+ Then 
+\end_layout
+
+\begin_layout Proposition
+The derivative of welfare with respsect to the mass of type-1 firms is 
+\begin_inset Formula 
+\[
+W_{M}\left(M,N\right)=\Delta_{f}\left(M,N\right)-\tau_{f}\left(M,N\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+A purely marginal Pigoubain tax is sufficient to implement the efficint
+ allocation only if firms are marginal: 
+\begin_inset Formula $\Delta_{f}\left(M,N\right)=0$
+\end_inset
+
+ at the relevant state.
+ 
+\end_layout
+
+\begin_layout Proposition
+If firms are not marginal, the smallest tax on choosing structure 1 that
+ makes a choosing 0 privately optimal is instead
+\begin_inset Formula 
+\[
+\tau_{f}^{\text{Corner}}\left(M,N\right)=\Delta_{f}\left(M,N\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The optimal policy will depend on the type of equilibria that will arise,
+ and thus on conduct assumptions on firms.
+ An equilibrium where firms are marginal - i.e.
+ the marginal firm is indifferent between 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\omega=1$
+\end_inset
+
+, can arise if offshoring decisions are strategtic subsitites and thus only
+ a fraction of firms can receive positive profits from offshoring.
+ In that case, 
+\end_layout
+
+\begin_layout Corollary*
+Assume that firms are not atomistic.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Even when the externlaity is model relative to the private gains, there
+ can be a large implementation problem.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Choose welfare maximizing allocation.
+ So, in the case of a prisoners dilema, we have all these offshore firms
+ because 
+\begin_inset Formula $\Delta_{f}\left(M,N\right)>0$
+\end_inset
+
+, but due to externlaities need to move them back.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Suppose the equilibrium was boundary.
+ Then 
+\begin_inset Formula 
+\[
+\Delta\pi_{f}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\Omega}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\Omega}}q_{f,j}\right)\times\frac{d\Omega}{dM}+\left(\sum_{j}\frac{\partial c_{j}}{\partial\boldsymbol{\mathcal{I}}}q_{j}+\sum_{f,j}\frac{\partial c_{f,j}}{\partial\boldsymbol{\mathcal{I}}}q_{f,j}\right)\times\left(\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}\right)=\phi_{f}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+XXX At the boundary!!! The optimal policy includes 
+\begin_inset Formula $\Delta\pi_{f}$
+\end_inset
+
+ which might be driven by entirely different forces.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+And 
+\begin_inset Formula $\Delta\pi_{f}$
+\end_inset
+
+ may be unrelated to 
+\begin_inset Formula $\Delta W$
+\end_inset
+
+ - which determines which equilibria may be selected.
+ So to choose policy, consider 
+\begin_inset Formula $\Delta W$
+\end_inset
+
+ - to implement policy, need to consider 
+\begin_inset Formula $\Delta\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+[X] Second-Best Policy Instruments, [X] Clean Proofs, [X] Strategic Consideratio
+ns: prop4_offshoring_pd.lyx 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+From Claude 
+\begin_inset Quotes eld
+\end_inset
+
+The model already acknowledges multiple equilibria (p.
+ 4 of the draft).
+ This is the most underexploited feature.
+ When R&D is complementary across firms — because spillovers mean one firm's
+ investment raises the return to another's — there can be a low-R&D trap
+ where no individual firm has an incentive to deviate, even though all firms
+ investing simultaneously would constitute a Pareto-superior equilibrium.
+\end_layout
+
+\begin_layout Plain Layout
+The classic Murphy-Shleifer-Vishny (1989) big-push model shows that coordinated
+ subsidies can achieve an equilibrium switch that firm-by-firm Pigouvian
+ corrections cannot.
+ Your model is richer: the network structure means the multiplier on coordinated
+ investment depends on which links are central, not just how many firms
+ are subsidized.
+ A proposition here would characterize the minimum coalition of firms whose
+ simultaneous subsidization triggers a switch to the high-R&D equilibrium
+ — essentially, the "tipping network." This would be the first such result
+ in a supply chain context with endogenous R&D and would directly motivate
+ the paper's policy results: standard Pigouvian corrections are within-equilibri
+um; the paper's industrial policy framework is needed precisely when you
+ want to select across equilibria.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ [X] Strategic Policy Considerations 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+From Claude 
+\begin_inset Quotes eld
+\end_inset
+
+The current comparative statics treat the small open economy as a price-taker.
+ But the most policy-relevant applications — the CHIPS Act, IRA, EU Green
+ Deal — are explicitly strategic: the US and EU are subsidizing domestic
+ R&D knowing that the other bloc is doing the same.
+ In a two-country extension, each government's R&D subsidy reduces domestic
+ costs, which through the supply chain affects input prices and innovation
+ incentives in the other country.
+ Whether subsidies are strategic complements or substitutes depends on the
+ sign of $
+\backslash
+tilde{
+\backslash
+lambda}_{j,I}$ — which your model already characterizes.
+\end_layout
+
+\begin_layout Plain Layout
+This connects to Brander-Spencer (1985) but with a supply chain mechanism
+ rather than Cournot competition: the channel is not output competition
+ but R&D spillovers mediated through bilateral prices.
+ The natural result is a proposition characterizing when beggar-thy-neighbor
+ subsidies emerge (strong cross-country spillovers, so foreign subsidies
+ reduce domestic R&D incentives) versus when free-riding dominates (weak
+ spillovers, so each country prefers the other to subsidize).
+ With the network structure, the answer will depend on the topology of which
+ supplier-buyer links cross borders, connecting directly to your IHS data.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+[X] There is a marginal differen 
+\begin_inset Formula $\boldsymbol{I}_{f|\omega_{f}=1}-\boldsymbol{I}_{f|\omega_{f}=0}$
+\end_inset
+
+ which is an equilibrium object that has business stealling.
+ But, what about the discrete comparison!!!!
+\end_layout
+
+\begin_layout Plain Layout
+[X] There is a point here! Connects to multuplicty.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+[X] Doesn't work when at a boindary - in the NE of the prisoners dilema.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+[X] Gains from reshoring? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
