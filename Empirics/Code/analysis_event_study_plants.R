@@ -22,6 +22,9 @@
 # Produces:
 #   Empirics/Figures/Main/event_study_plants_geo_part.pdf
 #   Empirics/Figures/Main/event_study_plants_table.tex
+#   Empirics/Figures/Main/event_study_plants_robustness_spec.tex
+#   Empirics/Figures/Main/event_study_plants_robustness_sample.tex
+#   Empirics/Figures/Main/event_study_plants_robustness_dist.tex
 
 rm(list = ls())
 set.seed(20260409)
@@ -29,6 +32,7 @@ set.seed(20260409)
 library(tidyverse)
 library(fixest)
 library(geosphere)
+library(latex2exp)
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 DATA_DIR <- "/Users/adrkul/Library/CloudStorage/Dropbox/Repos/Research/outsourcing_innovation/Empirics/Data"
@@ -95,7 +99,9 @@ prod_city <- read_csv(
 oem_openings_raw <- prod_city %>%
   filter(Value > 0) %>%
   group_by(`VP: Production Brand`, `VP: Country/Territory`, `VP: City`) %>%
-  summarise(opening_year = min(Year), .groups = "drop") %>%
+  summarise(opening_year = min(Year), 
+            closing_year = max(Year), .groups = "drop",
+            Value = mean(Value)) %>%
   rename(
     OEM         = `VP: Production Brand`,
     Country_oem = `VP: Country/Territory`,
@@ -105,10 +111,10 @@ oem_openings_raw <- prod_city %>%
   filter(
     country_code %in% eu_iso3,
     opening_year > 2000 + EVENT_PRE,
-    opening_year <= 2024 - EVENT_POST,
-    #opening_year >= 2000 + EVENT_PRE,
-    #opening_year <= 2024 - EVENT_POST
-  )
+    opening_year <= 2024 - EVENT_POST) %>% 
+  #filter(closing_year >= 2024) %>% 
+  filter(closing_year-opening_year > EVENT_POST) %>% 
+  select(!closing_year)
 
 # Geocoded downstream city coordinates (EU OEM plants, from geoapify)
 cities_coord_down <- read_csv(
@@ -117,6 +123,19 @@ cities_coord_down <- read_csv(
 ) %>%
   select(`original_VP: Country/Territory`, `original_VP: City`, lat, lon) %>%
   mutate(`original_VP: Country/Territory` = toupper(`original_VP: Country/Territory`))
+# Add manual geocodes for missing cities (if any)
+
+# Manual coordinates (uppercase to match your join keys)
+manual_coords <- tibble::tribble(
+  ~Country_oem, ~City_oem,                ~lat, ~lon,
+  "POLAND",     "ZERAN",                  52.30,       21.02,
+  "ITALY",      "NAPLES",                 40.852,      14.268,
+  "PORTUGAL",   "VENDAS NOVAS",           38.68,      -8.46,
+  "SPAIN",      "LINARES",                38.10,      -3.63,
+  "SPAIN",      "AVILA",                  40.66,      -4.70,
+  "BELGIUM",    "ANTWERP",                51.22,       4.40,
+  "GERMANY",    "DUSSELDORF",             51.23,       6.78
+)
 
 oem_openings <- oem_openings_raw %>%
   left_join(
@@ -124,6 +143,9 @@ oem_openings <- oem_openings_raw %>%
     by = c("Country_oem" = "original_VP: Country/Territory",
            "City_oem"    = "original_VP: City")
   ) %>%
+  left_join(manual_coords, by = c("Country_oem", "City_oem")) %>%
+  mutate(lat = coalesce(lat.y, lat.x), lon = coalesce(lon.y, lon.x)) %>%
+  select(!c("lat.x", "lon.x", "lat.y", "lon.y")) %>%
   filter(!is.na(lat), !is.na(lon), lat != 0) %>%
   mutate(event_id = row_number()) #%>% 
   #filter(country_code %in% c("CZE","SVK","HUN","ROU","POL"))
@@ -136,6 +158,11 @@ message(sprintf("Plant-opening events (EU, full window): %d", nrow(oem_openings)
 # Replicates the linkage join from data_plant_locations_NUTS.R.
 # A supplier "supplies" an OEM in part category P if there is any
 # firm-to-firm connection in that part in the IHS WSW data.
+ 
+# production_data_agg_global_name <- read_csv(
+#   file.path(IHS_DIR, "Sales2024/production_agg_name_city.csv")
+# ) %>% 
+#   select(`VP: Production Brand`, `VP: City`, `VP: Strategic Group`) %>% distinct() 
 
 supply_links = read_csv(file.path(DATA_DIR, "output/intmd/IHS_who_supply_who_down_plants.csv")) %>% 
   rename("Supplier_PSN" = "Supplier_PSN_1") %>% 
@@ -155,15 +182,34 @@ message(sprintf("Supplier-OEM-part linkages: %d", nrow(supply_links)))
 # lat/lon are NUTS3 centroids; they are non-null only for EU inventors by
 # construction in data_plant_locations_NUTS.R, so no additional EU filter needed.
 
+# XXX max versus sum
+
 nuts_panel <- read_csv(
   file.path(DATA_DIR, "output/final/data_analysis_final_NUTS.csv")
 ) %>%
-  select(Supplier_PSN, Country, Part, Year, lat, lon, count_roll, appln_count, log_prod) %>%
+  select(Supplier_PSN, Country, Part, Year, lat, lon, count_roll, appln_count, log_prod, 
+         avg_up_dist, avg_down_dist, avg_inv_up_dist, avg_inv_down_dist) %>%
+  # Need to aggregate patents across filing locations
+  group_by(Supplier_PSN, Part, Year, lat, lon) %>%
+  summarise(count_roll = sum(count_roll), 
+            appln_count = sum(appln_count), 
+            log_prod = mean(log_prod,na.rm=TRUE),
+            avg_up_dist = mean(avg_up_dist,na.rm=TRUE),
+            avg_down_dist = mean(avg_down_dist,na.rm=TRUE),
+            avg_inv_up_dist = mean(avg_inv_up_dist,na.rm=TRUE),
+            avg_inv_down_dist = mean(avg_inv_down_dist,na.rm=TRUE),
+            .groups = "drop") %>%
   filter(!is.na(lat), !is.na(lon)) %>%
   # Pre-filter to suppliers that appear in supply_links (efficiency)
   filter(Supplier_PSN %in% unique(supply_links$Supplier_PSN))
 
 message(sprintf("NUTS panel obs (relevant suppliers): %d", nrow(nuts_panel)))
+
+countries = read_csv("/Users/adrkul/Downloads/coords_geocoded.csv")
+
+nuts_panel = nuts_panel %>% 
+  left_join(countries %>% select(country_name, lat, lon), by = c("lat" = "lat", "lon" = "lon")) %>% 
+  rename("Country" = "country_name")
 
 ################################################################################
 ## 4. Construct Event-Study Panel
@@ -183,17 +229,22 @@ event_panels <- map_dfr(seq_len(nrow(oem_openings)), function(i) {
   ev <- oem_openings[i, ]
 
   linked_parts_i <- supply_links %>%
+    # Linked to the opening OEM and city
     filter(`VP: Production Brand` == ev$OEM) %>% 
     filter(`VP: City` == ev$City_oem) %>% 
     select(Supplier_PSN, Part) %>%
     distinct() %>%
     mutate(part_treat = 1L)
   
+  linked_suppliers = supply_links %>% filter(`VP: Production Brand` == ev$OEM) %>% 
+    select(Supplier_PSN) %>% distinct()
+  
   if (nrow(linked_parts_i) == 0L) return(NULL)
 
   nuts_panel %>%
     filter(
-      Supplier_PSN %in% linked_parts_i$Supplier_PSN,
+      ## XXX On and Off
+      #Supplier_PSN %in% linked_parts_i$Supplier_PSN, # Supplier sells to OEM City
       Year >= ev$opening_year - EVENT_PRE,
       Year <= ev$opening_year + EVENT_POST
     ) %>%
@@ -201,16 +252,21 @@ event_panels <- map_dfr(seq_len(nrow(oem_openings)), function(i) {
       event_id      = ev$event_id,
       OEM_event     = ev$OEM,
       opening_year  = ev$opening_year,
+      plant_size    = ev$Value,
       event_time    = as.integer(Year - ev$opening_year),
       # Haversine distance (km): p1 = matrix(lon, lat), p2 = single plant coord
       dist_to_plant = distHaversine(cbind(lon, lat), c(ev$lon, ev$lat)) / 1000,
       geo_treat     = as.integer(dist_to_plant <= DIST_KM),
-      geo_treat_alt_a     = as.integer(dist_to_plant <= DIST_KM*2),
-      geo_treat_alt_b     = as.integer(dist_to_plant <= DIST_KM*4),
+      geo_treat_alt_a     = as.integer(dist_to_plant <= 250),
+      geo_treat_alt_b     = as.integer(dist_to_plant <= 400),
     ) %>%
     left_join(linked_parts_i, by = c("Supplier_PSN", "Part")) %>%
     mutate(
-      part_treat = coalesce(part_treat, 0L),
+      #part_treat = coalesce(part_treat, 0L),
+      part_treat = coalesce(part_treat, 0L) & (Supplier_PSN %in% linked_parts_i$Supplier_PSN),
+      part_treat_spill = (Part %in% linked_parts_i$Part) - part_treat,
+      non_OEM_linked = !(Supplier_PSN %in% linked_suppliers$Supplier_PSN),
+      part_treat_spill_alt = part_treat_spill &  non_OEM_linked,
       treated    = geo_treat * part_treat,
       treated_a    = geo_treat_alt_a * part_treat,
       treated_b    = geo_treat_alt_b * part_treat,
@@ -219,27 +275,30 @@ event_panels <- map_dfr(seq_len(nrow(oem_openings)), function(i) {
 
 message(sprintf("Raw event-study observations stacked: %d", nrow(event_panels)))
 
-# Deduplication: keep closest event per (Supplier, Part, location, Year)
-event_panel <- event_panels %>%
-  group_by(Supplier_PSN, Country, Part, lat, lon, Year) %>%
-  slice_min(dist_to_plant, n = 1, with_ties = FALSE) %>%
-  ungroup() #%>% 
-  ## Duplicate events arises from multiple brands in the same factory
-  #group_by(Supplier_PSN, Country, Part, lat, lon) %>%
-  #filter(event_id == event_id[1]) #
-  ## Perhaps fine, you want to be in the control for the other group. 
 
-message(sprintf("After deduplication: %d observations", nrow(event_panel)))
+# So the event is an OEM-city opening
+# To it we link all Suppliers that sell to that OEM-city
+# Where some Supplier-Parts are treated because they sell to the OEM
+# and some are controls because they don't sell to the OEM
+# but all suppliers sell at least one part to that OEM
+# Now lets look at R&D outcomes at locations near the opening
 
-# Sanity: print treatment cell counts
-cat("\nTreatment cell summary:\n")
-print(count(event_panel, geo_treat, part_treat, treated))
+# Consider patent outcomes in some location X
+# before deduplication, if location X is near multiple openings, it will appear multiple times in the event panel
+# after deduplication, we keep only the closest opening for location X
+# this is true for treatment and control units
+# so before control included locations that were far away
+# now control includes more so other firms in the same location which 
+# also have a nearby plant opening, but it might be different from the one for 
+# the current unit
+ 
 
-################################################################################
-## 5. Fixed Effects
-################################################################################
+# That means the control group becomes more “matched” to the local event environment, 
+# because every control is interpreted relative to one specific nearby relevant opening rather than a mixture of openings.
 
-event_panel <- event_panel %>%
+#But it also means some potentially valid controls are discarded if they arise only in alternative event assignments.
+
+event_panels <- event_panels %>%
   mutate(
     # Supplier × NUTS location × Part (absorbs time-invariant heterogeneity)
     firm_city_part_fe  = paste0(Supplier_PSN, lat, lon, Part),
@@ -257,157 +316,554 @@ event_panel <- event_panel %>%
     firm_cntry_part_year_fe  = paste0(Supplier_PSN, Country, Part, Year),
     # Supplier × Part × Year (absorbs supplier-wide patent cycles)
     firm_part_year_fe  = paste0(Supplier_PSN, Part, Year),
+    # Supplier × Part × Event (absorbs supplier-wide patent cycles)
+    firm_part_event_fe  = paste0(Supplier_PSN, Part, event_id),
     # Event × Year (isolate comparison)
     event_year_fe  = paste0(event_id, Year),
+    firm_city_year_event_fe  = paste0(event_id, firm_city_year_fe),
+    part_city_year_event_fe  = paste0(event_id, part_city_year_fe),
+    part_cntry_year_event_fe  = paste0(event_id, part_cntry_year_fe),
+    firm_part_year_event_fe  = paste0(event_id, firm_part_year_fe),
+    firm_cntry_part_year_event_fe  = paste0(event_id, firm_cntry_part_year_fe),
+    firm_cntry_part_event_fe = paste0(event_id, firm_cntry_part_fe),
     # Cluster variable
-    city_fe            = paste0(lat, lon)
+    city_fe            = paste0(lat, lon),
+    city_year_fe            = paste0(lat, lon, Year),
   ) %>% 
   mutate(event_time_fe = as.factor(paste0(event_time))) %>% 
-  mutate(event_time_fe = relevel(event_time_fe, ref = as.character(-1)))
-  
+  mutate(event_time_fe = relevel(event_time_fe, ref = as.character(-1))) %>% 
+  mutate(post_fe = event_time >= 0)
+
+event_panel <- event_panels 
+
+message(sprintf("After deduplication: %d observations", nrow(event_panel)))
+
+# Sanity: print treatment cell counts
+cat("\nTreatment cell summary:\n")
+print(count(event_panel, geo_treat, geo_treat_alt_a, part_treat, treated))
+
 clean_cells <- event_panel %>%
-   group_by(Part, lat, lon, Year) %>%
-   summarise(count = n()) %>%
-   filter(count > 1) %>%
-   select(Part, lat, lon, Year)
- 
+  group_by(part_city_year_event_fe) %>%
+  summarise(count = n()) %>%
+  filter(count > 1) %>%
+  select(part_city_year_event_fe)
+
 event_panel <- event_panel %>%
-  semi_join(clean_cells, by = c("Part", "lat", "lon", "Year"))
+  semi_join(clean_cells, by = c("part_city_year_event_fe"))
+
+cat("\nTreatment cell summary:\n")
+print(count(event_panel, geo_treat, part_treat, treated))
 
 ################################################################################
-## 6. TWFE Event-Study Regressions
+## 4. First-Stage Distance Effect
 ################################################################################
 
 # Spec 1: Baseline TWFE w/ Production Control
-reg_1 <- fepois(
-  count_roll ~ treated*event_time_fe + log_prod|
-    event_year_fe + treated + firm_city_year_fe + part_city_year_fe,
+
+reg_dist <- feols(
+  avg_down_dist ~ geo_treat*part_treat*event_time_fe|
+    firm_city_year_fe + part_city_year_fe,
   data    = event_panel,
-  cluster = ~city_fe
+  cluster = ~ city_fe + Supplier_PSN
 )
-summary(reg_1)
+summary(reg_dist)
+ 
+# reg_dist_event_fe <- feols(
+#   avg_down_dist ~ geo_treat*part_treat*event_time_fe|
+#     firm_city_year_event_fe + part_city_year_event_fe,
+#   data    = event_panel,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_dist_event_fe)
 
-# Spec 1: Baseline TWFE w/ Production Control
-reg_2 <- fepois(
+################################################################################
+## 5. Estimation
+################################################################################
+
+reg_innov <- fepois(
   count_roll ~ geo_treat*part_treat*event_time_fe + log_prod|
-    event_year_fe + treated + firm_city_year_fe + part_city_year_fe,
-  data    = event_panel,
-  cluster = ~city_fe
+    firm_city_year_fe + part_city_year_fe,
+  data    = event_panel, 
+  cluster = ~ city_fe + Supplier_PSN
 )
-summary(reg_2)
+summary(reg_innov)
+
+################################################################################
+## 5. Estimation - Robustness Main
+################################################################################
+
+reg_innov_app <- fepois(
+  appln_count ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_innov_app)
+
+reg_innov_event_fe <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_event_fe + part_city_year_event_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_innov_event_fe)
+
+# reg_innov_hdfe <- fepois(
+#   count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+#     firm_cntry_part_year_fe + firm_city_year_fe + part_city_year_fe,
+#   data    = event_panel,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_innov_hdfe)
+# 
+# reg_innov_hdfe_event_fe <- fepois(
+#   count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+#     firm_cntry_part_year_event_fe + firm_city_year_event_fe + part_city_year_event_fe,
+#   data    = event_panel,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_innov_hdfe_event_fe)
+
+# reg_innov_hdfe_alt <- fepois(
+#   count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+#     firm_part_year_fe + firm_city_year_fe + part_city_year_fe,
+#   data    = event_panel,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_innov_hdfe_alt)
+
+# reg_innov_hdfe_alt_event_fe <- fepois(
+#   count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+#     firm_part_year_event_fe + firm_city_year_event_fe + part_city_year_event_fe,
+#   data    = event_panel,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_innov_hdfe_alt_event_fe)
+
+reg_innov_hdfe_2_event_fe <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_cntry_part_fe + firm_city_year_fe + part_city_year_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_innov_hdfe_2_event_fe)
+
+reg_innov_hdfe_alt_2_event_fe <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_cntry_part_event_fe + firm_city_year_event_fe + part_city_year_event_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_innov_hdfe_alt_2_event_fe)
+
+################################################################################
+## 7. Sample Restrictions
+################################################################################
+
+# Select Earliest Event Only
+data_first_event = event_panel %>% 
+  group_by(Supplier_PSN, Part, lat, lon) %>% 
+  filter(opening_year == min(opening_year)) %>% ungroup()
+
+# Select Nearest Event Only
+data_nearest_event = event_panel %>% 
+  group_by(Supplier_PSN, Part, lat, lon) %>% 
+  filter(dist_to_plant == min(dist_to_plant)) %>% ungroup()
+
+# Collapse to one treatment per Supplier_PSN × Part × lat × lon
+data_first_event_collapsed = data_first_event %>% 
+  group_by(Supplier_PSN, Part, lat, lon) %>% 
+  mutate(part_treat = max(part_treat),
+         geo_treat = max(geo_treat)) %>% 
+  filter(event_id == min(event_id))
+
+# Collapse to one treatment per Supplier_PSN × Part × lat × lon
+data_nearest_event_collapsed = data_nearest_event %>% 
+  group_by(Supplier_PSN, Part, lat, lon) %>% 
+  mutate(part_treat = max(part_treat),
+         geo_treat = max(geo_treat)) %>% 
+  filter(event_id == min(event_id))
+
+reg_0_first_event <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data = data_first_event,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_0_first_event)
+
+reg_0_first_event_collapsed <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data = data_first_event_collapsed,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_0_first_event_collapsed)
+
+reg_0_nearest_event <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data = data_nearest_event,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_0_nearest_event)
+
+reg_0_nearest_event_collapsed <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data = data_nearest_event_collapsed,
+  cluster = ~ city_fe + Supplier_PSN
+)
+summary(reg_0_nearest_event_collapsed)
+
+################################################################################
+## 5c. Distance Test
+################################################################################
+ 
+reg_dist_comp <- fepois(
+  count_roll ~ geo_treat_alt_a*part_treat*post_fe + log_prod|
+  firm_city_year_fe + part_city_year_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN)
+summary(reg_dist_comp)
+
+reg_dist_comp_2 <- fepois(
+  count_roll ~ geo_treat_alt_b*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN)
+summary(reg_dist_comp_2)
+
+################################################################################
+## 6. Robustness Table
+################################################################################
+
+# ── Label dictionary ──────────────────────────────────────────────────────────
+
+
+# Baseline: same as reg_innov but with post_fe for comparability
+reg_innov_baseline <- fepois(
+  count_roll ~ geo_treat*part_treat*post_fe + log_prod|
+    firm_city_year_fe + part_city_year_fe,
+  data    = event_panel,
+  cluster = ~ city_fe + Supplier_PSN
+)
+
+
+plants_coef_dict <- c(
+  # Outcomes
+  "count_roll"    = "$\\bar{\\text{Patents}}$",
+  "appln_count"   = "Patents",
+  # Main effects
+  "geo_treat"             = "Geo. Treated",
+  "part_treatTRUE"        = "Part Treated",
+  "post_feTRUE"           = "Post",
+  "geo_treat_alt_a"       = "Geo. Treated (250 km)",
+  "geo_treat_alt_b"       = "Geo. Treated (400 km)",
+  "log_prod"              = "$\\log$ Production",
+  # Two-way interactions
+  "geo_treat:part_treatTRUE"          = "Geo. $\\times$ Part",
+  "geo_treat:post_feTRUE"             = "Geo. $\\times$ Post",
+  "part_treatTRUE:post_feTRUE"        = "Part $\\times$ Post",
+  "geo_treat_alt_a:part_treatTRUE"    = "Geo.(250) $\\times$ Part",
+  "geo_treat_alt_a:post_feTRUE"       = "Geo.(250) $\\times$ Post",
+  "part_treatTRUE:post_feTRUE"        = "Part $\\times$ Post",
+  "geo_treat_alt_b:part_treatTRUE"    = "Geo.(400) $\\times$ Part",
+  "geo_treat_alt_b:post_feTRUE"       = "Geo.(400) $\\times$ Post",
+  # Triple interaction (treatment effect of interest)
+  "geo_treat:part_treatTRUE:post_feTRUE"       = "Geo. $\\times$ Part $\\times$ Post",
+  "geo_treat:part_treat:post_feTRUE"       = "Geo. $\\times$ Part $\\times$ Post",
+  "geo_treat_alt_a:part_treatTRUE:post_feTRUE" = "Geo.(250) $\\times$ Part $\\times$ Post",
+  "geo_treat_alt_b:part_treatTRUE:post_feTRUE" = "Geo.(400) $\\times$ Part $\\times$ Post",
+  # Fixed effects
+  "firm_city_year_fe"            = "Firm $\\times$ Location $\\times$ Year",
+  "part_city_year_fe"            = "Part $\\times$ Location $\\times$ Year",
+  "firm_city_year_event_fe"      = "Firm $\\times$ Location $\\times$ Year $\\times$ Event",
+  "part_city_year_event_fe"      = "Part $\\times$ Location $\\times$ Year $\\times$ Event",
+  "firm_cntry_part_fe"           = "Firm $\\times$ Country $\\times$ Part",
+  "firm_cntry_part_event_fe"     = "Firm $\\times$ Country $\\times$ Part $\\times$ Event"
+)
+
+# ── Panel A: Specification Robustness ─────────────────────────────────────────
+# Baseline PPML + four specification variants; keep only the triple interaction.
+
+spec_regs <- list(
+  reg_innov_baseline,           # (1) Baseline PPML
+  reg_innov_app,                # (2) Alt. outcome: patent applications (PPML)
+  reg_innov_event_fe,           # (3) OLS, event-interacted FE
+  reg_innov_hdfe_2_event_fe,    # (4) PPML + Firm×Country×Part FE
+  reg_innov_hdfe_alt_2_event_fe, # (5) PPML + event-interacted Firm×Country×Part FE
+  reg_dist_comp,
+  reg_dist_comp_2
+)
+
+etable(
+  spec_regs,
+  keep     = c("Geo. \\$\\\\times\\$ Part \\$\\\\times\\$ Post",
+               "Geo.\\(250\\) \\$\\\\times\\$ Part \\$\\\\times\\$ Post",
+               "Geo.\\(400\\) \\$\\\\times\\$ Part \\$\\\\times\\$ Post"),
+  dict     = plants_coef_dict,
+  se.below = TRUE,
+  tex      = TRUE,
+  fitstat  = ~ pr2 + r2 + n,
+  digits   = 3, digits.stats = 2,
+  style.tex = style.tex("aer"),
+  file    = "../Figures/Event_Study_Plants/event_study_plants_robustness_spec.tex",
+  replace = TRUE
+)
+
+# ── Panel B: Sample Restrictions ─────────────────────────────────────────────
+
+sample_regs <- list(
+  reg_innov_baseline,           # (1) Full stacked panel (baseline)
+  reg_0_first_event,            # (2) Earliest event only
+  reg_0_first_event_collapsed,  # (3) Earliest event, collapsed treatment
+  reg_0_nearest_event,          # (4) Nearest event only
+  reg_0_nearest_event_collapsed # (5) Nearest event, collapsed treatment
+)
+
+etable(
+  sample_regs,
+  keep     = c("Geo. \\$\\\\times\\$ Part \\$\\\\times\\$ Post"),
+  dict     = plants_coef_dict,
+  se.below = TRUE,
+  tex      = TRUE,
+  fitstat  = ~ pr2 + n,
+  digits   = 3, digits.stats = 2,
+  style.tex = style.tex("aer"),
+  extralines = list(
+    "Sample"   = c("Full", "First Event", "First (Collapsed)",
+                   "Nearest Event", "Nearest (Collapsed)")
+  ),
+  file    = "../Figures/Event_Study_Plants/event_study_plants_robustness_sample.tex",
+  replace = TRUE
+)
+
 
 ################################################################################
 ## 7. Event-Study Coefficient Plot
 ################################################################################
-# Extract coefficients from fixest i() models and plot with ggplot2.
-# Coefficient names from i(event_time, treated, ref = -1) follow the pattern
-# "event_time::VALUE:treated" in fixest.
 
-extract_event_study_data <- function(reg, t_ref = -1, interaction_pattern = "geo_treat:part_treat:event_time_fe") {
-  
-  # Extract coefficient table
-  coeff_table <- reg$coeftable
-  
-  # Filter for interaction terms
-  coeff_table <- coeff_table[grepl(interaction_pattern, rownames(coeff_table)), ]
-  
-  # Extract years from row names
-  years <- as.integer(sub(".*?(-?\\d+)$", "\\1", rownames(coeff_table)))
-  
-  # Create event study data frame
-  event_study_df <- data.frame(
-    Year = c(t_ref, years),
-    Estimates = c(0, coeff_table[, 1]),
-    Error = c(0, coeff_table[, 2])
-  )
-  
-  # Add confidence intervals
-  event_study_df <- event_study_df %>% 
-    mutate(Lower_CI = Estimates - 1.96 * Error,
-           Upper_CI = Estimates + 1.96 * Error)
-  
-  return(event_study_df)
-  
+# Extract the triple-interaction coefficients for one treatment arm into a tidy
+# data frame with columns: Year, Estimates, Error, Lower_CI, Upper_CI.
+# The reference period (t_ref) is pinned to 0 by convention.
+extract_event_study_data <- function(reg, interaction_pattern, t_ref = -1) {
+  ct    <- reg$coeftable
+  ct    <- ct[grepl(interaction_pattern, rownames(ct)), , drop = FALSE]
+  years <- as.integer(sub(".*?(-?\\d+)$", "\\1", rownames(ct)))
+  data.frame(
+    Year      = c(t_ref, years),
+    Estimates = c(0,     ct[, 1]),
+    Error     = c(0,     ct[, 2])
+  ) %>%
+    mutate(
+      Lower_CI = Estimates - 1.96 * Error,
+      Upper_CI = Estimates + 1.96 * Error
+    )
 }
 
-event_study_df = extract_event_study_data(reg_2, interaction_pattern = "geo_treat:part_treat:event_time_fe") 
+# Plot one or more event-study series on a single panel.
+#
+# series_list  — named list of data frames from extract_event_study_data
+# y_label      — y-axis label (plain text; bold formatting applied internally)
+# x_label      — x-axis label
+# title        — optional plot title
+# save_path    — if non-NULL, saves to this path via cairo_pdf
+# width/height — dimensions in inches
+#
+# Returns the ggplot object invisibly so callers can further modify it.
+plot_event_study <- function(
+    series_list,
+    y_label   = "Patents",
+    x_label   = "Year Relative to Plant Opening",
+    title     = NULL,
+    save_path = NULL,
+    width     = 10,
+    height    = 5
+) {
+  palette <- c("#2c5f8a", "#b91c1c", "#15803d", "#c9a84c",
+               "#525252", "#7c3aed", "#0e7490", "#92400e")
 
-t_0 = -1*EVENT_PRE
-years <- sort(unique(event_study_df$Year))
+  df <- bind_rows(series_list, .id = "Series") %>%
+    mutate(Series = factor(Series, levels = names(series_list)))
 
-# Create the plot
-p = ggplot(event_study_df %>% mutate(Type = 'Main'), aes(x = Year, y = Estimates, color = Type)) +
-  geom_errorbar(aes(ymin = Lower_CI, ymax = Upper_CI), width = 0.2, alpha = 1) +
-  geom_point(size = 2, alpha = 1) +
-  scale_color_manual(values = "steelblue") + 
-  scale_fill_manual(values = "steelblue") + 
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  xlab(TeX("\\textbf{Year Relative to Plant Opening}")) +
-  ylab(TeX("\\textbf{log Patent Response}")) +
-  theme_line() + 
-  theme(legend.position = "none") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-  scale_x_continuous(
-    breaks = seq(t_0, years[length(years)], 2),
-    labels = as.character(seq(t_0, years[length(years)], 2)),
-    limits = c(t_0 - 0.0, years[length(years)] + 0.0))
+  x_min    <- min(df$Year)
+  x_max    <- max(df$Year)
+  x_breaks <- seq(x_min, x_max, by = 2)
+  one_series <- length(series_list) == 1L
 
-ggsave(
-  "../Figures/Event_Study_Plants/event_study_plants_geo_part_a.png",
-  plot = p,  width = 5.0*2.0,
-  height = 5.0)   
+  p <- ggplot(df, aes(x = Year, y = Estimates, color = Series)) +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+    geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+    geom_errorbar(aes(ymin = Lower_CI, ymax = Upper_CI), width = 0.2) +
+    geom_point(size = 2) +
+    scale_color_manual(
+      values = setNames(palette[seq_along(series_list)], names(series_list))
+    ) +
+    scale_x_continuous(
+      breaks = x_breaks,
+      labels = as.character(x_breaks),
+      limits = c(x_min, x_max)
+    ) +
+    labs(
+      x     = TeX(paste0("\\textbf{", x_label, "}")),
+      y     = TeX(paste0("\\textbf{", y_label, "}")),
+      #title = title,
+      color = NULL
+    ) +
+    theme_line() +
+    theme(legend.position = if (one_series) "none" else "bottom")
 
-event_study_df = extract_event_study_data(reg_1, interaction_pattern = "treated:event_time_fe")
+  if (!is.null(save_path)) {
+    # Save the plot
+    ggsave(save_path, plot = p,  width = width, height = height)   
+    message(sprintf("Saved: %s", save_path))
+    # Save the plot
+    ggsave(substr(save_path,1,nchar(save_path)-4) %>% paste0("_paper.png"), plot = p,  width = 7*1.2, height = 7)   
+    message(sprintf("Saved: %s", save_path))
+  }
 
+  invisible(p)
+}
 
-t_0 = -1*EVENT_PRE
-years <- sort(unique(event_study_df$Year))
+# ── Extract coefficients ──────────────────────────────────────────────────────
 
-# Create the plot
-p = ggplot(event_study_df %>% mutate(Type = 'Main'), aes(x = Year, y = Estimates, color = Type)) +
-  geom_errorbar(aes(ymin = Lower_CI, ymax = Upper_CI), width = 0.2, alpha = 1) +
-  geom_point(size = 2, alpha = 1) +
-  scale_color_manual(values = "steelblue") + 
-  scale_fill_manual(values = "steelblue") + 
-  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
-  xlab(TeX("\\textbf{Year Relative to Plant Opening}")) +
-  ylab(TeX("\\textbf{log Patent Response}")) +
-  theme_line() + 
-  theme(legend.position = "none") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-  scale_x_continuous(
-    breaks = seq(t_0, years[length(years)], 2),
-    labels = as.character(seq(t_0, years[length(years)], 2)),
-    limits = c(t_0 - 0.0, years[length(years)] + 0.0))
+es_direct_baseline_dist    <- extract_event_study_data(reg_0b, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_baseline    <- extract_event_study_data(reg_2, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_baseline_appln    <- extract_event_study_data(reg_2b, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_baseline_hdfe    <- extract_event_study_data(reg_2c, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_event_fe    <- extract_event_study_data(reg_3, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_event_fe_appln    <- extract_event_study_data(reg_3b, "geo_treat:part_treatTRUE:event_time_fe")
+es_direct_event_fe_hdfe    <- extract_event_study_data(reg_3c, "geo_treat:part_treatTRUE:event_time_fe")
+es_spillover_baseline <- extract_event_study_data(reg_4, "geo_treat_other:part_other:event_time_fe")
+es_spillover_event_fe <- extract_event_study_data(reg_5, "treat_other:event_time_fe")
+es_spillover_alt      <- extract_event_study_data(reg_6, "geo_treat_other:part_other:event_time_fe")
+es_spillover_dist_a   <- extract_event_study_data(reg_7, "geo_treat:part_treatTRUE:event_time_fe")
+es_spillover_dist_b   <- extract_event_study_data(reg_7, "geo_treat):part_treatTRUE:event_time_fe")
 
-ggsave(
-  "../Figures/Event_Study_Plants/event_study_plants_geo_part_b.png",
-  plot = p,  width = 5.0*2.0,
-  height = 5.0)   
+# ── Plots ─────────────────────────────────────────────────────────────────────
+
+# Direct effect — baseline FE vs. event-interacted FE
+plot_event_study(
+  list("Baseline FE" = es_direct_baseline_dist),
+  title     = "Direct Effect: Supplier Patents near OEM Opening",
+  y_label = "Average Distance to Assembly Plants (km)",
+  save_path = file.path(OUT_DIR, "event_study_direct_dist.png")
+)
+
+# Direct effect — baseline FE vs. event-interacted FE
+plot_event_study(
+  list("Baseline FE" = es_direct_baseline),
+  title     = "Direct Effect: Supplier Patents near OEM Opening",
+  save_path = file.path(OUT_DIR, "event_study_direct.png")
+)
+
+################################################################################
+## 5b. Spillover Test
+################################################################################
+
+# # 
+# # # Think about this harder. 
+# # event_panel_spill <- event_panel %>%
+# #   group_by(part_city_year_fe) %>% 
+# #   #mutate(treat_other = max(geo_treat*part_treat)-geo_treat*part_treat) %>% ungroup()
+# #   mutate(geo_treat_other = max(geo_treat),
+# #          part_other = max(part_treat)-part_treat) %>% ungroup()
+# # 
+# # 
+# # reg_4 <- fepois(
+# #   count_roll ~ geo_treat_other*part_other*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+# #     firm_city_year_fe + part_cntry_year_fe,
+# #   data    = event_panel_spill ,
+# #   cluster = ~ city_fe + Supplier_PSN
+# # )
+# # summary(reg_4)
+# # 
+# # reg_4 <- fepois(
+# #   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+# #     firm_city_year_fe + part_cntry_year_fe,
+# #   data    = event_panel_spill ,
+# #   cluster = ~ city_fe + Supplier_PSN
+# # )
+# # summary(reg_4)
+# # 
+# # reg_4 <- fepois(
+# #   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+# #     firm_city_year_event_fe + part_cntry_year_event_fe,
+# #   data    = event_panel_spill ,
+# #   cluster = ~ city_fe + Supplier_PSN
+# # )
+# # summary(reg_4)
+# 
+# event_panel_spill <- event_panel %>%
+#   group_by(part_city_year_event_fe) %>% 
+#   mutate(geo_treat_other = max(geo_treat) - geo_treat,
+#          part_other = max(part_treat)-part_treat) %>% ungroup()
+#   #mutate(treat_other = max(geo_treat*part_treat)-geo_treat*part_treat) #%>% ungroup()
+#   #mutate(geo_treat_other = max(geo_treat)-geo_treat,
+#   #     part_other = max(part_treat)-part_treat) %>% ungroup()
+#  
+# reg_5 <- fepois(
+#   count_roll ~ geo_treat_other*part_treat_spill_alt*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_event_fe + part_cntry_year_event_fe,
+#   data    = event_panel_spill,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_5)
+# 
+# reg_5 <- fepois(
+#   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_fe + part_cntry_year_fe,
+#   data    = event_panel_spill,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_5)
+# 
+# 
+# event_panel_spill <- event_panel %>%
+#   group_by(part_city_year_fe) %>% 
+#   mutate(geo_treat_other = max(geo_treat) - geo_treat,
+#          part_other = max(part_treat)-part_treat) %>% ungroup()
+# 
+# reg_5 <- fepois(
+#   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_fe + part_city_fe + part_year_fe,
+#   data    = event_panel_spill %>% mutate(part_city_fe = paste0(Part,city_fe),part_year_fe = paste0(Part,Year)),
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_5)
 
 # 
 # 
-# # Create the plot
-# p = ggplot(event_study_df %>% mutate(Type = 'Main'), aes(x = Year, y = Estimates, color = Type)) +
-#   geom_hline(yintercept = 0, linewidth = 0.4, color = "grey60") +
-#   geom_vline(xintercept = -0.5, linewidth = 0.4, linetype = "dashed",
-#              color = "grey60") +
-#   geom_ribbon(aes(ymin = Lower_CI, ymax = Upper_CI),
-#               alpha = 0.12, color = NA) +
-#   geom_line(linewidth = 0.7) +
-#   geom_point(size = 1.8) +
-#   scale_color_manual(values = "steelblue") + 
-#   scale_fill_manual(values = "steelblue") + 
-#   xlab(TeX("Year Relative to Plant Opening")) +
-#   ylab(TeX("log Patent Response")) +
-#   theme_line() + 
-#   theme(legend.position = "none") +
-#   scale_x_continuous(
-#     breaks = seq(t_0, years[length(years)], 2),
-#     labels = as.character(seq(t_0, years[length(years)], 2)),
-#     limits = c(t_0 - 0.0, years[length(years)] + 0.0))
 # 
-# ggsave(
-#   "../Figures/Event_Study_Plants/event_study_plants_geo_part_alt.png",
-#   plot = p,  width = 5.0*2.0,
-#   height = 5.0)   
+# 
+# 
+# reg_5 <- fepois(
+#   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_event_fe + part_cntry_year_event_fe,
+#   data    = event_panel_spill,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_5)
+# 
+# event_panel_spill <- event_panel %>%
+#   group_by(part_city_year_fe) %>% 
+#   #mutate(treat_other = max(geo_treat*part_treat)-geo_treat*part_treat) %>% ungroup()
+#   mutate(geo_treat_other = max(geo_treat)-geo_treat,
+#          part_other = max(part_treat)-part_treat) %>% ungroup()
+# 
+# reg_6 <- fepois(
+#   count_roll ~ geo_treat_other*part_other*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_event_fe + part_cntry_year_event_fe,
+#   data    = event_panel_spill,
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_6)
+# 
+# reg_6b <- fepois(
+#   count_roll ~ geo_treat_other*part_treat_spill*event_time_fe + geo_treat*part_treat*event_time_fe + log_prod|
+#     firm_city_year_fe + part_cntry_year_fe,
+#   data    = event_panel_spill %>% filter(opening_year == min(opening_year)),
+#   cluster = ~ city_fe + Supplier_PSN
+# )
+# summary(reg_6b)
